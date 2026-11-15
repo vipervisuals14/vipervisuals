@@ -14,23 +14,6 @@
 const CDN = 'https://cdn.myportfolio.com/9844ffef-896f-4abd-b0bc-bec392563aaf/';
 
 /* ------------------------------------------------------------------ */
-/* NAV — identical on every page                                      */
-/* ------------------------------------------------------------------ */
-const NAV_GROUPS = {
-  left: [
-    { label: 'HOME', path: '#/' },
-    { label: 'ABOUT', path: '#/about' },
-    { label: 'CONTACT', path: '#/contact' },
-  ],
-  centre: { label: 'VIPER VISUALS', path: '#/' },
-  right: [
-    { label: 'VIDEO PRODUCTION', path: '#/video' },
-    { label: 'PHOTOGRAPHY', path: '#/photo' },
-    { label: 'DESIGN', path: '#/design' },
-  ],
-};
-
-/* ------------------------------------------------------------------ */
 /* CONTENT — migrated from vipervisuals.ca                            */
 /* ------------------------------------------------------------------ */
 
@@ -206,23 +189,6 @@ function closeMobile() {
 }
 
 /* ------------------------------------------------------------------ */
-/* Nav builder                                                        */
-/* ------------------------------------------------------------------ */
-function buildNav() {
-  const leftHtml = NAV_GROUPS.left.map(
-    (item) => `<a href="${item.path}" class="nav-link">${escapeHtml(item.label)}</a>`
-  ).join('');
-  const rightHtml = NAV_GROUPS.right.map(
-    (item) => `<a href="${item.path}" class="nav-link">${escapeHtml(item.label)}</a>`
-  ).join('');
-  return `
-    <div class="nav-left">${leftHtml}</div>
-    <div class="nav-centre"><a href="${NAV_GROUPS.centre.path}" class="nav-brand">${escapeHtml(NAV_GROUPS.centre.label)}</a></div>
-    <div class="nav-right">${rightHtml}</div>
-  `;
-}
-
-/* ------------------------------------------------------------------ */
 /* Menu                                                               */
 /* ------------------------------------------------------------------ */
 burger.addEventListener('click', () => {
@@ -267,7 +233,6 @@ function renderMusicVideos() {
 
   const frag = tpl(`
     <section class="video-category">
-      <nav class="site-header">${buildNav()}</nav>
       <div class="category-grid">${tilesHtml}</div>
       <a href="#" class="back-to-top">BACK TO THE TOP</a>
     </section>
@@ -283,7 +248,6 @@ function renderHome() {
   setActiveNav('#/');
   const frag = tpl(`
     <section class="home-page">
-      <nav class="site-header">${buildNav()}</nav>
       <div class="home-hero">
         <video autoplay playsinline muted loop poster="media/home/hero-poster.jpg">
           <source src="media/home/hero.mp4" type="video/mp4">
@@ -314,7 +278,6 @@ function renderPhotoCategories() {
 
   const frag = tpl(`
     <section class="photo-category">
-      <nav class="site-header">${buildNav()}</nav>
       <div class="category-grid">${tilesHtml}</div>
       <a href="#" class="back-to-top">BACK TO THE TOP</a>
     </section>
@@ -338,7 +301,6 @@ function renderCategory(items, sectionKey) {
   ).join('');
   const frag = tpl(`
     <section class="${sectionKey}-category">
-      <nav class="site-header">${buildNav()}</nav>
       <div class="category-grid">${tilesHtml}</div>
       <a href="#" class="back-to-top">BACK TO THE TOP</a>
     </section>
@@ -366,7 +328,6 @@ function renderProject(slug) {
 
   const frag = tpl(`
     <section class="project-page">
-      <nav class="site-header">${buildNav()}</nav>
       ${mediaHtml}
       <div class="project-info">
         <div class="project-title-quote">‘${escapeHtml(detail ? detail.title : project.title)}’</div>
@@ -391,7 +352,6 @@ function renderAbout() {
   setActiveNav('#/about');
   const frag = tpl(`
     <section class="about-page">
-      <nav class="site-header">${buildNav()}</nav>
       <div class="about-left">
         <video autoplay playsinline muted loop poster="media/about/about-poster.jpg">
           <source src="media/about/about.mp4" type="video/mp4">
@@ -433,7 +393,6 @@ function renderContact() {
   setActiveNav('#/contact');
   const frag = tpl(`
     <section class="contact-page">
-      <nav class="site-header">${buildNav()}</nav>
       <div class="about-left">
         <video autoplay playsinline muted loop poster="media/contact/contact-poster.jpg">
           <source src="media/contact/contact.mp4" type="video/mp4">
@@ -472,7 +431,6 @@ function renderNotFound() {
   document.body.className = '';
   const frag = tpl(`
     <section class="section">
-      <nav class="site-header">${buildNav()}</nav>
       <div style="padding-top: calc(100 * var(--u)); text-align: center;">
         <div style="font-family:'Azet Mono',monospace;font-size:calc(14 * var(--u));letter-spacing:-0.4px;">Page not found</div>
         <a href="#/" style="color:rgb(219,188,235)">Return to home</a>
