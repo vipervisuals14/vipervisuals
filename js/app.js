@@ -41,6 +41,15 @@ const VIDEO_CATEGORIES = [
 
 /* MUSIC VIDEOS — individual projects (for project pages) */
 const MUSIC_VIDEOS = [
+  /* CINEMATIC */
+  {
+    slug: 'red-light',
+    category: 'video-cinematic',
+    artist: 'AMAAL NUUX',
+    title: 'RED LIGHT',
+    youtubeId: '7ZxsX_-w99w',
+    poster: `${CDN}e2ae8699-f209-4ade-8aac-d8b555f706ac_car_4x3.gif?h=2aa460ed9d65f9080c277c2e1f59625f`,
+  },
   {
     slug: 'motions',
     category: 'video-cinematic',
@@ -50,38 +59,117 @@ const MUSIC_VIDEOS = [
     poster: `${CDN}b8b37835-6914-4f17-9048-c44a35a0fabd_rwc_212x0x457x343x457.gif?h=58a630675171c931373f269654eabf43`,
   },
   {
-    slug: 'more-gen',
-    category: 'video-digital',
+    slug: 'not-coming-back',
+    category: 'video-cinematic',
     artist: 'GEN',
     title: 'NOT COMING BACK',
     youtubeId: 'pET-VvHWLnc',
     poster: `${CDN}8bb039fa-e384-4a5b-a17c-95847a8593a1_rwc_80x0x456x342x456.gif?h=bf745be8499f094ffac3770bb514279c`,
   },
   {
-    slug: 'late-to-the-party-amaal-nuuk',
+    slug: 'late-to-the-party',
     category: 'video-cinematic',
     artist: 'AMAAL NUUX',
     title: 'LATE TO THE PARTY',
     youtubeId: 'nunVUrPR4EQ',
     poster: `${CDN}73fd5890-8229-4748-9e6f-3220c53ed5e3_car_4x3.gif?h=6bcae8a99ccb35e1d99ad6a9dbb7338e`,
   },
+
+  /* DIGITAL */
   {
-    slug: 'cody-lawless-powfu',
+    slug: 'cale-at-aera',
     category: 'video-digital',
-    artist: 'AMAAL NUUX',
-    title: 'RED LIGHT (VISUALIZER)',
-    youtubeId: '7ZxsX_-w99w',
-    poster: `${CDN}e2ae8699-f209-4ade-8aac-d8b555f706ac_car_4x3.gif?h=2aa460ed9d65f9080c277c2e1f59625f`,
+    artist: 'CALE',
+    title: 'AT AERA',
+    vimeoId: '1127937310',
+    poster: 'https://vumbnail.com/1127937310.jpg',
   },
   {
-    slug: 'latency',
-    category: 'video-cinematic',
-    artist: 'CODY LAWLESS FT. POWFU',
-    title: 'LATENCY',
-    youtubeId: 'CPQ3aZgUQU0',
-    poster: `${CDN}2fc588f9-c50d-4204-a33d-ea4d8e25d1b4_rwc_176x0x421x316x421.gif?h=7cb9692e7e6b11e20933111e2f70626b`,
+    slug: 'chris-alexander',
+    category: 'video-digital',
+    artist: 'CHRIS ALEXANDER',
+    title: 'RE/MAX CANADA',
+    vimeoId: '1032424404',
+    poster: 'https://vumbnail.com/1032424404.jpg',
+  },
+  {
+    slug: 'rooted-ep',
+    category: 'video-digital',
+    artist: 'SINGHARA',
+    title: 'ROOTED EP',
+    vimeoId: '1029288693',
+    poster: 'https://vumbnail.com/1029288693.jpg',
+  },
+
+  /* LIVE */
+  {
+    slug: 'kelland',
+    category: 'video-live',
+    artist: 'KELLAND',
+    title: '',
+    poster: '',
+  },
+  {
+    slug: 'maribou-state',
+    category: 'video-live',
+    artist: 'MARIBOU STATE',
+    title: '',
+    vimeoId: '1098364694',
+    poster: 'https://vumbnail.com/1098364694.jpg',
+  },
+  {
+    slug: 'sistek',
+    category: 'video-live',
+    artist: 'SISTEK',
+    title: 'YOKO LUNA MONTREAL',
+    vimeoId: '1117974303',
+    poster: 'https://vumbnail.com/1117974303.jpg',
   },
 ];
+
+/* PROJECT DETAILS (for project pages) */
+const PROJECT_DETAILS = {
+  'red-light': {
+    title: 'RED LIGHT',
+    description: ['Visualizer for Amaal Nuux.', 'Directed and shot by Viper Visuals.'],
+  },
+  motions: {
+    title: 'MOTIONS',
+    description: ['Music video for Nikkaela.', 'Directed and shot by Viper Visuals.'],
+  },
+  'not-coming-back': {
+    title: 'NOT COMING BACK',
+    description: ['Music video for Gen.', 'Directed and shot by Viper Visuals.'],
+  },
+  'late-to-the-party': {
+    title: 'LATE TO THE PARTY',
+    description: ['Music video for Amaal Nuux.', 'Directed and shot by Viper Visuals.'],
+  },
+  'cale-at-aera': {
+    title: 'AT AERA',
+    description: ['Concert recap for Cale.', 'Shot by Viper Visuals.'],
+  },
+  'chris-alexander': {
+    title: 'RE/MAX CANADA',
+    description: ['Promotional video for Chris Alexander.', 'Shot by Viper Visuals.'],
+  },
+  'rooted-ep': {
+    title: 'ROOTED EP',
+    description: ['Promotional video for Singhara.', 'Shot by Viper Visuals.'],
+  },
+  kelland: {
+    title: '',
+    description: ['Live performance by Kelland.', 'Shot by Viper Visuals.'],
+  },
+  'maribou-state': {
+    title: '',
+    description: ['Live performance by Maribou State.', 'Shot by Viper Visuals.'],
+  },
+  sistek: {
+    title: 'YOKO LUNA MONTREAL',
+    description: ['Live performance by Sistek.', 'Shot by Viper Visuals.'],
+  },
+};
 
 /* PHOTOGRAPHY CATEGORIES (3 category tiles) */
 const PHOTOGRAPHY_CATEGORIES = [
@@ -148,33 +236,6 @@ const RECAPS = [
     poster: '',
   },
 ];
-
-/* PROJECT DETAILS (for project pages) */
-const PROJECT_DETAILS = {
-  motions: {
-    title: 'MOTIONS',
-    description: [
-      'Music video for Nikkaela.',
-      'Directed and shot by Viper Visuals.',
-    ],
-  },
-  'more-gen': {
-    title: 'NOT COMING BACK',
-    description: ['Music video for Gen.', 'Directed and shot by Viper Visuals.'],
-  },
-  'late-to-the-party-amaal-nuuk': {
-    title: 'LATE TO THE PARTY',
-    description: ['Music video for Amaal Nuux.', 'Directed and shot by Viper Visuals.'],
-  },
-  'cody-lawless-powfu': {
-    title: 'RED LIGHT (VISUALIZER)',
-    description: ['Visualizer for Cody Lawless ft. Powfu.', 'Directed and shot by Viper Visuals.'],
-  },
-  latency: {
-    title: 'LATENCY',
-    description: ['Music video for Cody Lawless ft. Powfu.', 'Directed and shot by Viper Visuals.'],
-  },
-};
 
 /* ------------------------------------------------------------------ */
 /* DOM refs                                                           */
@@ -340,13 +401,23 @@ function renderProject(slug) {
     ? `
       <div class="project-main-media">
         <div style="width:100%;height:100%;background:#111;display:grid;place-items:center;">
-          <button class="play-youtube" data-youtube-id="${escapeHtml(project.youtubeId)}" style="background:none;border:none;color:#fff;font-family:'Azet Mono',monospace;font-size:calc(14 * var(--u));cursor:pointer;">
+          <button class="play-video" data-provider="youtube" data-video-id="${escapeHtml(project.youtubeId)}" style="background:none;border:none;color:#fff;font-family:'Azet Mono',monospace;font-size:calc(14 * var(--u));cursor:pointer;">
             ▶
           </button>
         </div>
       </div>
     `
-    : `<img class="project-main-media" src="${project.poster}" alt="${escapeHtml(project.title)}">`;
+    : project.vimeoId
+      ? `
+      <div class="project-main-media">
+        <div style="width:100%;height:100%;background:#111;display:grid;place-items:center;">
+          <button class="play-video" data-provider="vimeo" data-video-id="${escapeHtml(project.vimeoId)}" style="background:none;border:none;color:#fff;font-family:'Azet Mono',monospace;font-size:calc(14 * var(--u));cursor:pointer;">
+            ▶
+          </button>
+        </div>
+      </div>
+    `
+      : `<img class="project-main-media" src="${project.poster}" alt="${escapeHtml(project.title)}">`;
 
   const frag = tpl(`
     <section class="project-page">
@@ -367,6 +438,30 @@ function renderProject(slug) {
     </section>
   `);
   mount(frag);
+
+  const playBtn = document.querySelector('.play-video');
+  if (playBtn) {
+    playBtn.addEventListener('click', () => {
+      const provider = playBtn.dataset.provider;
+      const videoId = playBtn.dataset.videoId;
+      let embedUrl = '';
+      if (provider === 'youtube') {
+        embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1`;
+      } else if (provider === 'vimeo') {
+        embedUrl = `https://player.vimeo.com/video/${videoId}?autoplay=1`;
+      }
+      playBtn.parentElement.innerHTML = `
+        <iframe
+          src="${embedUrl}"
+          width="100%"
+          height="100%"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      `;
+    });
+  }
 }
 
 function renderAbout() {
