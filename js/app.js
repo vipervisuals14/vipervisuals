@@ -267,7 +267,7 @@ function renderHome() {
           The <video> autoplays muted & looped — it behaves like a GIF,
           no play button. Keep it short (5-15s) and compressed (webm/mp4).
         -->
-        <video playsinline muted loop poster="assets/img/posters/hero.jpg">
+        <video autoplay playsinline muted loop poster="assets/img/posters/hero.jpg">
           <source src="assets/video/hero.webm" type="video/webm">
           <source src="assets/video/hero.mp4" type="video/mp4">
         </video>
