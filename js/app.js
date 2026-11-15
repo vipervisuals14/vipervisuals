@@ -645,28 +645,22 @@ function renderVideoSubcategory(categorySlug) {
       if (m.youtubeId) {
         embedUrl = `https://www.youtube-nocookie.com/embed/${escapeHtml(
           m.youtubeId
-        )}?autoplay=1&mute=1&loop=1&playlist=${escapeHtml(m.youtubeId)}`;
+        )}?autoplay=1`;
       } else if (m.vimeoId) {
         embedUrl = `https://player.vimeo.com/video/${escapeHtml(
           m.vimeoId
-        )}?autoplay=1&muted=1&loop=1&background=1&byline=0&portrait=0&title=0`;
+        )}?autoplay=1`;
       }
 
       return `
       <div class="category-tile">
         <div class="category-tile-media">
-          ${embedUrl
-            ? `<iframe
-                src="${embedUrl}"
-                width="100%"
-                height="100%"
-                frameborder="0"
-                allow="autoplay; fullscreen; picture-in-picture"
-                allowfullscreen
-              ></iframe>`
-            : `<img src="${m.poster}" alt="${escapeHtml(
-                m.title || m.artist
-              )}" style="width:100%;height:100%;object-fit:cover;">`}
+          <img class="category-tile-poster" src="${m.poster}" alt="${escapeHtml(
+            m.title || m.artist
+          )}">
+          <button class="play-overlay" data-embed="${escapeHtml(embedUrl)}" aria-label="Play video">
+            <span class="play-icon">▶</span>
+          </button>
         </div>
         <div class="category-tile-caption">
           <span class="brand">${escapeHtml(m.artist)}</span>
@@ -685,6 +679,25 @@ function renderVideoSubcategory(categorySlug) {
     </section>
   `);
   mount(frag);
+
+  // Handle play button clicks
+  document.querySelectorAll('.play-overlay').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const embedUrl = btn.dataset.embed;
+      if (!embedUrl) return;
+      const tileMedia = btn.closest('.category-tile-media');
+      tileMedia.innerHTML = `
+        <iframe
+          src="${embedUrl}"
+          width="100%"
+          height="100%"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      `;
+    });
+  });
 }
 
 function renderContact() {
