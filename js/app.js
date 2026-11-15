@@ -169,9 +169,45 @@ const PROJECT_DETAILS = {
     title: 'YOKO LUNA MONTREAL',
     description: ['Live performance by Sistek.', 'Shot by Viper Visuals.'],
   },
+  'the-weeknd': {
+    title: 'AFTER HOURS TILL DAWN TOUR',
+    description: ['Concert photography for The Weeknd.', 'Shot by Viper Visuals.'],
+  },
+  sza: {
+    title: 'SOS TOUR',
+    description: ['Concert photography for SZA.', 'Shot by Viper Visuals.'],
+  },
+  'wax-motif': {
+    title: '',
+    description: ['Social content photography for Wax Motif / Loud Luxury.', 'Shot by Viper Visuals.'],
+  },
+  'micky-press': {
+    title: 'PRESS',
+    description: ['Press photography.', 'Shot by Viper Visuals.'],
+  },
+  kays: {
+    title: 'SPORTS SPEC SHOOT',
+    description: ['Sports photography shoot.', 'Shot by Viper Visuals.'],
+  },
+  nikkaela: {
+    title: 'LOOKBOOK',
+    description: ['Lookbook photography for Our Block Clothing.', 'Shot by Viper Visuals.'],
+  },
+  'conceptual-1': {
+    title: '',
+    description: ['Conceptual photography.', 'Shot by Viper Visuals.'],
+  },
+  'conceptual-2': {
+    title: '',
+    description: ['Conceptual photography.', 'Shot by Viper Visuals.'],
+  },
+  'conceptual-3': {
+    title: '',
+    description: ['Conceptual photography.', 'Shot by Viper Visuals.'],
+  },
 };
 
-/* PHOTOGRAPHY CATEGORIES (3 category tiles) */
+/* PHOTOGRAPHY CATEGORIES (3 category tiles on #/photo) */
 const PHOTOGRAPHY_CATEGORIES = [
   {
     slug: 'photo-performance',
@@ -192,6 +228,70 @@ const PHOTOGRAPHY_CATEGORIES = [
     poster: `${CDN}a5671ad6-a7f5-465a-821b-1f1d6aa5851d_rw_1920.jpg?h=1a5326fdff17e01940c1f1a506615b99`,
   },
 ];
+
+/* PHOTOGRAPHY PROJECTS — individual photos within each category */
+const PHOTO_PROJECTS = {
+  'photo-performance': [
+    {
+      slug: 'the-weeknd',
+      artist: 'THE WEEKND',
+      title: 'AFTER HOURS TILL DAWN TOUR',
+      poster: `${CDN}cec61291-bb6f-4fca-8492-04c0ef2c6853_rw_3840.jpg?h=9a1fa40a5f62ddc62d348042262e3122`,
+    },
+    {
+      slug: 'sza',
+      artist: 'SZA',
+      title: 'SOS TOUR',
+      poster: `${CDN}664d5b07-9eb2-4120-a6d8-e81bafc62324_rw_1200.jpg?h=4f2f6ba5f4c61426f7cd392cc71bee5d`,
+    },
+    {
+      slug: 'wax-motif',
+      artist: 'WAX MOTIF / LOUD LUXURY',
+      title: '',
+      poster: `${CDN}a909d33c-4c05-4f5b-a2e6-bc4cdc0d6ed2_rw_1200.jpg?h=35720df75f84b2ae26162785ca111aef`,
+    },
+  ],
+  'photo-editorial': [
+    {
+      slug: 'micky-press',
+      artist: 'VIPER VISUALS',
+      title: 'PRESS',
+      poster: `${CDN}eb7ffe1b-7529-4165-a1d2-16404c15e428_rw_1200.jpg?h=44ee0571e10b2b0d96910e9097534d30`,
+    },
+    {
+      slug: 'kays',
+      artist: 'VIPER VISUALS',
+      title: 'SPORTS SPEC SHOOT',
+      poster: `${CDN}0943fa60-09f0-4b12-88af-9af03e4eecd3_rw_1200.jpg?h=7534e6b797f517aecc5c8760c7e8bb91`,
+    },
+    {
+      slug: 'nikkaela',
+      artist: 'OUR BLOCK CLOTHING',
+      title: 'LOOKBOOK',
+      poster: `${CDN}a5671ad6-a7f5-465a-821b-1f1d6aa5851d_rw_1920.jpg?h=1a5326fdff17e01940c1f1a506615b99`,
+    },
+  ],
+  'photo-conceptual': [
+    {
+      slug: 'conceptual-1',
+      artist: 'VIPER VISUALS',
+      title: '',
+      poster: `${CDN}7c18839d-a44d-4417-9a21-dda72410eb54_rw_1200.jpg?h=c4160a86c0fdeed19b50cd69d4e7daee`,
+    },
+    {
+      slug: 'conceptual-2',
+      artist: 'VIPER VISUALS',
+      title: '',
+      poster: `${CDN}34a337ad-2cc1-48e6-92c0-16e04ed1f464_rw_1200.jpg?h=6f46af7819c2bf2ce2bc645829d7c757`,
+    },
+    {
+      slug: 'conceptual-3',
+      artist: 'VIPER VISUALS',
+      title: '',
+      poster: `${CDN}941625a4-5e8d-4bd5-b8cd-5fa68ff8218e_rw_1200.jpg?h=f30ba0a8690758dfd265def9d6ec79be`,
+    },
+  ],
+};
 
 /* SOCIAL CONTENT */
 const SOCIAL_CONTENT = [
@@ -423,7 +523,7 @@ function renderProject(slug) {
     <section class="project-page">
       ${mediaHtml}
       <div class="project-info">
-        <div class="project-title-quote">‘${escapeHtml(detail ? detail.title : project.title)}’</div>
+        ${detail && detail.title ? `<div class="project-title-quote">‘${escapeHtml(detail.title)}’</div>` : ''}
         <div class="project-description">
           ${(detail ? detail.description : []).map((d) => `<p>${escapeHtml(d)}</p>`).join('')}
         </div>
@@ -503,6 +603,32 @@ function renderAbout() {
       success.style.display = 'block';
     });
   }
+}
+
+function renderPhotoSubcategory(categorySlug) {
+  document.body.className = '';
+  setActiveNav('#/photo');
+
+  const items = PHOTO_PROJECTS[categorySlug];
+
+  const tilesHtml = items.map(
+    (m) => `
+    <a href="#/project/${m.slug}" class="category-tile">
+      <img class="category-tile-media" src="${m.poster}" alt="${escapeHtml(m.title || m.artist)}">
+      <div class="category-tile-caption">
+        <span class="brand">${escapeHtml(m.artist)}</span>
+        <span class="title">${m.title ? `‘${escapeHtml(m.title)}’` : ''}</span>
+      </div>
+    </a>
+  `
+  ).join('');
+
+  const frag = tpl(`
+    <section class="photo-category">
+      <div class="category-grid">${tilesHtml}</div>
+    </section>
+  `);
+  mount(frag);
 }
 
 function renderVideoSubcategory(categorySlug) {
@@ -611,6 +737,12 @@ function router() {
     renderVideoSubcategory('video-live');
   } else if (path === '#/photo') {
     renderPhotoCategories();
+  } else if (path === '#/photo/photo-performance') {
+    renderPhotoSubcategory('photo-performance');
+  } else if (path === '#/photo/photo-editorial') {
+    renderPhotoSubcategory('photo-editorial');
+  } else if (path === '#/photo/photo-conceptual') {
+    renderPhotoSubcategory('photo-conceptual');
   } else if (path === '#/social') {
     renderCategory(SOCIAL_CONTENT, 'social');
   } else if (path === '#/recaps') {
