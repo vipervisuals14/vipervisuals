@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Viper Visuals — Toronto video production, photography and design portfolio.">
   <title>Viper Visuals | Toronto Video Production &amp; Photography</title>
-  <link rel="preload" as="image" href="assets/img/viper-logo.gif">
-  <link rel="stylesheet" href="css/style.css?v=7">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Azet+Mono:wght@400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=8">
 </head>
 <body>
   <header class="site-header" id="siteHeader">
@@ -15,45 +17,36 @@
       <a href="#/about" class="nav-link">ABOUT</a>
       <a href="#/contact" class="nav-link">CONTACT</a>
     </div>
-    <div class="site-brand">
-      VIPER VISUALS
+    <div class="nav-centre">
+      <a href="#/" class="nav-brand">VIPER VISUALS</a>
     </div>
     <div class="nav-right">
-      <nav class="main-nav" aria-label="Main navigation">
-        <a href="#/photo" class="nav-link">PHOTOGRAPHY</a>
-        <a href="#/video" class="nav-link">VIDEO PRODUCTION</a>
-        <a href="#/design" class="nav-link">DESIGN</a>
-      </nav>
+      <a href="#/photo" class="nav-link">PHOTOGRAPHY</a>
+      <a href="#/video" class="nav-link">MUSIC VIDEOS</a>
+      <a href="#/social" class="nav-link">SOCIAL CONTENT</a>
+      <a href="#/recaps" class="nav-link">RECAPS</a>
     </div>
     <button class="burger" aria-label="Open menu" aria-expanded="false"><span></span></button>
   </header>
 
   <nav class="mobile-menu" id="mobileMenu" hidden>
     <div class="mm-header">
-      <a href="#/" class="nav-link" style="font-size:0.8rem">HOME</a>
-      <a href="#/about" class="nav-link" style="font-size:0.8rem">ABOUT</a>
-      <a href="#/contact" class="nav-link" style="font-size:0.8rem">CONTACT</a>
       <button class="mm-close" aria-label="Close menu">&times;</button>
     </div>
     <div class="mm-links">
+      <a href="#/">HOME</a>
+      <a href="#/about">ABOUT</a>
+      <a href="#/contact">CONTACT</a>
       <a href="#/photo">PHOTOGRAPHY</a>
-      <a href="#/video">VIDEO PRODUCTION</a>
-      <a href="#/design">DESIGN</a>
+      <a href="#/video">MUSIC VIDEOS</a>
+      <a href="#/social">SOCIAL CONTENT</a>
+      <a href="#/recaps">RECAPS</a>
     </div>
   </nav>
 
   <main class="router-outlet" id="routerOutlet"></main>
 
-  <footer class="site-footer">
-    <div style="display:flex;justify-content:center;align-items:center;gap:0.5rem;font-family:'Courier New',Courier,monospace;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.5rem">
-      Viper Visuals &middot; Toronto, ON &middot; &copy; <span id="year"></span>
-    </div>
-    <div style="font-family:'Courier New',Courier,monospace;font-size:0.65rem;letter-spacing:0.14em">
-      <a href="https://www.instagram.com/thevipervisuals" target="_blank" rel="noopener">@thevipervisuals</a>
-    </div>
-  </footer>
-
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="js/app.js?v=7"></script>
+  <script src="js/app.js?v=8"></script>
 </body>
 </html>
