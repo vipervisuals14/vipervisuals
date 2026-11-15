@@ -73,7 +73,7 @@ video {
   align-items: center;
   gap: 0;
 }
-.header-left {
+.nav-left {
   display: flex;
   gap: 40px;
   align-items: center;
@@ -86,7 +86,7 @@ video {
   color: var(--text);
   white-space: nowrap;
 }
-.header-right {
+.nav-right {
   display: flex;
   gap: 40px;
   align-items: center;
