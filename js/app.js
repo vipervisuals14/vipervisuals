@@ -24,10 +24,9 @@ const NAV_GROUPS = {
   ],
   centre: { label: 'VIPER VISUALS', path: '#/' },
   right: [
+    { label: 'VIDEO PRODUCTION', path: '#/video' },
     { label: 'PHOTOGRAPHY', path: '#/photo' },
-    { label: 'MUSIC VIDEOS', path: '#/video' },
-    { label: 'SOCIAL CONTENT', path: '#/social' },
-    { label: 'RECAPS', path: '#/recaps' },
+    { label: 'DESIGN', path: '#/design' },
   ],
 };
 
