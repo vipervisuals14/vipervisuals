@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Viper Visuals — Toronto video production, photography and design portfolio.">
+  <title>Viper Visuals | Toronto Video Production &amp; Photography</title>
+  <link rel="preload" as="image" href="assets/img/viper-logo.gif">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="header-top">
+      <a class="contact-link" href="https://www.instagram.com/thevipervisuals" target="_blank" rel="noopener" aria-label="Instagram">
+        Get in touch &rarr; <span class="ig">@thevipervisuals</span>
+      </a>
+    </div>
+    <div class="header-main">
+      <a class="logo" href="#/" aria-label="Viper Visuals home">
+        <img src="assets/img/viper-logo.gif" alt="Viper Visuals rotating logo">
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#/photo" class="nav-link">PHOTOGRAPHY</a>
+        <a href="#/video" class="nav-link">VIDEO PRODUCTION</a>
+        <a href="#/design" class="nav-link">DESIGN</a>
+      </nav>
+      <button class="burger" aria-label="Open menu" aria-expanded="false"><span></span></button>
+    </div>
+  </header>
+
+  <nav class="mobile-menu" id="mobileMenu" hidden>
+    <div class="mm-header">
+      <a class="logo" href="#/" aria-label="Viper Visuals home">
+        <img src="assets/img/viper-logo.gif" alt="Viper Visuals rotating logo" style="height:36px">
+      </a>
+      <button class="mm-close" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="mm-links">
+      <a href="#/photo">PHOTOGRAPHY</a>
+      <a href="#/video">VIDEO PRODUCTION</a>
+      <a href="#/design">DESIGN</a>
+      <a href="https://www.instagram.com/thevipervisuals" target="_blank" rel="noopener" style="margin-top:auto">@thevipervisuals &rarr;</a>
+    </div>
+    <div class="mm-foot">
+      <a href="https://www.instagram.com/thevipervisuals" target="_blank" rel="noopener">Instagram &rarr;</a>
+    </div>
+  </nav>
+
+  <main class="router-outlet" id="routerOutlet"></main>
+
+  <footer class="site-footer">
+    <div style="display:flex;justify-content:center;align-items:center;gap:0.5rem;font-family:'Courier New',Courier,monospace;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.5rem">
+      Viper Visuals &middot; Toronto, ON &middot; &copy; <span id="year"></span>
+    </div>
+    <div style="font-family:'Courier New',Courier,monospace;font-size:0.65rem;letter-spacing:0.14em">
+      <a href="https://www.instagram.com/thevipervisuals" target="_blank" rel="noopener">@thevipervisuals</a>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="js/app.js"></script>
+</body>
+</html>

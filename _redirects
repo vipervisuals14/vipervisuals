@@ -1,0 +1,11 @@
+# VIPER VISUALS — static hosting redirects
+# Works on Cloudflare Pages, Netlify, GitHub Pages (with a 404 fallback), etc.
+
+# Single-page app: every client-side route falls back to index.html so a
+# direct visit / refresh of #/video/project/… still loads the app.
+# Existing files (assets/, css/, js/) are served directly first.
+/*    /index.html   200
+
+# Legacy redirect stubs — add your old paths here as needed, e.g.:
+# /old-work.html    /index.html#/video/music-videos   301
+# /contact          /#/                               301
