@@ -275,9 +275,7 @@ function renderHome() {
   const frag = tpl(`
     <section class="home-page">
       <div class="home-hero">
-        <video autoplay playsinline muted loop poster="media/home/hero-poster.jpg">
-          <source src="media/home/hero.mp4" type="video/mp4">
-        </video>
+        <img class="home-hero-media" src="https://cdn.myportfolio.com/9844ffef-896f-4abd-b0bc-bec392563aaf/73fd5890-8229-4748-9e6f-3220c53ed5e3_carw_4x3x1280.gif?h=02b5d25a02517c863ac5d06e7dd26f42" alt="Viper Visuals homepage">
       </div>
       <div class="home-two-up"></div>
       <div class="home-wide"></div>
