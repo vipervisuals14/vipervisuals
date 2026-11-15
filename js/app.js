@@ -535,6 +535,40 @@ function renderProject(slug) {
   mount(frag);
 }
 
+function renderAbout() {
+  setActiveNav('#/video');
+  document.body.className = '';
+  const frag = tpl(`
+    <section class="section">
+      <a class="back-link" href="#/">&larr; Back to home</a>
+      <div class="section-title">About</div>
+      <div class="blank">
+        <p style="font-family:var(--font-captions);font-size:0.85rem;letter-spacing:0.14em;text-transform:uppercase;line-height:1.6">
+          Viper Visuals is a Toronto-based video production company creating bold, captivating visuals that amplify the voices of music artists and brands.
+        </p>
+      </div>
+    </section>
+  `);
+  mount(frag);
+}
+
+function renderContact() {
+  setActiveNav('#/video');
+  document.body.className = '';
+  const frag = tpl(`
+    <section class="section">
+      <a class="back-link" href="#/">&larr; Back to home</a>
+      <div class="section-title">Contact</div>
+      <div class="blank">
+        <p style="font-family:var(--font-captions);font-size:0.85rem;letter-spacing:0.14em;text-transform:uppercase;line-height:1.6">
+          Get in touch: <a href="https://www.instagram.com/thevipervisuals" target="_blank" rel="noopener" style="color:var(--accent)">@thevipervisuals</a>
+        </p>
+      </div>
+    </section>
+  `);
+  mount(frag);
+}
+
 function renderDesignBlank(subcatKey) {
   const labels = {
     merch: 'MERCH',
@@ -586,6 +620,10 @@ function router() {
 
   if (path === '#/') {
     renderHome();
+  } else if (path === '#/about') {
+    renderAbout();
+  } else if (path === '#/contact') {
+    renderContact();
   } else if (path === '#/video') {
     renderIndex('video');
   } else if (path === '#/video/music-videos') {
