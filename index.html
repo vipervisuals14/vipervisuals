@@ -6,29 +6,32 @@
   <meta name="description" content="Viper Visuals — Toronto video production, photography and design portfolio.">
   <title>Viper Visuals | Toronto Video Production &amp; Photography</title>
   <link rel="preload" as="image" href="assets/img/viper-logo.gif">
-  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body>
   <header class="site-header" id="siteHeader">
-    <a class="logo" href="#/" aria-label="Viper Visuals home">
-      <img src="assets/img/viper-logo.gif" alt="Viper Visuals rotating logo">
-    </a>
-    <a class="contact-link" href="https://www.instagram.com/thevipervisuals" target="_blank" rel="noopener" aria-label="Instagram">
-      @thevipervisuals &rarr;
-    </a>
-    <nav class="main-nav" aria-label="Main navigation">
-      <a href="#/photo" class="nav-link">PHOTOGRAPHY</a>
-      <a href="#/video" class="nav-link">VIDEO PRODUCTION</a>
-      <a href="#/design" class="nav-link">DESIGN</a>
-    </nav>
+    <div class="header-left">
+      <a href="#/" class="nav-link">HOME</a>
+    </div>
+    <div class="site-brand" style="position:absolute;left:50%;transform:translateX(-50%);z-index:101">
+      VIPER VISUALS
+    </div>
+    <div class="header-right">
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#/photo" class="nav-link">PHOTOGRAPHY</a>
+        <a href="#/video" class="nav-link">VIDEO PRODUCTION</a>
+        <a href="#/design" class="nav-link">DESIGN</a>
+      </nav>
+      <a class="contact-link" href="https://www.instagram.com/thevipervisuals" target="_blank" rel="noopener" aria-label="Instagram">
+        @thevipervisuals &rarr;
+      </a>
+    </div>
     <button class="burger" aria-label="Open menu" aria-expanded="false"><span></span></button>
   </header>
 
   <nav class="mobile-menu" id="mobileMenu" hidden>
     <div class="mm-header">
-      <a class="logo" href="#/" aria-label="Viper Visuals home">
-        <img src="assets/img/viper-logo.gif" alt="Viper Visuals rotating logo" style="height:28px">
-      </a>
+      <a href="#/" class="nav-link" style="font-size:0.8rem">HOME</a>
       <button class="mm-close" aria-label="Close menu">&times;</button>
     </div>
     <div class="mm-links">
@@ -54,6 +57,6 @@
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="js/app.js?v=4"></script>
+  <script src="js/app.js?v=5"></script>
 </body>
 </html>

@@ -57,7 +57,7 @@
   --font-body: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Helvetica, Arial, sans-serif;
 
-  --header-h: 56px;
+  --header-h: 48px;
 }
 
 *,
@@ -142,7 +142,7 @@ h2 {
   content: '\2019';
 }
 
-/* ---------- Header ---------- */
+/* ---------- Header — matches reference: left nav | center brand | right nav ---------- */
 .site-header {
   position: absolute;
   top: 0;
@@ -151,30 +151,18 @@ h2 {
   z-index: 100;
   height: var(--header-h);
   padding: 0 clamp(1rem, 4vw, 2.5rem);
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
+  background: #000;
   border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
-.header-top {
-  margin-right: auto;
-}
-.logo {
+.header-left {
   display: flex;
+  gap: 1.5rem;
   align-items: center;
 }
-.logo img {
-  height: 32px;
-  width: auto;
-  display: block;
-}
-
-/* Centered brand name (like jedidahm.com) */
 .site-brand {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   font-family: var(--font-display);
   font-size: 0.85rem;
   letter-spacing: 0.2em;
@@ -182,10 +170,12 @@ h2 {
   text-transform: uppercase;
   white-space: nowrap;
 }
-
-/* Nav — right aligned */
+.header-right {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
 .main-nav {
-  margin-left: auto;
   display: flex;
   gap: 2rem;
   align-items: center;
@@ -204,6 +194,17 @@ h2 {
 }
 .main-nav .nav-link.active {
   color: var(--accent);
+}
+.contact-link {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-transform: uppercase;
+  padding: 0.3rem 0;
+}
+.contact-link:hover {
+  color: var(--accent-hover);
 }
 
 /* Burger — mobile only */
@@ -658,10 +659,13 @@ h2 {
   .site-header {
     padding: 0 1rem;
   }
-  .main-nav {
+  .header-right {
     gap: 1rem;
   }
   .main-nav .nav-link {
     font-size: 0.6rem;
+  }
+  .header-left {
+    gap: 1rem;
   }
 }
