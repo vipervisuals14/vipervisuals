@@ -384,6 +384,70 @@ function projectCard(project) {
   `;
 }
 
+function renderVideoIndex() {
+  document.body.className = '';
+  setActiveNav('#/video');
+
+  const cards = [
+    {
+      label: 'MUSIC VIDEOS',
+      path: '#/video/music-videos',
+      media: '/media/music-videos.mp4',
+      poster: '/media/music-videos.jpg',
+    },
+    {
+      label: 'SOCIAL CONTENT',
+      path: '#/video/social-content',
+      media: '/media/social-content.mp4',
+      poster: '/media/social-content.jpg',
+    },
+    {
+      label: 'RECAPS',
+      path: '#/video/recaps',
+      media: '/media/recaps.mp4',
+      poster: '/media/recaps.jpg',
+    },
+  ];
+
+  const cardsHtml = cards
+    .map(
+      (c) => `
+    <a href="${c.path}" class="video-card">
+      <video class="video-card-media" autoplay muted loop playsinline poster="${c.poster}">
+        <source src="${c.media}" type="video/mp4">
+      </video>
+      <div class="video-card-gradient"></div>
+      <div class="video-card-caption">
+        <span class="brand">VIPER VISUALS</span>
+        <span class="category">‘${c.label}’</span>
+      </div>
+    </a>
+  `
+    )
+    .join('');
+
+  const frag = tpl(`
+    <section class="video-page">
+      <nav class="video-nav">
+        <div class="nav-left">
+          <a href="#/" class="nav-link">HOME</a>
+          <a href="#/about" class="nav-link">ABOUT</a>
+          <a href="#/contact" class="nav-link">CONTACT</a>
+        </div>
+        <div class="video-nav-center">VIPER VISUALS</div>
+        <div class="nav-right">
+          <a href="#/photo" class="nav-link">PHOTOGRAPHY</a>
+          <a href="#/video" class="nav-link active">VIDEO PRODUCTION</a>
+          <a href="#/design" class="nav-link">DESIGN</a>
+          <a class="contact-link" href="https://www.instagram.com/thevipervisuals" target="_blank" rel="noopener">@THEVIPERVISUALS &rarr;</a>
+        </div>
+      </nav>
+      <div class="video-card-row">${cardsHtml}</div>
+    </section>
+  `);
+  mount(frag);
+}
+
 function renderIndex(sectionKey) {
   const section = SECTIONS[sectionKey];
   const subcats = SUBCATS[sectionKey] || [];
@@ -625,7 +689,7 @@ function router() {
   } else if (path === '#/contact') {
     renderContact();
   } else if (path === '#/video') {
-    renderIndex('video');
+    renderVideoIndex();
   } else if (path === '#/video/music-videos') {
     renderSubcat('video', 'music-videos');
   } else if (path === '#/video/social-content') {
