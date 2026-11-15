@@ -108,7 +108,7 @@ const MUSIC_VIDEOS = [
     artist: 'KELLAND',
     title: '',
     youtubeId: 'xT1E1rrcbe8',
-    poster: '',
+    poster: 'https://img.youtube.com/vi/xT1E1rrcbe8/maxresdefault.jpg',
   },
   {
     slug: 'maribou-state',
@@ -657,7 +657,7 @@ function renderVideoSubcategory(categorySlug) {
         <div class="category-tile-media">
           <img class="category-tile-poster" src="${m.poster}" alt="${escapeHtml(
             m.title || m.artist
-          )}">
+          )}" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #1a1a1a 0%, #000 100%)';">
           <button class="play-overlay" data-embed="${escapeHtml(embedUrl)}" aria-label="Play video">
             <span class="play-icon">▶</span>
           </button>
