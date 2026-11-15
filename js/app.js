@@ -640,15 +640,43 @@ function renderVideoSubcategory(categorySlug) {
   const items = MUSIC_VIDEOS.filter((m) => m.category === categorySlug);
 
   const tilesHtml = items.map(
-    (m) => `
-    <a href="#/project/${m.slug}" class="category-tile">
-      <img class="category-tile-media" src="${m.poster}" alt="${escapeHtml(m.title)}">
-      <div class="category-tile-caption">
-        <span class="brand">${escapeHtml(m.artist)}</span>
-        <span class="title">‘${escapeHtml(m.title)}’</span>
+    (m) => {
+      let embedUrl = '';
+      if (m.youtubeId) {
+        embedUrl = `https://www.youtube-nocookie.com/embed/${escapeHtml(
+          m.youtubeId
+        )}?autoplay=1&mute=1&loop=1&playlist=${escapeHtml(m.youtubeId)}`;
+      } else if (m.vimeoId) {
+        embedUrl = `https://player.vimeo.com/video/${escapeHtml(
+          m.vimeoId
+        )}?autoplay=1&muted=1&loop=1&background=1&byline=0&portrait=0&title=0`;
+      }
+
+      return `
+      <div class="category-tile">
+        <div class="category-tile-media">
+          ${embedUrl
+            ? `<iframe
+                src="${embedUrl}"
+                width="100%"
+                height="100%"
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen
+              ></iframe>`
+            : `<img src="${m.poster}" alt="${escapeHtml(
+                m.title || m.artist
+              )}" style="width:100%;height:100%;object-fit:cover;">`}
+        </div>
+        <div class="category-tile-caption">
+          <span class="brand">${escapeHtml(m.artist)}</span>
+          <span class="title">${
+            m.title ? `‘${escapeHtml(m.title)}’` : ''
+          }</span>
+        </div>
       </div>
-    </a>
-  `
+    `;
+    }
   ).join('');
 
   const frag = tpl(`
