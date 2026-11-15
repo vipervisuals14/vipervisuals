@@ -74,41 +74,24 @@ const MUSIC_VIDEOS = [
   },
 ];
 
-/* PHOTOGRAPHY */
-const PHOTOGRAPHY = [
+/* PHOTOGRAPHY CATEGORIES (3 category tiles) */
+const PHOTOGRAPHY_CATEGORIES = [
   {
-    slug: 'the-weeknd',
-    artist: 'THE WEEKND',
-    title: 'AFTER HOURS TILL DAWN TOUR',
-    images: 30,
+    slug: 'photo-performance',
+    label: 'PERFORMANCE',
+    description: 'Concerts, festivals, live events',
     poster: `${CDN}cec61291-bb6f-4fca-8492-04c0ef2c6853_rw_3840.jpg?h=9a1fa40a5f62ddc62d348042262e3122`,
   },
   {
-    slug: 'pics',
-    artist: 'SZA',
-    title: 'SOS TOUR',
-    images: 9,
-    poster: `${CDN}664d5b07-9eb2-4120-a6d8-e81bafc62324_rw_1200.jpg?h=4f2f6ba5f4c61426f7cd392cc71bee5d`,
-  },
-  {
-    slug: 'kays',
-    artist: 'VIPER VISUALS',
-    title: 'SPORTS SPEC SHOOT',
-    images: 9,
-    poster: `${CDN}0943fa60-09f0-4b12-88af-9af03e4eecd3_rw_1200.jpg?h=7534e6b797f517aecc5c8760c7e8bb91`,
-  },
-  {
-    slug: 'micky-press',
-    artist: 'VIPER VISUALS',
-    title: 'PRESS',
-    images: 6,
+    slug: 'photo-editorial',
+    label: 'EDITORIAL',
+    description: 'Artist portraits, press, fashion, brands',
     poster: `${CDN}eb7ffe1b-7529-4165-a1d2-16404c15e428_rw_1200.jpg?h=44ee0571e10b2b0d96910e9097534d30`,
   },
   {
-    slug: 'nikkaela',
-    artist: 'OUR BLOCK CLOTHING',
-    title: 'LOOKBOOK',
-    images: 5,
+    slug: 'photo-conceptual',
+    label: 'CONCEPTUAL',
+    description: 'Album artwork, creative shoots, visual campaigns',
     poster: `${CDN}a5671ad6-a7f5-465a-821b-1f1d6aa5851d_rw_1920.jpg?h=1a5326fdff17e01940c1f1a506615b99`,
   },
 ];
@@ -314,6 +297,32 @@ function renderHome() {
   mount(frag);
 }
 
+function renderPhotoCategories() {
+  document.body.className = '';
+  setActiveNav('#/photo');
+
+  const tilesHtml = PHOTOGRAPHY_CATEGORIES.map(
+    (c) => `
+    <a href="#/photo/${c.slug}" class="category-tile">
+      <img class="category-tile-media" src="${c.poster}" alt="${escapeHtml(c.label)}">
+      <div class="category-tile-caption">
+        <span class="brand">${escapeHtml(c.label)}</span>
+        <span class="title">${escapeHtml(c.description)}</span>
+      </div>
+    </a>
+  `
+  ).join('');
+
+  const frag = tpl(`
+    <section class="photo-category">
+      <nav class="site-header">${buildNav()}</nav>
+      <div class="category-grid">${tilesHtml}</div>
+      <a href="#" class="back-to-top">BACK TO THE TOP</a>
+    </section>
+  `);
+  mount(frag);
+}
+
 function renderCategory(items, sectionKey) {
   document.body.className = '';
   setActiveNav(`#/${sectionKey}`);
@@ -494,7 +503,7 @@ function router() {
   } else if (path === '#/video') {
     renderMusicVideos();
   } else if (path === '#/photo') {
-    renderCategory(PHOTOGRAPHY, 'photo');
+    renderPhotoCategories();
   } else if (path === '#/social') {
     renderCategory(SOCIAL_CONTENT, 'social');
   } else if (path === '#/recaps') {
