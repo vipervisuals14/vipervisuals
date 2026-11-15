@@ -17,12 +17,6 @@
      #/design/creative-direction
    ========================================================================== */
 
-const NAV = [
-  { label: 'PHOTOGRAPHY', path: '#/photo' },
-  { label: 'VIDEO PRODUCTION', path: '#/video' },
-  { label: 'DESIGN', path: '#/design' },
-];
-
 const SECTIONS = {
   photo: { label: 'PHOTOGRAPHY', path: '#/photo' },
   video: { label: 'VIDEO PRODUCTION', path: '#/video' },
@@ -70,7 +64,7 @@ const PROJECTS = [
     title: 'LATNECY',
     artist: 'CODY LAWLESS FT. POWFU',
     category: 'music-videos',
-    youtubeId: '',            // ← add your YouTube video ID
+    youtubeId: '',
     poster: 'https://cdn.myportfolio.com/9844ffef-896f-4abd-b0bc-bec392563aaf/2fc588f9-c50d-4204-a33d-ea4d8e25d1b4_rwc_176x0x421x316x421.gif?h=7cb9692e7e6b13e20933111e2f70626b',
     gallery: [],
   },
@@ -79,7 +73,7 @@ const PROJECTS = [
     title: 'MOTIONS',
     artist: '',
     category: 'music-videos',
-    youtubeId: '',            // ← add your YouTube video ID
+    youtubeId: '',
     poster: '',
     gallery: [],
   },
@@ -163,7 +157,7 @@ const PROJECTS = [
     ],
   },
 
-  /* ── Design placeholders (slugs from your site, titles to confirm) ── */
+  /* ── Design placeholders (slugs from your site) ── */
   {
     slug: 'kays',
     title: 'KAYS',
@@ -260,13 +254,8 @@ function tpl(html) {
 function renderHome() {
   document.body.className = 'route-home';
   const frag = tpl(`
-    <section class="section condensed">
+    <section class="section">
       <div class="hero">
-        <!--
-          REPLACE THE POSTER/SRC BELOW WITH YOUR HERO VIDEO FILE.
-          The <video> autoplays muted & looped — it behaves like a GIF,
-          no play button. Keep it short (5-15s) and compressed (webm/mp4).
-        -->
         <video autoplay playsinline muted loop poster="assets/img/posters/hero.jpg">
           <source src="assets/video/hero.webm" type="video/webm">
           <source src="assets/video/hero.mp4" type="video/mp4">
@@ -411,6 +400,12 @@ function renderProject(slug) {
   setActiveNav('#/video');
   document.body.className = '';
 
+  // PREVIOUS / NEXT within same category
+  const categoryProjects = PROJECTS.filter((p) => p.category === project.category);
+  const currentIndex = categoryProjects.findIndex((p) => p.slug === slug);
+  const prevProject = categoryProjects[(currentIndex - 1 + categoryProjects.length) % categoryProjects.length];
+  const nextProject = categoryProjects[(currentIndex + 1) % categoryProjects.length];
+
   const galleryHtml =
     project.gallery && project.gallery.length
       ? `<div class="grid grid-4">${project.gallery
@@ -459,6 +454,10 @@ function renderProject(slug) {
       ${project.artist ? `<span class="project-artist">${escapeHtml(project.artist)}</span>` : ''}
       <h1 class="project-title">${escapeHtml(project.title)}</h1>
       <div class="project-video">${youtubeEmbed}</div>
+      <div class="gallery-nav">
+        <span class="nav-btn ${currentIndex === 0 ? 'disabled' : ''}" onclick="location.hash='#/video/project/${encodeURIComponent(prevProject.slug)}'">PREVIOUS</span>
+        <span class="nav-btn ${currentIndex === categoryProjects.length - 1 ? 'disabled' : ''}" onclick="location.hash='#/video/project/${encodeURIComponent(nextProject.slug)}'">NEXT</span>
+      </div>
       <div class="project-gallery">
         <div class="section-title" style="text-align:left;margin-bottom:1rem">Production gallery</div>
         ${galleryHtml}

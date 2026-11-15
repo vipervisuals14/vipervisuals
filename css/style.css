@@ -1,5 +1,5 @@
 /* ==========================================================================
-   VIPER VISUALS — design system
+   VIPER VISUALS — design system (jedidahm.com-inspired)
    Brand: #000 bg | #0f0f11 panels | #f4f4f2 text | #8b8b93 muted
    Accent: #3791DE (hover #5aa7e8, deep #0f4c78, on-accent #04121d)
    Fonts: Silkscreen (self-hosted, pixelated display) + Azeret Mono (captions)
@@ -57,7 +57,7 @@
   --font-body: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Helvetica, Arial, sans-serif;
 
-  --header-h: 64px;
+  --header-h: 56px;
 }
 
 *,
@@ -94,11 +94,11 @@ img {
 }
 
 /* Display headings — pixelated Silkscreen */
+.font-display,
 h1,
 h2,
 h3,
-h4,
-.font-display {
+h4 {
   font-family: var(--font-display);
   font-weight: 700;
   letter-spacing: 0.05em;
@@ -106,38 +106,34 @@ h4,
   margin: 0 0 1rem;
 }
 h1 {
-  font-size: clamp(2.25rem, 6vw, 4rem);
+  font-size: clamp(2rem, 5vw, 3rem);
   line-height: 1.02;
 }
 h2 {
-  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
   line-height: 1.1;
-}
-h3 {
-  font-size: clamp(1.25rem, 3vw, 1.75rem);
-  line-height: 1.2;
 }
 
 /* Caption style — Azeret Mono, two-line project captions */
-.font-captions {
-  font-family: var(--font-captions);
-}
 .caption {
   font-family: var(--font-captions);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 500;
-  letter-spacing: 0.08em;
-  line-height: 1.2;
+  letter-spacing: 0.06em;
+  line-height: 1.15;
 }
 .caption .artist {
   display: block;
   text-transform: uppercase;
   color: var(--text-dim);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
 }
 .caption .title {
   display: block;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   font-weight: 500;
+  margin-top: 0.1rem;
 }
 .caption .title::before {
   content: '\2018';
@@ -155,55 +151,49 @@ h3 {
   z-index: 100;
   height: var(--header-h);
   padding: 0 clamp(1rem, 4vw, 2.5rem);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid var(--border);
   display: flex;
-  flex-direction: column;
+  align-items: center;
 }
 .header-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 20px;
-}
-.contact-link {
-  font-family: var(--font-display);
-  font-size: 0.65rem;
-  letter-spacing: 0.16em;
-  color: var(--muted);
-  text-transform: uppercase;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-.contact-link:hover {
-  color: var(--accent);
-}
-.contact-link .ig {
-  color: var(--accent);
-}
-.header-main {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: calc(var(--header-h) - 20px);
+  margin-right: auto;
 }
 .logo {
   display: flex;
   align-items: center;
 }
 .logo img {
-  height: 38px;
+  height: 32px;
   width: auto;
   display: block;
 }
+
+/* Centered brand name (like jedidahm.com) */
+.site-brand {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  color: var(--text);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Nav — right aligned */
 .main-nav {
+  margin-left: auto;
   display: flex;
   gap: 2rem;
   align-items: center;
 }
 .main-nav .nav-link {
   font-family: var(--font-display);
-  font-size: 0.75rem;
-  letter-spacing: 0.18em;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
   color: var(--text);
   text-transform: uppercase;
   padding: 0.3rem 0;
@@ -261,7 +251,7 @@ h3 {
   position: relative;
   width: 100%;
   height: 100vh;
-  min-height: 560px;
+  min-height: 600px;
   background: var(--bg);
   overflow: hidden;
   display: grid;
@@ -296,10 +286,8 @@ h3 {
 
 /* ---------- Sections ---------- */
 .section {
-  padding: 5rem clamp(1rem, 4vw, 3rem);
-}
-.section.condensed {
-  padding: 3rem clamp(1rem, 4vw, 3rem);
+  padding: 4rem clamp(1rem, 4vw, 3rem);
+  background: var(--bg);
 }
 .section-title {
   font-family: var(--font-display);
@@ -318,14 +306,16 @@ h3 {
 /* ---------- Grid cards ---------- */
 .grid {
   display: grid;
-  gap: 1.75rem;
-  grid-template-columns: repeat(2, 1fr);
-}
-.grid-3 {
+  gap: 1.5rem;
   grid-template-columns: repeat(3, 1fr);
 }
 .grid-4 {
   grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 900px) {
+  .grid-4 {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 @media (max-width: 767px) {
   .grid,
@@ -348,7 +338,7 @@ h3 {
   overflow: hidden;
   background: var(--panel);
   border: 1px solid var(--border);
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -376,7 +366,7 @@ h3 {
 .card .media.placeholder {
   color: var(--muted);
   font-family: var(--font-display);
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   text-align: center;
@@ -404,6 +394,8 @@ h3 {
 }
 .card footer {
   padding: 0.85rem 1rem;
+  border-top: 1px solid var(--border);
+  background: var(--panel);
 }
 .card .cat {
   font-family: var(--font-display);
@@ -413,11 +405,6 @@ h3 {
   text-transform: uppercase;
   margin-bottom: 0.25rem;
   display: block;
-}
-.card .title {
-  font-size: 0.85rem;
-  font-weight: 700;
-  line-height: 1.25;
 }
 
 /* ---------- Buttons ---------- */
@@ -517,7 +504,7 @@ h3 {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 .back-link:hover {
   color: var(--accent);
@@ -526,6 +513,7 @@ h3 {
 /* ---------- Project page ---------- */
 .project-hero {
   padding: 3rem clamp(1rem, 4vw, 3rem) 2rem;
+  background: var(--bg);
 }
 .project-artist {
   font-family: var(--font-display);
@@ -537,9 +525,9 @@ h3 {
   display: block;
 }
 .project-title {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-size: clamp(2.5rem, 6vw, 4rem);
   line-height: 1.02;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 .project-video {
   position: relative;
@@ -562,8 +550,34 @@ h3 {
     max-height: 60vh;
   }
 }
+
+/* Gallery navigation (PREVIOUS / NEXT) */
+.gallery-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding: 0 clamp(1rem, 4vw, 3rem);
+}
+.gallery-nav .nav-btn {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.gallery-nav .nav-btn:hover {
+  color: var(--accent);
+}
+.gallery-nav .nav-btn.disabled {
+  color: #333;
+  cursor: not-allowed;
+}
+
 .project-gallery {
-  padding-bottom: 5rem;
+  padding-bottom: 4rem;
+  background: var(--bg);
 }
 .project-gallery .grid {
   gap: 1rem;
@@ -638,10 +652,16 @@ h3 {
 }
 
 @media (max-width: 600px) {
-  .card {
-    aspect-ratio: 1 / 1;
-  }
   .hero {
     min-height: 55vh;
+  }
+  .site-header {
+    padding: 0 1rem;
+  }
+  .main-nav {
+    gap: 1rem;
+  }
+  .main-nav .nav-link {
+    font-size: 0.6rem;
   }
 }
