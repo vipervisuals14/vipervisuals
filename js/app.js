@@ -261,7 +261,6 @@ function renderMusicVideos() {
   const frag = tpl(`
     <section class="video-category">
       <div class="category-grid">${tilesHtml}</div>
-      <a href="#" class="back-to-top">BACK TO THE TOP</a>
     </section>
   `);
   mount(frag);
@@ -306,7 +305,6 @@ function renderPhotoCategories() {
   const frag = tpl(`
     <section class="photo-category">
       <div class="category-grid">${tilesHtml}</div>
-      <a href="#" class="back-to-top">BACK TO THE TOP</a>
     </section>
   `);
   mount(frag);
@@ -329,7 +327,6 @@ function renderCategory(items, sectionKey) {
   const frag = tpl(`
     <section class="${sectionKey}-category">
       <div class="category-grid">${tilesHtml}</div>
-      <a href="#" class="back-to-top">BACK TO THE TOP</a>
     </section>
   `);
   mount(frag);
@@ -437,7 +434,6 @@ function renderVideoSubcategory(categorySlug) {
   const frag = tpl(`
     <section class="video-category">
       <div class="category-grid">${tilesHtml}</div>
-      <a href="#/video" class="back-to-top">BACK TO MUSIC VIDEOS</a>
     </section>
   `);
   mount(frag);
