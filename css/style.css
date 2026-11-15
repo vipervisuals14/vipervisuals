@@ -2,8 +2,42 @@
    VIPER VISUALS — design system
    Brand: #000 bg | #0f0f11 panels | #f4f4f2 text | #8b8b93 muted
    Accent: #3791DE (hover #5aa7e8, deep #0f4c78, on-accent #04121d)
-   Fonts: pixelated display (monospace stack) + system body
+   Fonts: Silkscreen (self-hosted, pixelated display) + Azeret Mono (captions)
    ========================================================================== */
+
+@font-face {
+  font-family: 'Silkscreen';
+  src: url('../assets/fonts/silkscreen-bold.woff2') format('woff2'),
+       url('../assets/fonts/silkscreen-bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Silkscreen';
+  src: url('../assets/fonts/silkscreen-regular.woff2') format('woff2'),
+       url('../assets/fonts/silkscreen-regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Azeret Mono';
+  src: url('../assets/fonts/azeretmono-medium.woff2') format('woff2'),
+       url('../assets/fonts/azeretmono-medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Azeret Mono';
+  src: url('../assets/fonts/azeretmono-regular.woff2') format('woff2'),
+       url('../assets/fonts/azeretmono-regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --bg: #000000;
   --panel: #0f0f11;
@@ -18,11 +52,12 @@
   --border: #222226;
   --radius: 14px;
 
-  --font-display: 'Courier New', Courier, monospace;
+  --font-display: 'Silkscreen', 'Courier New', Courier, monospace;
+  --font-captions: 'Azeret Mono', 'Courier New', Courier, monospace;
   --font-body: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Helvetica, Arial, sans-serif;
 
-  --header-h: 72px;
+  --header-h: 64px;
 }
 
 *,
@@ -43,7 +78,6 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
-/* Homepage = zero-scroll: nothing may overflow the viewport. */
 body.route-home {
   overflow: hidden;
 }
@@ -59,27 +93,57 @@ img {
   max-width: 100%;
 }
 
-/* Display / editorial headings — pixelated feel via monospace stack */
+/* Display headings — pixelated Silkscreen */
 h1,
 h2,
 h3,
 h4,
 .font-display {
   font-family: var(--font-display);
-  letter-spacing: 0.04em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   margin: 0 0 1rem;
 }
 h1 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 700;
-  line-height: 1.05;
+  font-size: clamp(2.25rem, 6vw, 4rem);
+  line-height: 1.02;
 }
 h2 {
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  line-height: 1.1;
 }
 h3 {
-  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  line-height: 1.2;
+}
+
+/* Caption style — Azeret Mono, two-line project captions */
+.font-captions {
+  font-family: var(--font-captions);
+}
+.caption {
+  font-family: var(--font-captions);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+}
+.caption .artist {
+  display: block;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.caption .title {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.caption .title::before {
+  content: '\2018';
+}
+.caption .title::after {
+  content: '\2019';
 }
 
 /* ---------- Header ---------- */
@@ -90,7 +154,7 @@ h3 {
   right: 0;
   z-index: 100;
   height: var(--header-h);
-  padding: 0 clamp(1rem, 4vw, 3rem);
+  padding: 0 clamp(1rem, 4vw, 2.5rem);
   display: flex;
   flex-direction: column;
 }
@@ -102,13 +166,13 @@ h3 {
 }
 .contact-link {
   font-family: var(--font-display);
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
   color: var(--muted);
   text-transform: uppercase;
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
 }
 .contact-link:hover {
   color: var(--accent);
@@ -127,22 +191,22 @@ h3 {
   align-items: center;
 }
 .logo img {
-  height: 44px;
+  height: 38px;
   width: auto;
   display: block;
 }
 .main-nav {
   display: flex;
-  gap: 2.5rem;
+  gap: 2rem;
   align-items: center;
 }
 .main-nav .nav-link {
   font-family: var(--font-display);
-  font-size: 0.85rem;
-  letter-spacing: 0.16em;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
   color: var(--text);
   text-transform: uppercase;
-  padding: 0.4rem 0;
+  padding: 0.3rem 0;
   position: relative;
 }
 .main-nav .nav-link:hover {
@@ -155,8 +219,8 @@ h3 {
 /* Burger — mobile only */
 .burger {
   display: none;
-  width: 28px;
-  height: 24px;
+  width: 26px;
+  height: 20px;
   position: relative;
   background: none;
   border: none;
@@ -175,24 +239,15 @@ h3 {
   border-radius: 2px;
   transition: transform 0.25s, opacity 0.25s;
 }
-.burger::before {
-  top: 0;
-}
-.burger span {
-  top: 50%;
-  transform: translateY(-50%);
-}
-.burger::after {
-  bottom: 0;
-}
+.burger::before { top: 0; }
+.burger span { top: 50%; transform: translateY(-50%); }
+.burger::after { bottom: 0; }
 .burger[aria-expanded='true']::before {
-  transform: translateY(10px) rotate(45deg);
+  transform: translateY(9px) rotate(45deg);
 }
-.burger[aria-expanded='true'] span {
-  opacity: 0;
-}
+.burger[aria-expanded='true'] span { opacity: 0; }
 .burger[aria-expanded='true']::after {
-  transform: translateY(-10px) rotate(-45deg);
+  transform: translateY(-9px) rotate(-45deg);
 }
 
 /* ---------- Router outlet ---------- */
@@ -201,12 +256,12 @@ h3 {
   position: relative;
 }
 
-/* ---------- Home — zero-scroll immersive hero ---------- */
+/* ---------- Home — zero-scroll, autoplaying background video like a GIF ---------- */
 .hero {
   position: relative;
   width: 100%;
   height: 100vh;
-  min-height: 600px;
+  min-height: 560px;
   background: var(--bg);
   overflow: hidden;
   display: grid;
@@ -220,7 +275,7 @@ h3 {
   height: 100%;
   object-fit: cover;
   z-index: 1;
-  opacity: 0.9;
+  opacity: 0.92;
 }
 .hero-placeholder {
   position: relative;
@@ -230,105 +285,60 @@ h3 {
   display: grid;
   place-items: center;
   background: radial-gradient(circle at center, #111 0%, #000 70%);
-}
-.hero-placeholder .play {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  background: var(--accent);
-  display: grid;
-  place-items: center;
-  color: var(--on-accent);
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.1rem;
-  letter-spacing: 0.2em;
-  cursor: pointer;
-  box-shadow: 0 0 0 0 rgba(55, 145, 222, 0.6);
-  animation: pulse 2.5s infinite;
-}
-.hero-placeholder .play::before {
-  content: '';
-  display: block;
-  width: 0;
-  height: 0;
-  border-left: 18px solid var(--on-accent);
-  border-top: 12px solid transparent;
-  border-bottom: 12px solid transparent;
-  margin-left: 2px;
-}
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(55, 145, 222, 0.6);
-  }
-  70% {
-    box-shadow: 0 0 0 30px rgba(55, 145, 222, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(55, 145, 222, 0);
-  }
-}
-.hero-note {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
+  color: var(--muted);
   font-family: var(--font-display);
   font-size: 0.7rem;
   letter-spacing: 0.2em;
-  color: var(--muted);
   text-transform: uppercase;
   text-align: center;
-  max-width: 80%;
-  padding: 0 1rem;
+  padding: 0 2rem;
 }
 
 /* ---------- Sections ---------- */
 .section {
-  padding: 4rem clamp(1rem, 4vw, 3rem);
+  padding: 5rem clamp(1rem, 4vw, 3rem);
 }
 .section.condensed {
-  padding: 2rem clamp(1rem, 4vw, 3rem);
+  padding: 3rem clamp(1rem, 4vw, 3rem);
 }
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-size: clamp(2rem, 5vw, 3rem);
   text-align: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 .section-sub {
   text-align: center;
   color: var(--muted);
-  margin-bottom: 3rem;
-  font-size: 0.9rem;
+  margin-bottom: 3.5rem;
+  font-size: 0.85rem;
+  font-family: var(--font-captions);
 }
 
 /* ---------- Grid cards ---------- */
 .grid {
   display: grid;
-  gap: 1.5rem;
+  gap: 1.75rem;
   grid-template-columns: repeat(2, 1fr);
 }
-@media (min-width: 768px) {
-  .grid-3 {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .grid-4 {
-    grid-template-columns: repeat(4, 1fr);
-  }
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
 }
-@media (min-width: 1200px) {
-  .grid-4 {
-    grid-template-columns: repeat(4, 1fr);
-  }
+.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
 }
 @media (max-width: 767px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
+  .grid,
   .grid-3,
   .grid-4 {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  .grid,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -360,13 +370,13 @@ h3 {
   transition: transform 0.4s, opacity 0.3s;
 }
 .card:hover .media img {
-  transform: scale(1.05);
+  transform: scale(1.04);
   opacity: 1;
 }
 .card .media.placeholder {
   color: var(--muted);
   font-family: var(--font-display);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   text-align: center;
@@ -405,9 +415,9 @@ h3 {
   display: block;
 }
 .card .title {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
 /* ---------- Buttons ---------- */
@@ -419,10 +429,10 @@ h3 {
   background: transparent;
   color: var(--text);
   font-family: var(--font-display);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  padding: 0.7rem 1.4rem;
+  padding: 0.65rem 1.3rem;
   border-radius: 6px;
   cursor: pointer;
   transition: 0.2s;
@@ -468,7 +478,7 @@ h3 {
   border: none;
   color: var(--text);
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 0.9rem;
   cursor: pointer;
 }
 .mobile-menu .mm-links {
@@ -480,7 +490,7 @@ h3 {
 }
 .mobile-menu .mm-links a {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 0.95rem;
   letter-spacing: 0.16em;
   color: var(--text);
   text-transform: uppercase;
@@ -494,20 +504,20 @@ h3 {
   border-top: 1px solid var(--border);
 }
 .mobile-menu .mm-foot a {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: var(--muted);
 }
 
 /* ---------- Back link ---------- */
 .back-link {
   font-family: var(--font-display);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   letter-spacing: 0.18em;
   color: var(--muted);
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 .back-link:hover {
   color: var(--accent);
@@ -515,28 +525,28 @@ h3 {
 
 /* ---------- Project page ---------- */
 .project-hero {
-  padding: 2rem clamp(1rem, 4vw, 3rem) 1rem;
-}
-.project-title {
-  font-size: clamp(2rem, 5vw, 3rem);
-  line-height: 1.1;
-  margin-bottom: 0.5rem;
+  padding: 3rem clamp(1rem, 4vw, 3rem) 2rem;
 }
 .project-artist {
   font-family: var(--font-display);
-  font-size: 0.85rem;
-  letter-spacing: 0.3em;
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
   color: var(--accent);
   text-transform: uppercase;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   display: block;
+}
+.project-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.02;
+  margin-bottom: 1.5rem;
 }
 .project-video {
   position: relative;
   border-radius: var(--radius);
   overflow: hidden;
   background: #000;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 .project-video iframe,
 .project-video video {
@@ -553,7 +563,7 @@ h3 {
   }
 }
 .project-gallery {
-  padding-bottom: 4rem;
+  padding-bottom: 5rem;
 }
 .project-gallery .grid {
   gap: 1rem;
@@ -565,13 +575,13 @@ h3 {
   justify-content: center;
   gap: 1.5rem;
   flex-wrap: wrap;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   border-bottom: 1px solid var(--border);
   padding-bottom: 1rem;
 }
 .sub-nav a {
   font-family: var(--font-display);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   letter-spacing: 0.2em;
   color: var(--muted);
   text-transform: uppercase;
@@ -593,7 +603,8 @@ h3 {
   color: var(--muted);
 }
 .blank h3 {
-  font-size: 1.5rem;
+  font-family: var(--font-display);
+  font-size: 1.75rem;
   color: var(--text);
   margin-bottom: 0.5rem;
 }
@@ -603,8 +614,11 @@ h3 {
   padding: 3rem clamp(1rem, 4vw, 3rem) 2rem;
   border-top: 1px solid var(--border);
   color: var(--muted);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
+  font-family: var(--font-display);
   text-align: center;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 .site-footer a {
   color: var(--text);

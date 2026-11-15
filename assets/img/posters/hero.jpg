@@ -1,0 +1,6 @@
+<!-- Placeholder hero poster. Replace with your actual hero still (webp/jpg).
+     This file is a placeholder so the <video poster> has something to show. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <rect fill="#000000" width="1920" height="1080"/>
+  <text x="50%" y="50%" font-family="monospace" font-size="48" fill="#8b8b93" text-anchor="middle">VIPER VISUALS — hero poster placeholder</text>
+</svg>
