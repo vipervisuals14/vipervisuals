@@ -326,14 +326,11 @@ function renderHome() {
   document.body.className = 'route-home';
   const frag = tpl(`
     <section class="section">
-      <div class="hero">
-        <video autoplay playsinline muted loop poster="assets/img/posters/hero.jpg">
-          <source src="assets/video/hero.webm" type="video/webm">
-          <source src="assets/video/hero.mp4" type="video/mp4">
-        </video>
-        <div class="hero-placeholder">
-          Add your hero video: assets/video/hero.mp4 (+ hero poster)
-        </div>
+      <div class="hero" style="
+        background-image: url('https://cdn.myportfolio.com/9844ffef-896f-4abd-b0bc-bec392563aaf/e2ae8699-f209-4ade-8aac-d8b555f706ac_car_4x3.gif?h=2aa460ed9d65f9080c277c2e1f59625f');
+        background-size: cover;
+        background-position: center;
+      ">
       </div>
     </section>
   `);
