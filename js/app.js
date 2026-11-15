@@ -17,10 +17,33 @@ const CDN = 'https://cdn.myportfolio.com/9844ffef-896f-4abd-b0bc-bec392563aaf/';
 /* CONTENT — migrated from vipervisuals.ca                            */
 /* ------------------------------------------------------------------ */
 
-/* MUSIC VIDEOS (Step 1) */
+/* VIDEO CATEGORIES — shown on #/video page */
+const VIDEO_CATEGORIES = [
+  {
+    slug: 'video-cinematic',
+    label: 'CINEMATIC',
+    description: 'Music videos, visualizers, artist films',
+    poster: `${CDN}b8b37835-6914-4f17-9048-c44a35a0fabd_rwc_212x0x457x343x457.gif?h=58a630675171c931373f269654eabf43`,
+  },
+  {
+    slug: 'video-digital',
+    label: 'DIGITAL',
+    description: 'Social content, promotional videos, behind-the-scenes',
+    poster: `${CDN}8bb039fa-e384-4a5b-a17c-95847a8593a1_rwc_80x0x456x342x456.gif?h=bf745be8499f094ffac3770bb514279c`,
+  },
+  {
+    slug: 'video-live',
+    label: 'LIVE',
+    description: 'Concerts, festivals, recaps, full-set recordings',
+    poster: `${CDN}73fd5890-8229-4748-9e6f-3220c53ed5e3_car_4x3.gif?h=6bcae8a99ccb35e1d99ad6a9dbb7338e`,
+  },
+];
+
+/* MUSIC VIDEOS — individual projects (for project pages) */
 const MUSIC_VIDEOS = [
   {
     slug: 'motions',
+    category: 'video-cinematic',
     artist: 'NIKKAELA',
     title: 'MOTIONS',
     youtubeId: '4bLi52OVcQQ',
@@ -28,6 +51,7 @@ const MUSIC_VIDEOS = [
   },
   {
     slug: 'more-gen',
+    category: 'video-digital',
     artist: 'GEN',
     title: 'NOT COMING BACK',
     youtubeId: 'pET-VvHWLnc',
@@ -35,6 +59,7 @@ const MUSIC_VIDEOS = [
   },
   {
     slug: 'late-to-the-party-amaal-nuuk',
+    category: 'video-cinematic',
     artist: 'AMAAL NUUX',
     title: 'LATE TO THE PARTY',
     youtubeId: 'nunVUrPR4EQ',
@@ -42,6 +67,7 @@ const MUSIC_VIDEOS = [
   },
   {
     slug: 'cody-lawless-powfu',
+    category: 'video-digital',
     artist: 'AMAAL NUUX',
     title: 'RED LIGHT (VISUALIZER)',
     youtubeId: '7ZxsX_-w99w',
@@ -49,6 +75,7 @@ const MUSIC_VIDEOS = [
   },
   {
     slug: 'latency',
+    category: 'video-cinematic',
     artist: 'CODY LAWLESS FT. POWFU',
     title: 'LATENCY',
     youtubeId: 'CPQ3aZgUQU0',
@@ -219,13 +246,13 @@ function renderMusicVideos() {
   document.body.className = '';
   setActiveNav('#/video');
 
-  const tilesHtml = MUSIC_VIDEOS.map(
-    (m) => `
-    <a href="#/project/${m.slug}" class="category-tile">
-      <img class="category-tile-media" src="${m.poster}" alt="${escapeHtml(m.title)}">
+  const tilesHtml = VIDEO_CATEGORIES.map(
+    (c) => `
+    <a href="#/video/${c.slug}" class="category-tile">
+      <img class="category-tile-media" src="${c.poster}" alt="${escapeHtml(c.label)}">
       <div class="category-tile-caption">
-        <span class="brand">${escapeHtml(m.artist)}</span>
-        <span class="title">‘${escapeHtml(m.title)}’</span>
+        <span class="brand">${escapeHtml(c.label)}</span>
+        <span class="title">${escapeHtml(c.description)}</span>
       </div>
     </a>
   `
@@ -388,6 +415,34 @@ function renderAbout() {
   }
 }
 
+function renderVideoSubcategory(categorySlug) {
+  document.body.className = '';
+  setActiveNav('#/video');
+
+  const category = VIDEO_CATEGORIES.find((c) => c.slug === categorySlug);
+  const items = MUSIC_VIDEOS.filter((m) => m.category === categorySlug);
+
+  const tilesHtml = items.map(
+    (m) => `
+    <a href="#/project/${m.slug}" class="category-tile">
+      <img class="category-tile-media" src="${m.poster}" alt="${escapeHtml(m.title)}">
+      <div class="category-tile-caption">
+        <span class="brand">${escapeHtml(m.artist)}</span>
+        <span class="title">‘${escapeHtml(m.title)}’</span>
+      </div>
+    </a>
+  `
+  ).join('');
+
+  const frag = tpl(`
+    <section class="video-category">
+      <div class="category-grid">${tilesHtml}</div>
+      <a href="#/video" class="back-to-top">BACK TO MUSIC VIDEOS</a>
+    </section>
+  `);
+  mount(frag);
+}
+
 function renderContact() {
   document.body.className = '';
   setActiveNav('#/contact');
@@ -459,6 +514,12 @@ function router() {
     renderContact();
   } else if (path === '#/video') {
     renderMusicVideos();
+  } else if (path === '#/video/video-cinematic') {
+    renderVideoSubcategory('video-cinematic');
+  } else if (path === '#/video/video-digital') {
+    renderVideoSubcategory('video-digital');
+  } else if (path === '#/video/video-live') {
+    renderVideoSubcategory('video-live');
   } else if (path === '#/photo') {
     renderPhotoCategories();
   } else if (path === '#/social') {
