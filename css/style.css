@@ -4,7 +4,13 @@
    All desktop sizes use calc(N * var(--u)) where --u = 100vw / 1440
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Azet+Mono:wght@400&display=swap');
+@font-face {
+  font-family: 'Azeret Mono';
+  src: url('../assets/fonts/AzeretMono.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
 
 :root {
   --u: calc(100vw / 1440);
@@ -12,7 +18,7 @@
   --text: #ffffff;
   --hover: rgb(219, 188, 235);
   --current: rgb(182, 182, 182);
-  --font-azeret: 'Azet Mono', 'Courier New', Courier, monospace;
+  --font-azeret: 'Azeret Mono', 'Courier New', Courier, monospace;
 }
 
 *,
@@ -37,6 +43,14 @@ body {
   text-transform: uppercase;
   -webkit-font-smoothing: antialiased;
 }
+button,
+input,
+textarea {
+  font-family: inherit;
+  font-weight: 400;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
 a {
   color: var(--text);
   text-decoration: none;
@@ -49,7 +63,7 @@ video {
   display: block;
 }
 
-/* Azet Mono text (uppercase) */
+/* Azeret Mono text (uppercase) */
 .font-inter {
   font-family: var(--font-azeret);
   text-transform: uppercase;
@@ -84,7 +98,7 @@ video {
   letter-spacing: -0.4px;
 }
 
-/* Centre: VIPER VISUALS, Azet Mono 14, exactly centred on page */
+/* Centre: VIPER VISUALS, Azeret Mono 14, exactly centred on page */
 .nav-centre {
   position: absolute;
   left: 50%;
@@ -382,7 +396,7 @@ video {
 }
 .play-icon {
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 400;
   color: #000;
   margin-left: 3px;
 }
@@ -473,35 +487,6 @@ video {
   object-fit: cover;
   object-position: center;
   display: block;
-}
-.project-loop-top {
-  position: absolute;
-  top: calc(16 * var(--u));
-  left: calc(16 * var(--u));
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: calc(8 * var(--u));
-}
-.project-loop-label {
-  font-family: var(--font-azeret);
-  font-size: calc(14 * var(--u));
-  font-weight: 400;
-  letter-spacing: -0.4px;
-  text-transform: uppercase;
-  color: var(--text);
-}
-.project-loop-tag {
-  font-family: var(--font-azeret);
-  font-size: calc(8 * var(--u));
-  font-weight: 400;
-  letter-spacing: -0.4px;
-  text-transform: uppercase;
-  color: var(--text);
-  background: rgba(0, 0, 0, 0.6);
-  padding: calc(4 * var(--u)) calc(8 * var(--u));
-  border-radius: calc(20 * var(--u));
 }
 .project-loop-caption {
   position: absolute;

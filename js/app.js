@@ -530,7 +530,6 @@ function renderProject(slug) {
   const provider = videoProject && videoProject.youtubeId ? 'youtube' : 'vimeo';
   const videoId = videoProject ? videoProject.youtubeId || videoProject.vimeoId || '' : '';
 
-  const loopLabel = title ? `FEATURED LOOP — ${title}` : 'FEATURED LOOP';
   const playerTitle = `${title}${artist ? ` · ${artist}` : ''}`;
 
   const loopMedia =
@@ -562,10 +561,6 @@ function renderProject(slug) {
       <div class="project-layout">
         <div class="project-loop">
           ${loopMedia}
-          <div class="project-loop-top">
-            <span class="project-loop-label">${escapeHtml(loopLabel)}</span>
-            <span class="project-loop-tag">FEATURED LOOP</span>
-          </div>
           <div class="project-loop-caption">
             <span>${escapeHtml(artist)}</span>
             ${title ? `<span>‘${escapeHtml(title)}’</span>` : ''}
@@ -754,7 +749,7 @@ function renderNotFound() {
   const frag = tpl(`
     <section class="section">
       <div style="padding-top: calc(100 * var(--u)); text-align: center;">
-        <div style="font-family:'Azet Mono',monospace;font-size:calc(14 * var(--u));letter-spacing:-0.4px;">Page not found</div>
+        <div style="font-family:var(--font-azeret);font-size:calc(14 * var(--u));letter-spacing:-0.4px;">Page not found</div>
         <a href="#/" style="color:rgb(219,188,235)">Return to home</a>
       </div>
       ${renderFooter()}
