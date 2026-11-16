@@ -660,6 +660,9 @@ video {
   background: var(--bg);
   padding-top: calc(121 * var(--u));
 }
+.about-page {
+  padding-top: calc(66 * var(--u));
+}
 .about-left {
   position: absolute;
   top: calc(121 * var(--u));
@@ -680,12 +683,14 @@ video {
 }
 /* Keep the supplied portrait in its natural 4:5 proportions. */
 .about-page .about-left {
-  width: min(calc(452.8 * var(--u)), max(0px, calc(80vh - 144.8 * var(--u))));
+  top: calc(66 * var(--u));
+  width: min(calc(452.8 * var(--u)), max(0px, calc(80vh - 100.8 * var(--u))));
   height: auto;
   aspect-ratio: 4 / 5;
   background: transparent;
 }
 .about-page .about-right {
+  top: calc(66 * var(--u));
   left: calc(535 * var(--u));
 }
 .about-right {
