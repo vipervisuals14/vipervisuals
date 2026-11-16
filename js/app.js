@@ -658,66 +658,33 @@ function renderVideoSubcategory(categorySlug) {
 
   const category = VIDEO_CATEGORIES.find((c) => c.slug === categorySlug);
   const items = MUSIC_VIDEOS.filter((m) => m.category === categorySlug);
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const tilesHtml = items.map(
-    (m) => {
-      let embedUrl = '';
-      if (m.youtubeId) {
-        embedUrl = `https://www.youtube-nocookie.com/embed/${escapeHtml(
-          m.youtubeId
-        )}?autoplay=1`;
-      } else if (m.vimeoId) {
-        embedUrl = `https://player.vimeo.com/video/${escapeHtml(
-          m.vimeoId
-        )}?autoplay=1`;
-      }
-
-      return `
-      <div class="category-tile">
-        <div class="category-tile-media">
-          <img class="category-tile-poster" src="${m.poster}" alt="${escapeHtml(
-            m.title || m.artist
-          )}" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #1a1a1a 0%, #000 100%)';">
-          <button class="play-overlay" data-embed="${escapeHtml(embedUrl)}" aria-label="Play video">
-            <span class="play-icon">▶</span>
-          </button>
-        </div>
-        <div class="category-tile-caption">
-          <span class="brand">${escapeHtml(m.artist)}</span>
-          <span class="title">${
-            m.title ? `‘${escapeHtml(m.title)}’` : ''
-          }</span>
-        </div>
+    (m) => `
+    <a href="#/project/${escapeHtml(m.slug)}" class="category-tile">
+      <video class="category-tile-media"
+        poster="${escapeHtml(m.poster)}"
+        preload="metadata"
+        ${reduceMotion ? '' : 'autoplay muted loop playsinline'}
+        aria-label="${escapeHtml(m.title || m.artist)} preview">
+        <source src="${escapeHtml(m.poster)}" type="video/mp4">
+      </video>
+      <div class="category-tile-caption">
+        <span class="brand">${escapeHtml(m.artist)}</span>
+        <span class="title">${m.title ? `‘${escapeHtml(m.title)}’` : ''}</span>
       </div>
-    `;
-    }
+    </a>
+  `
   ).join('');
 
   const frag = tpl(`
     <section class="video-category">
       <div class="category-grid">${tilesHtml}</div>
+      ${renderFooter()}
     </section>
   `);
   mount(frag);
-
-  // Handle play button clicks
-  document.querySelectorAll('.play-overlay').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const embedUrl = btn.dataset.embed;
-      if (!embedUrl) return;
-      const tileMedia = btn.closest('.category-tile-media');
-      tileMedia.innerHTML = `
-        <iframe
-          src="${embedUrl}"
-          width="100%"
-          height="100%"
-          frameborder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowfullscreen
-        ></iframe>
-      `;
-    });
-  });
 }
 
 function renderContact() {
