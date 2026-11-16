@@ -109,6 +109,7 @@ const MUSIC_VIDEOS = [
     title: '',
     youtubeId: 'xT1E1rrcbe8',
     poster: 'https://img.youtube.com/vi/xT1E1rrcbe8/maxresdefault.jpg',
+    preview: 'https://raw.githubusercontent.com/vipervisuals14/vipervisuals/arena/3ff49756-vipervisuals/media/video-previews/kelland.mp4',
   },
   {
     slug: 'maribou-state',
@@ -668,7 +669,7 @@ function renderVideoSubcategory(categorySlug) {
         preload="metadata"
         ${reduceMotion ? '' : 'autoplay muted loop playsinline'}
         aria-label="${escapeHtml(m.title || m.artist)} preview">
-        <source src="${escapeHtml(m.poster)}" type="video/mp4">
+        ${m.preview ? `<source src="${escapeHtml(m.preview)}" type="video/mp4">` : ''}
       </video>
       <div class="category-tile-caption">
         <span class="brand">${escapeHtml(m.artist)}</span>
