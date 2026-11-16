@@ -678,6 +678,9 @@ video {
   object-position: center;
   display: block;
 }
+.about-page .about-left img {
+  object-position: center 25%;
+}
 .about-right {
   position: absolute;
   top: calc(121 * var(--u));

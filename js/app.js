@@ -625,9 +625,7 @@ function renderAbout() {
   const frag = tpl(`
     <section class="about-page">
       <div class="about-left">
-        <video autoplay playsinline muted loop poster="media/about/about-poster.jpg">
-          <source src="media/about/about.mp4" type="video/mp4">
-        </video>
+        <img src="media/about/about-photo.jpg" alt="Photographer holding a camera">
       </div>
       <div class="about-right">
         <div class="about-text">
