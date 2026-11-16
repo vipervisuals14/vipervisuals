@@ -338,6 +338,77 @@ video {
 .category-grid::-webkit-scrollbar {
   display: none;
 }
+/* Compact scroll progress control, shown only when the gallery overflows. */
+.scroll-indicator {
+  position: absolute;
+  top: calc(72 * var(--u));
+  right: calc(20 * var(--u));
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: calc(16 * var(--u));
+  padding: calc(9 * var(--u)) calc(10 * var(--u));
+  background: #000;
+  color: var(--text);
+}
+.scroll-indicator[hidden] {
+  display: none;
+}
+.scroll-indicator-track {
+  position: relative;
+  width: calc(105 * var(--u));
+  height: calc(14 * var(--u));
+  display: flex;
+  align-items: center;
+}
+.scroll-indicator-track::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.35);
+}
+.scroll-indicator-fill {
+  position: relative;
+  display: block;
+  width: 25%;
+  height: 2px;
+  background: #fff;
+  pointer-events: none;
+}
+.scroll-indicator-range {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.scroll-indicator-track:focus-within {
+  outline: 1px solid #fff;
+  outline-offset: 3px;
+}
+.scroll-indicator-next {
+  display: flex;
+  align-items: center;
+  gap: calc(7 * var(--u));
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-size: calc(9 * var(--u));
+  line-height: calc(14 * var(--u));
+  white-space: nowrap;
+  cursor: pointer;
+}
+.scroll-indicator-next:hover:not(:disabled) {
+  color: var(--hover);
+}
+.scroll-indicator-next:disabled {
+  cursor: default;
+}
 .category-tile {
   position: relative;
   border-radius: calc(10 * var(--u));

@@ -367,13 +367,78 @@ function escapeHtml(s) {
   }[c]));
 }
 
+let cleanupScrollIndicator = () => {};
+
 function mount(fragment) {
+  cleanupScrollIndicator();
   outlet.innerHTML = '';
   outlet.appendChild(document.importNode(fragment, true));
+  setupHorizontalScrollIndicator();
   requestAnimationFrame(() => {
     const el = outlet.firstElementChild;
     if (el) el.classList.add('loaded');
   });
+}
+
+function setupHorizontalScrollIndicator() {
+  const grid = outlet.querySelector('.category-grid');
+  if (!grid) {
+    cleanupScrollIndicator = () => {};
+    return;
+  }
+
+  const indicator = document.createElement('div');
+  indicator.className = 'scroll-indicator';
+  indicator.hidden = true;
+  indicator.innerHTML = `
+    <div class="scroll-indicator-track">
+      <span class="scroll-indicator-fill" aria-hidden="true"></span>
+      <input class="scroll-indicator-range" type="range" min="0" max="1000" value="0" aria-label="Gallery scroll position">
+    </div>
+    <button class="scroll-indicator-next" type="button" aria-label="Scroll gallery to the right">SCROLL TO EXPLORE <span aria-hidden="true">→</span></button>
+  `;
+  grid.parentElement.appendChild(indicator);
+  const range = indicator.querySelector('.scroll-indicator-range');
+  const fill = indicator.querySelector('.scroll-indicator-fill');
+  const next = indicator.querySelector('.scroll-indicator-next');
+
+  function update() {
+    const maxScroll = Math.max(0, grid.scrollWidth - grid.clientWidth);
+    indicator.hidden = maxScroll <= 2;
+    const progress = maxScroll > 0 ? Math.max(0, Math.min(1, grid.scrollLeft / maxScroll)) : 0;
+    range.value = Math.round(progress * 1000);
+    range.setAttribute('aria-valuetext', `${Math.round(progress * 100)}%`);
+    fill.style.width = `${25 + progress * 75}%`;
+    next.disabled = maxScroll <= 2 || progress >= 0.999;
+  }
+
+  function onRangeInput() {
+    grid.scrollLeft = (grid.scrollWidth - grid.clientWidth) * Number(range.value) / 1000;
+    update();
+  }
+  function onNextClick() {
+    const tile = grid.querySelector('.category-tile');
+    const gap = parseFloat(getComputedStyle(grid).columnGap) || 0;
+    const amount = tile ? tile.getBoundingClientRect().width + gap : grid.clientWidth * 0.8;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    grid.scrollBy({ left: amount, behavior: reduceMotion ? 'auto' : 'smooth' });
+  }
+
+  grid.addEventListener('scroll', update, { passive: true });
+  range.addEventListener('input', onRangeInput);
+  next.addEventListener('click', onNextClick);
+  window.addEventListener('resize', update);
+  const observer = typeof ResizeObserver === 'function' ? new ResizeObserver(update) : null;
+  if (observer) observer.observe(grid);
+  update();
+  cleanupScrollIndicator = () => {
+    grid.removeEventListener('scroll', update);
+    range.removeEventListener('input', onRangeInput);
+    next.removeEventListener('click', onNextClick);
+    window.removeEventListener('resize', update);
+    if (observer) observer.disconnect();
+    cleanupScrollIndicator = () => {};
+  };
 }
 
 function setActiveNav(path) {
