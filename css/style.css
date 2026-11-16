@@ -431,6 +431,7 @@ video {
 .project-tile-caption {
   left: calc(20 * var(--u));
   text-align: center;
+  line-height: calc(18 * var(--u));
 }
 .project-tile-caption .brand {
   font-weight: 700;
@@ -508,7 +509,7 @@ video {
   font-weight: 400;
   letter-spacing: -0.4px;
   text-transform: uppercase;
-  line-height: calc(20 * var(--u));
+  line-height: calc(15 * var(--u));
   color: var(--text);
 }
 .project-loop-caption span {
