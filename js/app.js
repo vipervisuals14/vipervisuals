@@ -554,7 +554,6 @@ function renderProject(slug) {
       </button>
       <div class="project-player-bar">
         <span class="project-time">0:00 / --:--</span>
-        <span class="project-player-title">${escapeHtml(playerTitle)}</span>
       </div>
       <div class="project-progress"><div class="project-progress-fill"></div></div>
     `
@@ -580,7 +579,7 @@ function renderProject(slug) {
         </div>
       </div>
       <div class="project-desc">
-        ${(detail.description || []).map((d) => `<p>${escapeHtml(d)}</p>`).join('')}
+        ${isVideo ? '<p>CREDITS: DIRECTOR, EDITOR</p>' : (detail.description || []).map((d) => `<p>${escapeHtml(d)}</p>`).join('')}
       </div>
       ${renderFooter()}
     </section>
