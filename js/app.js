@@ -12,7 +12,8 @@
    ========================================================================== */
 
 const CDN = 'https://cdn.myportfolio.com/9844ffef-896f-4abd-b0bc-bec392563aaf/';
-const KELLAND_POSTER = 'https://i.ytimg.com/vi/xT1E1rrcbe8/maxresdefault.jpg';
+const KELLAND_POSTER = 'media/video-previews/kelland-poster.jpg';
+const KELLAND_PREVIEW = 'media/video-previews/kelland-loop.mp4';
 
 /* ------------------------------------------------------------------ */
 /* CONTENT — migrated from vipervisuals.ca                            */
@@ -31,6 +32,7 @@ const VIDEO_CATEGORIES = [
     label: 'LIVE',
     description: 'Concerts, festivals, recaps, full-set recordings',
     poster: KELLAND_POSTER,
+    preview: KELLAND_PREVIEW,
   },
   {
     slug: 'video-digital',
@@ -110,6 +112,7 @@ const MUSIC_VIDEOS = [
     title: '',
     youtubeId: 'xT1E1rrcbe8',
     poster: KELLAND_POSTER,
+    preview: KELLAND_PREVIEW,
   },
   {
     slug: 'maribou-state',
@@ -402,6 +405,15 @@ function tpl(html) {
   return template.content;
 }
 
+// Use a still poster for reduced-motion users; previews never play the full video.
+function renderPreviewMedia(preview, poster, alt, className) {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!preview || reducedMotion) {
+    return `<img class="${className}" src="${escapeHtml(poster)}" alt="${escapeHtml(alt)}">`;
+  }
+  return `<video class="${className}" autoplay muted loop playsinline preload="metadata" poster="${escapeHtml(poster)}" aria-label="${escapeHtml(alt)} preview"><source src="${escapeHtml(preview)}" type="video/mp4"></video>`;
+}
+
 /* ------------------------------------------------------------------ */
 /* Global footer — social links, appears on every page                */
 /* ------------------------------------------------------------------ */
@@ -431,7 +443,7 @@ function renderMusicVideos() {
   const tilesHtml = VIDEO_CATEGORIES.map(
     (c) => `
     <a href="#/video/${c.slug}" class="category-tile">
-      <img class="category-tile-media" src="${c.poster}" alt="${escapeHtml(c.label)}">
+      ${renderPreviewMedia(c.preview, c.poster, c.label, 'category-tile-media')}
       <div class="category-tile-caption">
         <span class="brand">${escapeHtml(c.label)}</span>
         <span class="title">${escapeHtml(c.description)}</span>
@@ -532,10 +544,7 @@ function renderProject(slug) {
 
   const playerTitle = `${title}${artist ? ` · ${artist}` : ''}`;
 
-  const loopMedia =
-    project && project.preview
-      ? `<video class="project-loop-media" autoplay muted loop playsinline poster="${escapeHtml(poster)}"><source src="${escapeHtml(project.preview)}" type="video/mp4"></video>`
-      : `<img class="project-loop-media" src="${escapeHtml(poster)}" alt="${escapeHtml(title || artist)}">`;
+  const loopMedia = renderPreviewMedia(project && project.preview, poster, title || artist, 'project-loop-media');
 
   const playerInner = isVideo
     ? `
@@ -684,9 +693,9 @@ function renderVideoSubcategory(categorySlug) {
   const tilesHtml = items.map(
     (m) => `
     <a href="#/project/${escapeHtml(m.slug)}" class="category-tile">
-      ${m.slug === 'kelland'
-        ? `<img class="category-tile-media" src="${escapeHtml(m.poster)}" alt="${escapeHtml(m.artist)}">`
-        : `<video class="category-tile-media" poster="${escapeHtml(m.poster)}" preload="metadata" ${reduceMotion ? '' : 'autoplay muted loop playsinline'} aria-label="${escapeHtml(m.title || m.artist)} preview">${m.preview ? `<source src="${escapeHtml(m.preview)}" type="video/mp4">` : ''}</video>`}
+      ${m.preview
+        ? renderPreviewMedia(m.preview, m.poster, m.title || m.artist, 'category-tile-media')
+        : `<video class="category-tile-media" poster="${escapeHtml(m.poster)}" preload="metadata" ${reduceMotion ? '' : 'autoplay muted loop playsinline'} aria-label="${escapeHtml(m.title || m.artist)} preview"></video>`}
       <div class="category-tile-caption">
         <span class="brand">${escapeHtml(m.artist)}</span>
         <span class="title">${m.title ? `‘${escapeHtml(m.title)}’` : ''}</span>
