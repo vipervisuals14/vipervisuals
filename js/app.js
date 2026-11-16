@@ -126,7 +126,8 @@ const MUSIC_VIDEOS = [
     artist: 'MARIBOU STATE',
     title: '',
     vimeoId: '1098364694',
-    poster: 'https://vumbnail.com/1098364694.jpg',
+    poster: 'media/video-previews/maribou-state-poster.jpg',
+    preview: 'media/video-previews/maribou-state.mp4',
   },
   {
     slug: 'sistek',
