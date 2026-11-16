@@ -105,7 +105,7 @@ const MUSIC_VIDEOS = [
     category: 'video-digital',
     artist: 'SINGHARA',
     title: 'ROOTED EP',
-    vimeoId: '1029288693',
+    vimeoId: '1247410730',
     poster: 'media/video-previews/singhara-v2-poster.jpg',
     preview: 'media/video-previews/singhara-v2.mp4',
   },
