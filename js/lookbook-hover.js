@@ -22,7 +22,8 @@
       float progress = mix(-0.03, 1.03, u_progress);
       float covered = 1.0 - smoothstep(progress - 0.025, progress + 0.025, edge);
       float rim = (1.0 - smoothstep(0.0, 0.018, abs(edge - progress))) * (1.0 - covered) * 0.2;
-      gl_FragColor = vec4(vec3(rim), max(covered, rim));
+      vec3 tint = mix(vec3(0.216, 0.569, 0.871), vec3(1.0), clamp(rim * 2.0, 0.0, 1.0));
+      gl_FragColor = vec4(tint, clamp(covered * 0.36 + rim, 0.0, 0.55));
     }`;
 
   function compile(gl, type, source) {
@@ -87,8 +88,6 @@
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
     gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-    gl.enable(gl.BLEND);
-    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
     const uniform = name => gl.getUniformLocation(program, name);
 
     function draw(time) {

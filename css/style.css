@@ -454,8 +454,8 @@ video {
   font-weight: 700;
 }
 
-/* Lookbook-style card reveal. The shader tracks image shadows where available;
-   this jagged wipe is a fallback for restricted images or unsupported browsers. */
+/* Translucent lookbook wipe: imagery stays visible beneath the blue tint.
+   The jagged wipe is a fallback for restricted images or unsupported browsers. */
 .category-tile::after,
 .home-tile::after,
 .home-wide::after {
@@ -464,7 +464,7 @@ video {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: #000;
+  background: rgba(55, 145, 222, 0.36);
   opacity: 0;
   clip-path: polygon(0 0, 0 0, -16% 15%, -8% 30%, -15% 45%, -5% 60%, -13% 75%, -5% 90%, 0 100%, 0 100%);
   transition: clip-path 0.8s ease-out, opacity 0.12s linear;
