@@ -680,8 +680,8 @@ video {
 }
 /* Keep the supplied portrait in its natural 4:5 proportions. */
 .about-page .about-left {
-  width: auto;
-  height: min(calc(566 * var(--u)), max(0px, calc(100vh - 181 * var(--u))));
+  width: min(calc(452.8 * var(--u)), max(0px, calc(80vh - 144.8 * var(--u))));
+  height: auto;
   aspect-ratio: 4 / 5;
   background: transparent;
 }
@@ -943,8 +943,8 @@ video {
     margin-bottom: calc(30 * var(--u));
   }
   .about-page .about-left {
-    width: auto;
-    height: min(250px, max(120px, calc(100vh - 560px)));
+    width: min(200px, 50vw, max(96px, calc(80vh - 448px)));
+    height: auto;
     aspect-ratio: 4 / 5;
     margin-bottom: calc(12 * var(--u));
   }
