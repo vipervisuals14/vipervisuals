@@ -427,6 +427,20 @@ video {
 .category-tile-caption .title {
   display: block;
 }
+/* Compact category headings and descriptions on the main portfolio pages. */
+.category-tile-caption:not(.project-tile-caption) {
+  max-width: min(calc(260 * var(--u)), calc(100% - 40 * var(--u)));
+  line-height: 1.35;
+}
+.category-tile-caption:not(.project-tile-caption) .brand {
+  font-size: calc(12 * var(--u));
+}
+.category-tile-caption:not(.project-tile-caption) .title {
+  margin-top: calc(5 * var(--u));
+  font-size: calc(10 * var(--u));
+  line-height: 1.4;
+}
+
 /* Project captions are centred in the tile, with the artist emphasised. */
 .project-tile-caption {
   left: calc(20 * var(--u));
