@@ -14,6 +14,8 @@
 const CDN = 'https://cdn.myportfolio.com/9844ffef-896f-4abd-b0bc-bec392563aaf/';
 const KELLAND_POSTER = 'media/video-previews/kelland-poster.jpg';
 const KELLAND_PREVIEW = 'media/video-previews/kelland-loop.mp4';
+const CALE_POSTER = 'media/video-previews/cale-aera-poster.jpg';
+const CALE_PREVIEW = 'media/video-previews/cale-aera.mp4';
 
 /* ------------------------------------------------------------------ */
 /* CONTENT — migrated from vipervisuals.ca                            */
@@ -38,7 +40,8 @@ const VIDEO_CATEGORIES = [
     slug: 'video-digital',
     label: 'DIGITAL',
     description: 'Social content, promotional videos, behind-the-scenes',
-    poster: `${CDN}a909d33c-4c05-4f5b-a2e6-bc4cdc0d6ed2_rw_1200.jpg?h=35720df75f84b2ae26162785ca111aef`,
+    poster: CALE_POSTER,
+    preview: CALE_PREVIEW,
   },
 ];
 
@@ -85,7 +88,8 @@ const MUSIC_VIDEOS = [
     artist: 'CALE',
     title: 'AT AERA',
     vimeoId: '1127937310',
-    poster: 'https://vumbnail.com/1127937310.jpg',
+    poster: CALE_POSTER,
+    preview: CALE_PREVIEW,
   },
   {
     slug: 'chris-alexander',
