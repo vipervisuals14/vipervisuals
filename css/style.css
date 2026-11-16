@@ -317,7 +317,7 @@ video {
   border-radius: calc(10 * var(--u));
   overflow: hidden;
   width: calc(453 * var(--u));
-  height: calc(100vh - 123 * var(--u));
+  height: calc(100vh - 115 * var(--u));
   display: block;
   text-decoration: none;
 }
@@ -430,7 +430,7 @@ video {
 .video-category .category-tile {
   flex: 0 0 auto;
   width: calc(453 * var(--u));
-  height: calc(100vh - 123 * var(--u));
+  height: calc(100vh - 115 * var(--u));
   scroll-snap-align: center;
 }
 .video-category .category-tile-media {
