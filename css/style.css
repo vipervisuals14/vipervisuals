@@ -8,7 +8,7 @@
   font-family: 'Azeret Mono';
   src: url('../assets/fonts/AzeretMono.ttf') format('truetype');
   font-style: normal;
-  font-weight: 400;
+  font-weight: 400 700;
   font-display: swap;
 }
 
@@ -427,6 +427,14 @@ video {
 .category-tile-caption .title {
   display: block;
 }
+/* Project captions are centred in the tile, with the artist emphasised. */
+.project-tile-caption {
+  left: calc(20 * var(--u));
+  text-align: center;
+}
+.project-tile-caption .brand {
+  font-weight: 700;
+}
 
 /* Video previews share the same spacing and dimensions as other tiles. */
 .video-category .category-tile-media {
@@ -491,9 +499,10 @@ video {
 .project-loop-caption {
   position: absolute;
   bottom: calc(16 * var(--u));
+  left: calc(16 * var(--u));
   right: calc(16 * var(--u));
   z-index: 2;
-  text-align: right;
+  text-align: center;
   font-family: var(--font-azeret);
   font-size: calc(12 * var(--u));
   font-weight: 400;
@@ -504,6 +513,9 @@ video {
 }
 .project-loop-caption span {
   display: block;
+}
+.project-loop-caption .project-artist {
+  font-weight: 700;
 }
 
 /* Right panel — main player */
@@ -601,6 +613,11 @@ video {
 }
 .project-desc p {
   margin: 0;
+}
+.project-credits {
+  font-size: calc(10 * var(--u));
+  line-height: calc(16 * var(--u));
+  text-align: left;
 }
 
 @media (max-width: 899px) {

@@ -511,7 +511,7 @@ function renderCategory(items, sectionKey) {
     (item) => `
     <a href="#/project/${item.slug}" class="category-tile">
       <img class="category-tile-media" src="${item.poster}" alt="${escapeHtml(item.title)}">
-      <div class="category-tile-caption">
+      <div class="category-tile-caption project-tile-caption">
         <span class="brand">${escapeHtml(item.artist)}</span>
         <span class="title">‘${escapeHtml(item.title)}’</span>
       </div>
@@ -570,7 +570,7 @@ function renderProject(slug) {
         <div class="project-loop">
           ${loopMedia}
           <div class="project-loop-caption">
-            <span>${escapeHtml(artist)}</span>
+            <span class="project-artist">${escapeHtml(artist)}</span>
             ${title ? `<span>‘${escapeHtml(title)}’</span>` : ''}
           </div>
         </div>
@@ -578,7 +578,7 @@ function renderProject(slug) {
           ${playerInner}
         </div>
       </div>
-      <div class="project-desc">
+      <div class="project-desc${isVideo ? ' project-credits' : ''}">
         ${isVideo ? '<p>CREDITS: DIRECTOR, EDITOR</p>' : (detail.description || []).map((d) => `<p>${escapeHtml(d)}</p>`).join('')}
       </div>
       ${renderFooter()}
@@ -664,7 +664,7 @@ function renderPhotoSubcategory(categorySlug) {
     (m) => `
     <a href="#/project/${m.slug}" class="category-tile">
       <img class="category-tile-media" src="${m.poster}" alt="${escapeHtml(m.title || m.artist)}">
-      <div class="category-tile-caption">
+      <div class="category-tile-caption project-tile-caption">
         <span class="brand">${escapeHtml(m.artist)}</span>
         <span class="title">${m.title ? `‘${escapeHtml(m.title)}’` : ''}</span>
       </div>
@@ -695,7 +695,7 @@ function renderVideoSubcategory(categorySlug) {
       ${m.preview
         ? renderPreviewMedia(m.preview, m.poster, m.title || m.artist, 'category-tile-media')
         : `<video class="category-tile-media" poster="${escapeHtml(m.poster)}" preload="metadata" ${reduceMotion ? '' : 'autoplay muted loop playsinline'} aria-label="${escapeHtml(m.title || m.artist)} preview"></video>`}
-      <div class="category-tile-caption">
+      <div class="category-tile-caption project-tile-caption">
         <span class="brand">${escapeHtml(m.artist)}</span>
         <span class="title">${m.title ? `‘${escapeHtml(m.title)}’` : ''}</span>
       </div>
