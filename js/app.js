@@ -106,7 +106,8 @@ const MUSIC_VIDEOS = [
     artist: 'SINGHARA',
     title: 'ROOTED EP',
     vimeoId: '1029288693',
-    poster: 'https://vumbnail.com/1029288693.jpg',
+    poster: 'media/video-previews/singhara-poster.jpg',
+    preview: 'media/video-previews/singhara.mp4',
   },
 
   /* LIVE */
