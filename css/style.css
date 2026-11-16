@@ -326,10 +326,10 @@ video {
   background: var(--bg);
 }
 .category-grid {
-  margin-top: calc(54 * var(--u));
+  margin-top: calc(66 * var(--u));
   display: flex;
   gap: calc(10 * var(--u));
-  padding: calc(12 * var(--u)) calc(10 * var(--u));
+  padding: 0 calc(10 * var(--u));
   width: 100%;
   overflow-x: auto;
   scroll-snap-type: x proximity;
@@ -454,41 +454,59 @@ video {
   font-weight: 700;
 }
 
-/* A blue neon edge on hover; media and text keep their original colours. */
+/* Lookbook-style card reveal. The shader tracks image shadows where available;
+   this jagged wipe is a fallback for restricted images or unsupported browsers. */
+.category-tile::after,
+.home-tile::after,
+.home-wide::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: #000;
+  opacity: 0;
+  clip-path: polygon(0 0, 0 0, -16% 15%, -8% 30%, -15% 45%, -5% 60%, -13% 75%, -5% 90%, 0 100%, 0 100%);
+  transition: clip-path 0.8s ease-out, opacity 0.12s linear;
+}
 @media (hover: hover) and (pointer: fine) {
-  .category-tile,
-  .home-tile,
-  .home-wide {
-    transition: box-shadow 0.25s ease;
-  }
-  .category-tile::after,
-  .home-tile::after,
-  .home-wide::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    pointer-events: none;
-    z-index: 10;
-    box-shadow: inset 0 0 0 1px transparent;
-    transition: box-shadow 0.25s ease;
-  }
-  .category-tile:hover,
-  .home-tile:hover,
-  .home-wide:hover {
-    z-index: 5;
-    box-shadow: 0 0 calc(10 * var(--u)) rgba(55, 145, 222, 0.85);
-  }
   .category-tile:hover::after,
   .home-tile:hover::after,
   .home-wide:hover::after {
-    box-shadow: inset 0 0 0 1px var(--hover), inset 0 0 calc(12 * var(--u)) rgba(55, 145, 222, 0.85);
+    opacity: 1;
+    clip-path: polygon(0 0, 100% 0, 116% 15%, 108% 30%, 115% 45%, 105% 60%, 113% 75%, 105% 90%, 100% 100%, 0 100%);
+  }
+  .category-tile:hover .category-tile-caption,
+  .home-tile:hover .home-tile-caption,
+  .home-wide:hover .home-wide-caption {
+    color: var(--text);
   }
 }
+.category-tile:focus-visible::after,
+.home-tile:focus-visible::after,
+.home-wide:focus-visible::after {
+  opacity: 1;
+  clip-path: polygon(0 0, 100% 0, 116% 15%, 108% 30%, 115% 45%, 105% 60%, 113% 75%, 105% 90%, 100% 100%, 0 100%);
+}
+.category-tile:focus-visible .category-tile-caption,
+.home-tile:focus-visible .home-tile-caption,
+.home-wide:focus-visible .home-wide-caption {
+  color: var(--text);
+}
+.category-tile.lookbook-webgl::after,
+.home-tile.lookbook-webgl::after,
+.home-wide.lookbook-webgl::after {
+  opacity: 0;
+}
+.lookbook-wipe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
 @media (prefers-reduced-motion: reduce) {
-  .category-tile,
-  .home-tile,
-  .home-wide,
   .category-tile::after,
   .home-tile::after,
   .home-wide::after {
@@ -943,8 +961,8 @@ video {
   /* Keep all tiles accessible without vertical scrolling on narrow screens. */
   .category-grid {
     gap: calc(10 * var(--u));
-    padding: calc(12 * var(--u));
-    margin-top: calc(54 * var(--u));
+    padding: 0 calc(12 * var(--u));
+    margin-top: calc(66 * var(--u));
   }
   .category-tile {
     flex: 0 0 min(280px, calc(100vw - 24px));
