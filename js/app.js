@@ -409,7 +409,9 @@ function renderFooter() {
   return `
     <footer class="site-footer">
       <div class="footer-social">
-        <a href="https://www.instagram.com/thevipervisuals" target="_blank" rel="noopener" class="footer-link">@thevipervisuals</a>
+        <a href="https://www.instagram.com/thevipervisuals" target="_blank" rel="noopener" class="footer-link">IG</a>
+        <a href="https://www.linkedin.com/in/thevipervisuals" target="_blank" rel="noopener" class="footer-link">IN</a>
+        <a href="mailto:hello@vipervisuals.ca" target="_blank" rel="noopener" class="footer-link">✉</a>
       </div>
     </footer>
   `;
