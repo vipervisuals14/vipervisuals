@@ -98,12 +98,12 @@ video {
   letter-spacing: -0.4px;
 }
 
-/* Centre: VIPER VISUALS, Azeret Mono 14, exactly centred on page */
+/* Centre the logo in the header independently of the navigation groups. */
 .nav-centre {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
-  top: calc(15 * var(--u));
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 .nav-centre .nav-brand {
   display: block;
@@ -840,7 +840,6 @@ video {
     height: calc(56 * var(--u));
   }
   .nav-left,
-  .nav-centre,
   .nav-right {
     position: static;
     transform: none;
