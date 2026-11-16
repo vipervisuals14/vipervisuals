@@ -590,9 +590,9 @@ function renderProject(slug) {
       const videoId = playBtn.dataset.videoId;
       let embedUrl = '';
       if (provider === 'youtube') {
-        embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1`;
+        embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&start=3`;
       } else if (provider === 'vimeo') {
-        embedUrl = `https://player.vimeo.com/video/${videoId}?autoplay=1`;
+        embedUrl = `https://player.vimeo.com/video/${videoId}?autoplay=1#t=3s`;
       }
       const player = document.getElementById('projectPlayer');
       player.innerHTML = `
