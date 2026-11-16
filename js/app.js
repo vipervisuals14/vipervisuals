@@ -12,6 +12,7 @@
    ========================================================================== */
 
 const CDN = 'https://cdn.myportfolio.com/9844ffef-896f-4abd-b0bc-bec392563aaf/';
+const KELLAND_POSTER = 'https://i.ytimg.com/vi/xT1E1rrcbe8/maxresdefault.jpg';
 
 /* ------------------------------------------------------------------ */
 /* CONTENT — migrated from vipervisuals.ca                            */
@@ -29,7 +30,7 @@ const VIDEO_CATEGORIES = [
     slug: 'video-live',
     label: 'LIVE',
     description: 'Concerts, festivals, recaps, full-set recordings',
-    poster: '',
+    poster: KELLAND_POSTER,
   },
   {
     slug: 'video-digital',
@@ -108,8 +109,7 @@ const MUSIC_VIDEOS = [
     artist: 'KELLAND',
     title: '',
     youtubeId: 'xT1E1rrcbe8',
-    poster: 'https://img.youtube.com/vi/xT1E1rrcbe8/maxresdefault.jpg',
-    preview: 'https://raw.githubusercontent.com/vipervisuals14/vipervisuals/arena/3ff49756-vipervisuals/media/video-previews/kelland.mp4',
+    poster: KELLAND_POSTER,
   },
   {
     slug: 'maribou-state',
@@ -689,13 +689,9 @@ function renderVideoSubcategory(categorySlug) {
   const tilesHtml = items.map(
     (m) => `
     <a href="#/project/${escapeHtml(m.slug)}" class="category-tile">
-      <video class="category-tile-media"
-        poster="${escapeHtml(m.poster)}"
-        preload="metadata"
-        ${reduceMotion ? '' : 'autoplay muted loop playsinline'}
-        aria-label="${escapeHtml(m.title || m.artist)} preview">
-        ${m.preview ? `<source src="${escapeHtml(m.preview)}" type="video/mp4">` : ''}
-      </video>
+      ${m.slug === 'kelland'
+        ? `<img class="category-tile-media" src="${escapeHtml(m.poster)}" alt="${escapeHtml(m.artist)}">`
+        : `<video class="category-tile-media" poster="${escapeHtml(m.poster)}" preload="metadata" ${reduceMotion ? '' : 'autoplay muted loop playsinline'} aria-label="${escapeHtml(m.title || m.artist)} preview">${m.preview ? `<source src="${escapeHtml(m.preview)}" type="video/mp4">` : ''}</video>`}
       <div class="category-tile-caption">
         <span class="brand">${escapeHtml(m.artist)}</span>
         <span class="title">${m.title ? `‘${escapeHtml(m.title)}’` : ''}</span>
