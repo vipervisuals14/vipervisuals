@@ -97,7 +97,8 @@ const MUSIC_VIDEOS = [
     artist: 'CHRIS ALEXANDER',
     title: 'RE/MAX CANADA',
     vimeoId: '1032424404',
-    poster: 'https://vumbnail.com/1032424404.jpg',
+    poster: 'media/video-previews/chris-alexander-poster.jpg',
+    preview: 'media/video-previews/chris-alexander.mp4',
   },
   {
     slug: 'rooted-ep',
