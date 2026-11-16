@@ -454,66 +454,6 @@ video {
   font-weight: 700;
 }
 
-/* Translucent lookbook wipe: imagery stays visible beneath the blue tint.
-   The jagged wipe is a fallback for restricted images or unsupported browsers. */
-.category-tile::after,
-.home-tile::after,
-.home-wide::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background: rgba(55, 145, 222, 0.36);
-  opacity: 0;
-  clip-path: polygon(0 0, 0 0, -16% 15%, -8% 30%, -15% 45%, -5% 60%, -13% 75%, -5% 90%, 0 100%, 0 100%);
-  transition: clip-path 0.8s ease-out, opacity 0.12s linear;
-}
-@media (hover: hover) and (pointer: fine) {
-  .category-tile:hover::after,
-  .home-tile:hover::after,
-  .home-wide:hover::after {
-    opacity: 1;
-    clip-path: polygon(0 0, 100% 0, 116% 15%, 108% 30%, 115% 45%, 105% 60%, 113% 75%, 105% 90%, 100% 100%, 0 100%);
-  }
-  .category-tile:hover .category-tile-caption,
-  .home-tile:hover .home-tile-caption,
-  .home-wide:hover .home-wide-caption {
-    color: var(--text);
-  }
-}
-.category-tile:focus-visible::after,
-.home-tile:focus-visible::after,
-.home-wide:focus-visible::after {
-  opacity: 1;
-  clip-path: polygon(0 0, 100% 0, 116% 15%, 108% 30%, 115% 45%, 105% 60%, 113% 75%, 105% 90%, 100% 100%, 0 100%);
-}
-.category-tile:focus-visible .category-tile-caption,
-.home-tile:focus-visible .home-tile-caption,
-.home-wide:focus-visible .home-wide-caption {
-  color: var(--text);
-}
-.category-tile.lookbook-webgl::after,
-.home-tile.lookbook-webgl::after,
-.home-wide.lookbook-webgl::after {
-  opacity: 0;
-}
-.lookbook-wipe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
-}
-@media (prefers-reduced-motion: reduce) {
-  .category-tile::after,
-  .home-tile::after,
-  .home-wide::after {
-    transition: none;
-  }
-}
-
 /* Video previews share the same spacing and dimensions as other tiles. */
 .video-category .category-tile-media {
   background: #000;
