@@ -213,20 +213,20 @@ const PHOTOGRAPHY_CATEGORIES = [
   {
     slug: 'photo-performance',
     label: 'PERFORMANCE',
-    description: 'Concerts, festivals, live events',
-    poster: `${CDN}cec61291-bb6f-4fca-8492-04c0ef2c6853_rw_3840.jpg?h=9a1fa40a5f62ddc62d348042262e3122`,
+    description: 'Concerts, festivals, live events, backstage, artist performances',
+    poster: `${CDN}2aaaa8b2-10b3-4d97-a6ad-1c13fc013c02_rw_3840.jpg?h=a653658d08af3e47a6bbd97599617c3e`,
   },
   {
     slug: 'photo-editorial',
     label: 'EDITORIAL',
-    description: 'Artist portraits, press, fashion, brands',
-    poster: `${CDN}eb7ffe1b-7529-4165-a1d2-16404c15e428_rw_1200.jpg?h=44ee0571e10b2b0d96910e9097534d30`,
+    description: 'Artist press, promotional imagery, fashion editorials, creative photoshoots',
+    poster: `${CDN}44ad4c8b-ad5c-4fe5-b5a7-69a118150242_rw_1920.jpg?h=ed93f885f0ea1225f4f84a9a00635c13`,
   },
   {
-    slug: 'photo-conceptual',
-    label: 'CONCEPTUAL',
-    description: 'Album artwork, creative shoots, visual campaigns',
-    poster: `${CDN}a5671ad6-a7f5-465a-821b-1f1d6aa5851d_rw_1920.jpg?h=1a5326fdff17e01940c1f1a506615b99`,
+    slug: 'photo-commercial',
+    label: 'COMMERCIAL',
+    description: 'Product photography, fashion campaigns, lifestyle imagery, brand photography',
+    poster: `${CDN}941625a4-5e8d-4bd5-b8cd-5fa68ff8218e_rw_1200.jpg?h=f30ba0a8690758dfd265def9d6ec79be`,
   },
 ];
 
@@ -272,7 +272,7 @@ const PHOTO_PROJECTS = {
       poster: `${CDN}a5671ad6-a7f5-465a-821b-1f1d6aa5851d_rw_1920.jpg?h=1a5326fdff17e01940c1f1a506615b99`,
     },
   ],
-  'photo-conceptual': [
+  'photo-commercial': [
     {
       slug: 'conceptual-1',
       artist: 'VIPER VISUALS',
@@ -805,8 +805,8 @@ function router() {
     renderPhotoSubcategory('photo-performance');
   } else if (path === '#/photo/photo-editorial') {
     renderPhotoSubcategory('photo-editorial');
-  } else if (path === '#/photo/photo-conceptual') {
-    renderPhotoSubcategory('photo-conceptual');
+  } else if (path === '#/photo/photo-commercial') {
+    renderPhotoSubcategory('photo-commercial');
   } else if (path === '#/social') {
     renderCategory(SOCIAL_CONTENT, 'social');
   } else if (path === '#/recaps') {
