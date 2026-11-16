@@ -454,6 +454,27 @@ video {
   font-weight: 700;
 }
 
+/* Invert box media on hover without affecting captions or controls. */
+@media (hover: hover) and (pointer: fine) {
+  .category-tile-media,
+  .home-tile-media,
+  .home-wide-media {
+    transition: filter 0.25s ease;
+  }
+  .category-tile:hover .category-tile-media,
+  .home-tile:hover .home-tile-media,
+  .home-wide:hover .home-wide-media {
+    filter: invert(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .category-tile-media,
+  .home-tile-media,
+  .home-wide-media {
+    transition: none;
+  }
+}
+
 /* Video previews share the same spacing and dimensions as other tiles. */
 .video-category .category-tile-media {
   background: #000;
