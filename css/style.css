@@ -317,7 +317,7 @@ video {
   border-radius: calc(10 * var(--u));
   overflow: hidden;
   width: calc(453 * var(--u));
-  height: calc(520 * var(--u));
+  height: calc(100vh - 123 * var(--u));
   display: block;
   text-decoration: none;
 }
@@ -413,8 +413,8 @@ video {
   display: flex;
   flex-wrap: nowrap;
   gap: calc(12 * var(--u)) calc(11 * var(--u));
-  padding: calc(60 * var(--u)) calc(29 * var(--u));
-  margin-top: 0;
+  margin-top: calc(40 * var(--u));
+  padding-left: calc(29 * var(--u));
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
@@ -439,8 +439,8 @@ video {
 
 @media (max-width: 899px) {
   .video-category .category-grid {
-    padding: calc(60 * var(--u)) calc(12 * var(--u));
-    margin-top: 0;
+    margin-top: calc(40 * var(--u));
+    padding-left: calc(12 * var(--u));
   }
   .video-category .category-tile {
     width: calc(280 * var(--u));
@@ -782,7 +782,7 @@ video {
     padding-left: calc(12 * var(--u));
     width: 100%;
     box-sizing: border-box;
-    margin-top: calc(66 * var(--u));
+    margin-top: calc(40 * var(--u));
   }
   .category-tile,
   .project-gallery-grid .category-tile {
@@ -903,40 +903,4 @@ video {
   width: 100%;
   height: 100%;
   fill: #fff;
-}
-
-/* Video category tiles */
-.category-grid {
-  margin-top: calc(40 * var(--u));
-  display: grid;
-  grid-template-columns: repeat(3, calc(453 * var(--u)));
-  gap: calc(12 * var(--u)) calc(11 * var(--u));
-  padding-left: calc(29 * var(--u));
-  width: max-content;
-}
-.category-tile {
-  position: relative;
-  border-radius: calc(10 * var(--u));
-  overflow: hidden;
-  width: calc(453 * var(--u));
-  height: calc(100vh - 123 * var(--u));
-  display: block;
-  text-decoration: none;
-}
-@media (max-width: 899px) {
-  .category-grid,
-  .project-gallery-grid {
-    grid-template-columns: 1fr;
-    gap: calc(10 * var(--u));
-    padding-left: calc(12 * var(--u));
-    width: 100%;
-    box-sizing: border-box;
-    margin-top: calc(40 * var(--u));
-  }
-  .category-tile,
-  .project-gallery-grid .category-tile {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 453 / 700;
-  }
 }

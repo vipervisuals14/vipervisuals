@@ -462,7 +462,6 @@ function renderHome() {
       </div>
       <div class="home-two-up"></div>
       <div class="home-wide"></div>
-      ${renderFooter()}
     </section>
   `);
   mount(frag);
