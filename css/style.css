@@ -164,6 +164,11 @@ video {
 .route-home {
   overflow: hidden;
 }
+.home-page {
+  position: relative;
+  height: 100vh;
+  overflow-y: hidden;
+}
 .home-hero {
   position: absolute;
   top: calc(53 * var(--u));
@@ -425,7 +430,7 @@ video {
 .video-category .category-tile {
   flex: 0 0 auto;
   width: calc(453 * var(--u));
-  height: calc(520 * var(--u));
+  height: calc(100vh - 123 * var(--u));
   scroll-snap-align: center;
 }
 .video-category .category-tile-media {
@@ -440,7 +445,7 @@ video {
   .video-category .category-tile {
     width: calc(280 * var(--u));
     height: auto;
-    aspect-ratio: 453 / 520;
+    aspect-ratio: 453 / 700;
   }
 }
 
@@ -783,7 +788,7 @@ video {
   .project-gallery-grid .category-tile {
     width: 100%;
     height: auto;
-    aspect-ratio: 453 / 520;
+    aspect-ratio: 453 / 700;
   }
   .home-two-up,
   .home-wide {
@@ -914,7 +919,7 @@ video {
   border-radius: calc(10 * var(--u));
   overflow: hidden;
   width: calc(453 * var(--u));
-  height: calc(520 * var(--u));
+  height: calc(100vh - 123 * var(--u));
   display: block;
   text-decoration: none;
 }
@@ -932,6 +937,6 @@ video {
   .project-gallery-grid .category-tile {
     width: 100%;
     height: auto;
-    aspect-ratio: 453 / 520;
+    aspect-ratio: 453 / 700;
   }
 }
