@@ -516,55 +516,74 @@ function renderCategory(items, sectionKey) {
 }
 
 function renderProject(slug) {
-  const detail = PROJECT_DETAILS[slug];
-  const project = MUSIC_VIDEOS.find((p) => p.slug === slug);
+  const detail = PROJECT_DETAILS[slug] || { title: '', description: [] };
+  const videoProject = MUSIC_VIDEOS.find((p) => p.slug === slug);
+  const photoProject = Object.values(PHOTO_PROJECTS).flat().find((p) => p.slug === slug);
+  const project = videoProject || photoProject;
   document.body.className = '';
-  setActiveNav('#/video');
+  setActiveNav(videoProject ? '#/video' : '#/photo');
 
-  const mediaHtml = project.youtubeId
+  const artist = project ? project.artist : '';
+  const title = ((detail.title || (project && project.title) || '') + '').toUpperCase();
+  const poster = project ? project.poster : '';
+  const isVideo = !!(videoProject && (videoProject.youtubeId || videoProject.vimeoId));
+  const provider = videoProject && videoProject.youtubeId ? 'youtube' : 'vimeo';
+  const videoId = videoProject ? videoProject.youtubeId || videoProject.vimeoId || '' : '';
+
+  const loopLabel = title ? `FEATURED LOOP — ${title}` : 'FEATURED LOOP';
+  const playerTitle = `${title}${artist ? ` · ${artist}` : ''}`;
+
+  const loopMedia =
+    project && project.preview
+      ? `<video class="project-loop-media" autoplay muted loop playsinline poster="${escapeHtml(poster)}"><source src="${escapeHtml(project.preview)}" type="video/mp4"></video>`
+      : `<img class="project-loop-media" src="${escapeHtml(poster)}" alt="${escapeHtml(title || artist)}">`;
+
+  const playerInner = isVideo
     ? `
-      <div class="project-main-media">
-        <div style="width:100%;height:100%;background:#111;display:grid;place-items:center;">
-          <button class="play-video" data-provider="youtube" data-video-id="${escapeHtml(project.youtubeId)}" style="background:none;border:none;color:#fff;font-family:'Azet Mono',monospace;font-size:calc(14 * var(--u));cursor:pointer;">
-            ▶
-          </button>
-        </div>
+      <img class="project-player-poster" src="${escapeHtml(poster)}" alt="${escapeHtml(title || artist)}">
+      <button class="project-play-btn" data-provider="${provider}" data-video-id="${escapeHtml(videoId)}" aria-label="Play video">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="project-player-bar">
+        <span class="project-time">0:00 / --:--</span>
+        <span class="project-player-title">${escapeHtml(playerTitle)}</span>
       </div>
+      <div class="project-progress"><div class="project-progress-fill"></div></div>
     `
-    : project.vimeoId
-      ? `
-      <div class="project-main-media">
-        <div style="width:100%;height:100%;background:#111;display:grid;place-items:center;">
-          <button class="play-video" data-provider="vimeo" data-video-id="${escapeHtml(project.vimeoId)}" style="background:none;border:none;color:#fff;font-family:'Azet Mono',monospace;font-size:calc(14 * var(--u));cursor:pointer;">
-            ▶
-          </button>
-        </div>
+    : `
+      <img class="project-player-poster" src="${escapeHtml(poster)}" alt="${escapeHtml(title || artist)}">
+      <div class="project-player-bar">
+        <span class="project-player-title">${escapeHtml(playerTitle)}</span>
       </div>
-    `
-      : `<img class="project-main-media" src="${project.poster}" alt="${escapeHtml(project.title)}">`;
+    `;
 
   const frag = tpl(`
     <section class="project-page">
-      ${mediaHtml}
-      <div class="project-info">
-        ${detail && detail.title ? `<div class="project-title-quote">‘${escapeHtml(detail.title)}’</div>` : ''}
-        <div class="project-description">
-          ${(detail ? detail.description : []).map((d) => `<p>${escapeHtml(d)}</p>`).join('')}
+      <div class="project-layout">
+        <div class="project-loop">
+          ${loopMedia}
+          <div class="project-loop-top">
+            <span class="project-loop-label">${escapeHtml(loopLabel)}</span>
+            <span class="project-loop-tag">FEATURED LOOP</span>
+          </div>
+          <div class="project-loop-caption">
+            <span>${escapeHtml(artist)}</span>
+            ${title ? `<span>‘${escapeHtml(title)}’</span>` : ''}
+          </div>
         </div>
-        <div class="project-gallery-section">
-          <div class="project-gallery-grid"></div>
+        <div class="project-player" id="projectPlayer">
+          ${playerInner}
         </div>
-        <div class="project-nav">
-          <span class="nav-btn">PREVIOUS</span>
-          <span class="nav-btn">NEXT</span>
-        </div>
+      </div>
+      <div class="project-desc">
+        ${(detail.description || []).map((d) => `<p>${escapeHtml(d)}</p>`).join('')}
       </div>
       ${renderFooter()}
     </section>
   `);
   mount(frag);
 
-  const playBtn = document.querySelector('.play-video');
+  const playBtn = document.querySelector('.project-play-btn');
   if (playBtn) {
     playBtn.addEventListener('click', () => {
       const provider = playBtn.dataset.provider;
@@ -575,7 +594,8 @@ function renderProject(slug) {
       } else if (provider === 'vimeo') {
         embedUrl = `https://player.vimeo.com/video/${videoId}?autoplay=1`;
       }
-      playBtn.parentElement.innerHTML = `
+      const player = document.getElementById('projectPlayer');
+      player.innerHTML = `
         <iframe
           src="${embedUrl}"
           width="100%"

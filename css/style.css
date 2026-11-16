@@ -470,83 +470,203 @@ video {
   display: block;
 }
 
-/* ---------- Project page ---------- */
-/* Main media: 1425 × 749 at x = 7, y = 66 */
+/* ---------- Project page (music video / photo) ---------- */
+/* Two panels: featured loop 453 + gap 12 + main player 960, from y = 66 */
 .project-page {
   position: relative;
-  min-height: 100vh;
+  height: 100vh;
+  overflow-y: hidden;
   background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  padding: calc(66 * var(--u)) calc(7 * var(--u)) calc(39 * var(--u));
+  box-sizing: border-box;
 }
-.project-main-media {
-  position: absolute;
-  top: calc(66 * var(--u));
-  left: calc(7 * var(--u));
-  width: calc(1425 * var(--u));
-  height: calc(749 * var(--u));
+.project-layout {
+  display: flex;
+  gap: calc(12 * var(--u));
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+/* Left panel — featured loop */
+.project-loop {
+  position: relative;
+  width: calc(453 * var(--u));
+  flex: 0 0 auto;
   border-radius: calc(10 * var(--u));
   overflow: hidden;
   background: #111;
 }
-.project-main-media video,
-.project-main-media img {
+.project-loop-media {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   display: block;
 }
-
-/* Right column: x = 722, y = 66 + 70 = 136 */
-.project-info {
+.project-loop-top {
   position: absolute;
-  top: calc(136 * var(--u));
-  left: calc(722 * var(--u));
-  width: calc(691 * var(--u)); /* 1419 - 722 */
+  top: calc(16 * var(--u));
+  left: calc(16 * var(--u));
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: calc(8 * var(--u));
 }
-.project-title-quote {
-  font-family: var(--font-azeret);
-  font-size: calc(24 * var(--u));
-  font-weight: 400;
-  letter-spacing: -0.4px;
-  margin-bottom: calc(16 * var(--u));
-}
-.project-description {
+.project-loop-label {
   font-family: var(--font-azeret);
   font-size: calc(14 * var(--u));
   font-weight: 400;
   letter-spacing: -0.4px;
-  line-height: calc(24 * var(--u));
+  text-transform: uppercase;
+  color: var(--text);
 }
-.project-description p {
-  margin: 0 0 calc(10 * var(--u)) 0;
-}
-
-/* Project gallery — same 3-column grid as category pages */
-.project-gallery-section {
-  margin-top: calc(70 * var(--u));
-  margin-left: calc(7 * var(--u));
-}
-.project-gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, calc(453 * var(--u)));
-  gap: calc(12 * var(--u)) calc(11 * var(--u));
-  padding-left: calc(29 * var(--u));
-  width: max-content;
-  margin-bottom: calc(58 * var(--u));
-}
-
-/* PREVIOUS / NEXT */
-.project-nav {
-  margin-left: calc(7 * var(--u));
-  display: flex;
-  justify-content: space-between;
-  width: calc(1392 * var(--u)); /* 1419 - 27 */
-}
-.project-nav .nav-btn {
+.project-loop-tag {
   font-family: var(--font-azeret);
-  font-size: calc(20 * var(--u));
+  font-size: calc(8 * var(--u));
   font-weight: 400;
   letter-spacing: -0.4px;
+  text-transform: uppercase;
+  color: var(--text);
+  background: rgba(0, 0, 0, 0.6);
+  padding: calc(4 * var(--u)) calc(8 * var(--u));
+  border-radius: calc(20 * var(--u));
+}
+.project-loop-caption {
+  position: absolute;
+  bottom: calc(16 * var(--u));
+  right: calc(16 * var(--u));
+  z-index: 2;
+  text-align: right;
+  font-family: var(--font-azeret);
+  font-size: calc(12 * var(--u));
+  font-weight: 400;
+  letter-spacing: -0.4px;
+  text-transform: uppercase;
+  line-height: calc(20 * var(--u));
+  color: var(--text);
+}
+.project-loop-caption span {
+  display: block;
+}
+
+/* Right panel — main player */
+.project-player {
+  position: relative;
+  flex: 1 1 auto;
+  width: calc(960 * var(--u));
+  border-radius: calc(10 * var(--u));
+  overflow: hidden;
+  background: #111;
+}
+.project-player-poster {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.project-player iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+.project-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(72 * var(--u));
+  height: calc(72 * var(--u));
+  border-radius: 50%;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+  padding: 0;
+}
+.project-play-btn svg {
+  width: calc(28 * var(--u));
+  height: calc(28 * var(--u));
+  fill: #000;
+  margin-left: calc(4 * var(--u));
+}
+.project-player-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(14 * var(--u));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 calc(16 * var(--u));
+  z-index: 2;
+  font-family: var(--font-azeret);
+  font-size: calc(10 * var(--u));
+  font-weight: 400;
+  letter-spacing: -0.4px;
+  text-transform: uppercase;
+  color: var(--text);
+}
+.project-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: calc(3 * var(--u));
+  background: rgba(255, 255, 255, 0.25);
+  z-index: 2;
+}
+.project-progress-fill {
+  height: 100%;
+  width: 0;
+  background: #fff;
+}
+
+/* Description below panels */
+.project-desc {
+  margin-top: calc(20 * var(--u));
+  font-family: var(--font-azeret);
+  font-size: calc(14 * var(--u));
+  font-weight: 400;
+  letter-spacing: -0.4px;
+  text-transform: uppercase;
+  line-height: calc(24 * var(--u));
+  color: var(--text);
+}
+.project-desc p {
+  margin: 0;
+}
+
+@media (max-width: 899px) {
+  .project-page {
+    padding: calc(66 * var(--u)) calc(12 * var(--u)) calc(39 * var(--u));
+  }
+  .project-layout {
+    flex: none;
+  }
+  .project-loop {
+    display: none;
+  }
+  .project-player {
+    width: 100%;
+    flex: none;
+    aspect-ratio: 16 / 9;
+  }
 }
 
 /* ---------- About / Contact ---------- */
@@ -779,8 +899,7 @@ video {
   }
 
   /* Mobile: tiles stack in one column */
-  .category-grid,
-  .project-gallery-grid {
+  .category-grid {
     grid-template-columns: 1fr;
     gap: calc(10 * var(--u));
     padding-left: calc(12 * var(--u));
@@ -788,8 +907,7 @@ video {
     box-sizing: border-box;
     margin-top: calc(66 * var(--u));
   }
-  .category-tile,
-  .project-gallery-grid .category-tile {
+  .category-tile {
     width: 100%;
     height: auto;
     aspect-ratio: 453 / 700;
