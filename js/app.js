@@ -135,7 +135,8 @@ const MUSIC_VIDEOS = [
     artist: 'SISTEK',
     title: 'YOKO LUNA MONTREAL',
     vimeoId: '1117974303',
-    poster: 'https://vumbnail.com/1117974303.jpg',
+    poster: 'media/video-previews/sistek-poster.jpg',
+    preview: 'media/video-previews/sistek.mp4',
   },
 ];
 
