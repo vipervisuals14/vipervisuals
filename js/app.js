@@ -763,7 +763,7 @@ function renderNotFound() {
     <section class="section">
       <div style="padding-top: calc(100 * var(--u)); text-align: center;">
         <div style="font-family:var(--font-azeret);font-size:calc(14 * var(--u));letter-spacing:-0.4px;">Page not found</div>
-        <a href="#/" style="color:rgb(219,188,235)">Return to home</a>
+        <a href="#/">Return to home</a>
       </div>
       ${renderFooter()}
     </section>
