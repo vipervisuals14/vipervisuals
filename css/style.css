@@ -678,8 +678,15 @@ video {
   object-position: center;
   display: block;
 }
-.about-page .about-left img {
-  object-position: center 25%;
+/* Keep the supplied portrait in its natural 4:5 proportions. */
+.about-page .about-left {
+  width: auto;
+  height: min(calc(566 * var(--u)), max(0px, calc(100vh - 181 * var(--u))));
+  aspect-ratio: 4 / 5;
+  background: transparent;
+}
+.about-page .about-right {
+  left: calc(535 * var(--u));
 }
 .about-right {
   position: absolute;
@@ -934,6 +941,12 @@ video {
     height: auto;
     aspect-ratio: 659 / 566;
     margin-bottom: calc(30 * var(--u));
+  }
+  .about-page .about-left {
+    width: auto;
+    height: min(250px, max(120px, calc(100vh - 560px)));
+    aspect-ratio: 4 / 5;
+    margin-bottom: calc(12 * var(--u));
   }
   .about-right {
     position: static;
