@@ -12,7 +12,7 @@
   const pointer = matchMedia('(hover: hover) and (pointer: fine)');
   const count = 42, spacing = 2.8, height = 23;
   let points = [], target = null, raf = 0, visible = false;
-  function enabled() { return location.hash.replace(/\/$/, '') === '#/video/video-cinematic' && !motion.matches && pointer.matches; }
+  function enabled() { return !motion.matches && pointer.matches; }
   function resize() {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     canvas.width = Math.round(innerWidth * dpr); canvas.height = Math.round(innerHeight * dpr);
