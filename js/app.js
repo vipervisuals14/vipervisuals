@@ -17,7 +17,7 @@ const CDN = 'https://cdn.myportfolio.com/9844ffef-896f-4abd-b0bc-bec392563aaf/';
 /* CONTENT — migrated from vipervisuals.ca                            */
 /* ------------------------------------------------------------------ */
 
-/* VIDEO CATEGORIES — shown on #/video page */
+/* VIDEO CATEGORIES — shown on #/video page (order: CINEMATIC, LIVE, DIGITAL) */
 const VIDEO_CATEGORIES = [
   {
     slug: 'video-cinematic',
@@ -26,16 +26,16 @@ const VIDEO_CATEGORIES = [
     poster: `${CDN}b8b37835-6914-4f17-9048-c44a35a0fabd_rwc_212x0x457x343x457.gif?h=58a630675171c931373f269654eabf43`,
   },
   {
-    slug: 'video-digital',
-    label: 'DIGITAL',
-    description: 'Social content, promotional videos, behind-the-scenes',
-    poster: `${CDN}8bb039fa-e384-4a5b-a17c-95847a8593a1_rwc_80x0x456x342x456.gif?h=bf745be8499f094ffac3770bb514279c`,
-  },
-  {
     slug: 'video-live',
     label: 'LIVE',
     description: 'Concerts, festivals, recaps, full-set recordings',
-    poster: `${CDN}73fd5890-8229-4748-9e6f-3220c53ed5e3_car_4x3.gif?h=6bcae8a99ccb35e1d99ad6a9dbb7338e`,
+    poster: '',
+  },
+  {
+    slug: 'video-digital',
+    label: 'DIGITAL',
+    description: 'Social content, promotional videos, behind-the-scenes',
+    poster: `${CDN}a909d33c-4c05-4f5b-a2e6-bc4cdc0d6ed2_rw_1200.jpg?h=35720df75f84b2ae26162785ca111aef`,
   },
 ];
 
@@ -402,6 +402,19 @@ function tpl(html) {
 }
 
 /* ------------------------------------------------------------------ */
+/* Global footer — social links, appears on every page                */
+/* ------------------------------------------------------------------ */
+function renderFooter() {
+  return `
+    <footer class="site-footer">
+      <div class="footer-social">
+        <a href="https://www.instagram.com/thevipervisuals" target="_blank" rel="noopener" class="footer-link">@thevipervisuals</a>
+      </div>
+    </footer>
+  `;
+}
+
+/* ------------------------------------------------------------------ */
 /* STEP 1: Music Videos category page                                 */
 /* ------------------------------------------------------------------ */
 function renderMusicVideos() {
@@ -423,6 +436,7 @@ function renderMusicVideos() {
   const frag = tpl(`
     <section class="video-category">
       <div class="category-grid">${tilesHtml}</div>
+      ${renderFooter()}
     </section>
   `);
   mount(frag);
@@ -441,6 +455,7 @@ function renderHome() {
       </div>
       <div class="home-two-up"></div>
       <div class="home-wide"></div>
+      ${renderFooter()}
     </section>
   `);
   mount(frag);
@@ -465,6 +480,7 @@ function renderPhotoCategories() {
   const frag = tpl(`
     <section class="photo-category">
       <div class="category-grid">${tilesHtml}</div>
+      ${renderFooter()}
     </section>
   `);
   mount(frag);
@@ -487,6 +503,7 @@ function renderCategory(items, sectionKey) {
   const frag = tpl(`
     <section class="${sectionKey}-category">
       <div class="category-grid">${tilesHtml}</div>
+      ${renderFooter()}
     </section>
   `);
   mount(frag);
@@ -536,6 +553,7 @@ function renderProject(slug) {
           <span class="nav-btn">NEXT</span>
         </div>
       </div>
+      ${renderFooter()}
     </section>
   `);
   mount(frag);
@@ -592,6 +610,7 @@ function renderAbout() {
           <div id="form-success" class="form-success" style="display:none;">Thank you!</div>
         </div>
       </div>
+      ${renderFooter()}
     </section>
   `);
   mount(frag);
@@ -627,6 +646,7 @@ function renderPhotoSubcategory(categorySlug) {
   const frag = tpl(`
     <section class="photo-category">
       <div class="category-grid">${tilesHtml}</div>
+      ${renderFooter()}
     </section>
   `);
   mount(frag);
@@ -725,6 +745,7 @@ function renderContact() {
           <div id="form-success" class="form-success" style="display:none;">Thank you!</div>
         </div>
       </div>
+      ${renderFooter()}
     </section>
   `);
   mount(frag);
@@ -747,6 +768,7 @@ function renderNotFound() {
         <div style="font-family:'Azet Mono',monospace;font-size:calc(14 * var(--u));letter-spacing:-0.4px;">Page not found</div>
         <a href="#/" style="color:rgb(219,188,235)">Return to home</a>
       </div>
+      ${renderFooter()}
     </section>
   `);
   mount(frag);
