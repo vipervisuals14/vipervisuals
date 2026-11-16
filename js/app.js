@@ -33,15 +33,15 @@ const VIDEO_CATEGORIES = [
     slug: 'video-live',
     label: 'LIVE',
     description: 'Concerts, festivals, recaps, full-set recordings',
-    poster: KELLAND_POSTER,
-    preview: KELLAND_PREVIEW,
+    poster: 'media/category-remixes/live-poster.jpg',
+    preview: 'media/category-remixes/live.mp4',
   },
   {
     slug: 'video-digital',
     label: 'DIGITAL',
     description: 'Social content, promotional videos, behind-the-scenes',
-    poster: CALE_POSTER,
-    preview: CALE_PREVIEW,
+    poster: 'media/category-remixes/digital-poster.jpg',
+    preview: 'media/category-remixes/digital.mp4',
   },
 ];
 
