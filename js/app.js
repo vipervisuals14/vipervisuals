@@ -12,8 +12,8 @@
    ========================================================================== */
 
 const CDN = 'https://cdn.myportfolio.com/9844ffef-896f-4abd-b0bc-bec392563aaf/';
-const KELLAND_POSTER = 'media/video-previews/kelland-poster.jpg';
-const KELLAND_PREVIEW = 'media/video-previews/kelland-loop.mp4';
+const KELLAND_POSTER = 'media/video-previews/kelland-v2-poster.jpg';
+const KELLAND_PREVIEW = 'media/video-previews/kelland-v2.mp4';
 const CALE_POSTER = 'media/video-previews/cale-aera-poster.jpg';
 const CALE_PREVIEW = 'media/video-previews/cale-aera.mp4';
 
