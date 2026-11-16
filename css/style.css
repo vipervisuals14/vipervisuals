@@ -93,10 +93,15 @@ video {
   top: calc(15 * var(--u));
 }
 .nav-centre .nav-brand {
-  font-family: var(--font-azeret);
-  font-size: calc(14 * var(--u));
-  font-weight: 400;
-  letter-spacing: -0.4px;
+  display: block;
+  width: calc(40 * var(--u));
+  height: calc(40 * var(--u));
+}
+.nav-centre .nav-brand img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 /* Right group: ends 20 units from right edge, ~26 units between items */
