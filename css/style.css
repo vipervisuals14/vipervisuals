@@ -454,23 +454,24 @@ video {
   font-weight: 700;
 }
 
-/* Invert box media on hover without affecting captions or controls. */
+/* Invert the complete box, including its text, on hover. */
 @media (hover: hover) and (pointer: fine) {
-  .category-tile-media,
-  .home-tile-media,
-  .home-wide-media {
+  .category-tile,
+  .home-tile,
+  .home-wide {
     transition: filter 0.25s ease;
   }
-  .category-tile:hover .category-tile-media,
-  .home-tile:hover .home-tile-media,
-  .home-wide:hover .home-wide-media {
+  .category-tile:hover,
+  .home-tile:hover,
+  .home-wide:hover {
+    color: var(--text);
     filter: invert(1);
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .category-tile-media,
-  .home-tile-media,
-  .home-wide-media {
+  .category-tile,
+  .home-tile,
+  .home-wide {
     transition: none;
   }
 }
