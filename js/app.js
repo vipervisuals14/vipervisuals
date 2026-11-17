@@ -635,16 +635,16 @@ function getBackTarget() {
 
 function renderFooter() {
   const back = getBackTarget();
-  const igIcon = `<svg class="footer-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16.5" cy="7.5" r="1.5" fill="currentColor"/></svg>`;
+  const igIcon = `<img class="footer-image-icon" src="assets/img/social/instagram-win98.png" alt="">`;
   const inIcon = `<svg class="footer-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="20" x="2" y="2" rx="4" ry="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 8v6h-5v-6h5z" fill="currentColor"/><path d="M10 20v-6h5v6h-5z" fill="none" stroke="currentColor" stroke-width="2"/></svg>`;
-  const mailIcon = `<svg class="footer-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" fill="none" stroke="currentColor" stroke-width="2"/><polyline points="22,6 12,13 2,6" fill="none" stroke="currentColor" stroke-width="2"/></svg>`;
+  const mailIcon = `<img class="footer-image-icon" src="assets/img/social/email-win98.png" alt="">`;
   return `
     <footer class="site-footer">
       <a class="footer-back" href="${escapeHtml(back.href)}" aria-label="Back to ${escapeHtml(back.label)}"><span aria-hidden="true">←</span> BACK</a>
       <div class="footer-social">
-        <a href="https://www.instagram.com/thevipervisuals" target="_blank" rel="noopener" class="footer-link" aria-label="Instagram">${igIcon}</a>
+        <a href="https://www.instagram.com/thevipervisuals" target="_blank" rel="noopener" class="footer-link footer-image-link" aria-label="Instagram">${igIcon}</a>
         <a href="https://www.linkedin.com/in/thevipervisuals" target="_blank" rel="noopener" class="footer-link" aria-label="LinkedIn">${inIcon}</a>
-        <a href="mailto:hello@vipervisuals.ca" target="_blank" rel="noopener" class="footer-link" aria-label="Email">${mailIcon}</a>
+        <a href="mailto:hello@vipervisuals.ca" target="_blank" rel="noopener" class="footer-link footer-image-link" aria-label="Email">${mailIcon}</a>
       </div>
     </footer>
   `;
