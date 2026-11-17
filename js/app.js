@@ -257,7 +257,7 @@ const WEEKND_PHOTOS = [
 
 /* Original photographs from vipervisuals.ca/pics and /social-content. */
 const SZA_PHOTOS = [
-  '664d5b07-9eb2-4120-a6d8-e81bafc62324_rw_1200.jpg?h=4f2f6ba5f4c61426f7cd392cc71bee5d',
+  'media/photography/sza-header.jpg',
   'b1b73388-b884-4f49-8a62-c1604be435cc_rw_1200.jpg?h=d894294b92706b85eb5fa2a18aa8e063',
   'aa554319-6494-4a59-88b2-e57c300705e0_rw_1200.jpg?h=5fc4c7c2a0029b771812ab73739b9d27',
   'ad1d0419-f849-4924-a2cc-57730a1e2f40_rw_1200.jpg?h=550027faab972134763082fd03aed5d5',
@@ -365,7 +365,7 @@ const PHOTO_PROJECTS = {
       slug: 'sza',
       artist: 'SZA',
       title: 'SOS TOUR',
-      poster: `${CDN}664d5b07-9eb2-4120-a6d8-e81bafc62324_rw_1200.jpg?h=4f2f6ba5f4c61426f7cd392cc71bee5d`,
+      poster: SZA_PHOTOS[0],
     },
     {
       slug: 'wax-motif',
@@ -796,7 +796,7 @@ function renderPhotoGallery(gallery) {
   setActiveNav('#/photo');
   const images = gallery.photos.map((path, index) => `
     <div class="category-tile photo-gallery-tile">
-      <img class="category-tile-media" src="${escapeHtml(CDN + path)}"
+      <img class="category-tile-media" src="${escapeHtml(path.startsWith('media/') ? path : CDN + path)}"
         alt="${escapeHtml(gallery.artist)}${gallery.title ? `, ${escapeHtml(gallery.title)}` : ''} — photograph ${index + 1}"
         ${index < 3 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
       ${index === 0 ? `
