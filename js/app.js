@@ -991,8 +991,8 @@ function renderContact() {
     <section class="contact-page">
       <div class="contact-content">
         <div class="contact-intro">
-          <h1>Good ideas deserve thoughtful execution. Whether it’s a visual concept, a new campaign or a story waiting to be told, we’d love to be part of bringing it to life.</h1>
           <p>Based in Toronto, available worldwide.</p>
+          <h1>Good ideas deserve thoughtful execution. Whether it’s a visual concept, a new campaign or a story waiting to be told, we’d love to be part of bringing it to life.</h1>
         </div>
         <form class="contact-form" id="contact-form">
           <div class="contact-fields">

@@ -1011,19 +1011,23 @@ video {
 .contact-intro {
   display: flex;
   flex-direction: column;
+  /* The 38-character location line sets the width of the headline beneath it. */
+  width: min(100%, calc(38ch - 15.2px));
+  font-family: var(--font-azeret);
+  font-size: var(--nav-font-size);
 }
 .contact-intro h1 {
-  margin: 0 0 calc(20 * var(--u));
+  margin: auto 0 0;
   font-family: 'Akira Expanded', 'Unbounded', sans-serif;
-  font-size: min(calc(48 * var(--u)), 5.5vh);
+  font-size: min(calc(23 * var(--u)), 3.2vh);
   font-weight: 800;
   letter-spacing: -0.02em;
   word-spacing: 0.08em;
   line-height: 1.12;
+  overflow-wrap: break-word;
 }
 .contact-intro p {
-  max-width: calc(340 * var(--u));
-  margin: auto 0 0;
+  margin: 0;
   font-size: var(--nav-font-size);
   line-height: 1.6;
 }
@@ -1389,18 +1393,24 @@ video {
     flex-direction: column;
     gap: 0;
   }
+  .contact-intro {
+    display: contents;
+  }
   .contact-intro h1 {
-    margin-bottom: 8px;
-    font-size: clamp(11px, calc(5.4vh - 14px), 23px);
+    order: 2;
+    width: min(100%, 207px);
+    margin: 8px 0 0;
+    font-size: clamp(9px, calc(2.6vh - 3px), 17px);
     line-height: 1.12;
   }
   .contact-intro p {
-    max-width: none;
+    order: 0;
     font-size: 9px;
   }
   .contact-form {
+    order: 1;
     flex: 1 1 0;
-    margin-top: 14px;
+    margin-top: 10px;
   }
   .contact-fields {
     gap: 10px 16px;
@@ -1456,7 +1466,7 @@ video {
     gap: 1px;
   }
   .contact-intro h1 {
-    font-size: 10px;
+    font-size: 9px;
   }
   .contact-fields {
     gap: 4px 12px;
@@ -1495,7 +1505,13 @@ video {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
     gap: 24px;
   }
+  .contact-intro {
+    display: flex;
+    width: min(100%, 208px);
+  }
   .contact-intro h1 {
+    width: min(100%, 207px);
+    margin: auto 0 0;
     font-size: clamp(10px, 3.3vh, 18px);
   }
   .contact-form {
@@ -1515,12 +1531,12 @@ video {
   }
   @media (max-width: 899px) and (orientation: portrait) {
     .contact-intro h1 {
-      font-size: clamp(11px, calc(5.4dvh - 14px), 23px);
+      font-size: clamp(9px, calc(2.6dvh - 3px), 17px);
     }
   }
   @media (max-width: 899px) and (max-height: 540px) and (orientation: portrait) {
     .contact-intro h1 {
-      font-size: 10px;
+      font-size: 9px;
     }
   }
 }
