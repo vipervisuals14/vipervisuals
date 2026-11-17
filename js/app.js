@@ -312,6 +312,31 @@ const DAKOTA_PHOTOS = [
   'media/photography/dakota/03.jpg',
   'media/photography/dakota/04.jpg',
 ];
+/* Run It Up music video behind-the-scenes photographs, in original page order. */
+const RUN_IT_UP_PHOTOS = [
+  'f250c653-56d3-4334-bcc7-ebc39fc17e21_rw_1920.jpg?h=95c7ded764a20f9699729bfafe7111ad',
+  '49678e72-180d-4df0-aae2-abf640473e85_rw_1920.jpg?h=d9debeeafef44bd853649a56cca2c797',
+  '9a750632-ab12-49bf-8c5e-c85cdb8f7e2e_rw_3840.jpg?h=6ba2d44ba9560348e1b9a696d895bd85',
+  '761dd51f-a67e-4fcc-83eb-473301ba5af6_rw_1920.jpg?h=6555672e4d52bf85b801296c17484a77',
+  '4918111f-a225-43c2-8dd2-c96ca85e9b5d_rw_1920.jpg?h=64064ffb3a871fb8cc53b946388a042f',
+  'd2d311c5-f65a-46c6-b792-3df45fa2062f_rw_1200.jpg?h=a5c6601f8bb67d46817aa3c0d843d3b1',
+  'c921f1ba-04d2-4db8-93de-6514dc755451_rw_1920.jpg?h=7f9b2a57f91728564d6aee974ae28df8',
+  'bcd84f0d-d75f-4c66-8e49-5fd0b08c9a63_rw_3840.jpg?h=063120c8043acf657a57417265ecdc26',
+  '30d55d98-52ba-43d3-af66-0b8baa349621_rw_1920.jpg?h=3a6954647c732a16707b374a385a0cdf',
+  '91f281bc-b57d-4785-9051-e9bed689064f_rw_1920.png?h=4dcc0daec198853dab8622401fa440da',
+  'e808ebe2-cf26-4d2c-b894-8ffa5cc6443a_rw_1920.jpg?h=357eb2966a37c0442ed9fe221d588957',
+  'f4651b93-3aab-4d86-a777-e155a5b98b95_rw_1920.jpg?h=41d6237dc177b3f9b6c327f4bc02fdd9',
+  '494de2e7-8e67-4c27-a04c-69f1c20cb250_rw_3840.jpg?h=886b40f0ff22e1c351896bc986ebca21',
+  '96ed1fbd-b09f-4a1f-b835-450af8b87f9e_rw_1920.jpg?h=f30e5682d4e780997b5d1dc5da4affbe',
+  '0c767ed7-f466-4985-859f-6677e05aa9b1_rw_1200.jpg?h=191d1959a40dea2d16c6a79e9d81a917',
+  'a462265d-7509-4ca5-b770-533044aec8dd_rw_1920.jpg?h=63176b83c6651b9b49e98da56062d6d7',
+  '8c440047-8957-4af6-973b-91dbcf08e306_rw_1200.jpg?h=ca22eaa95a509aeae9ada358c3cd7e82',
+  '813a6184-9df3-45c0-9432-1900eee493e2_rw_1920.jpg?h=b5dc673147ebb6c8737807d1ba776277',
+  'd3fd1a41-33c0-43b0-866b-4b6581a95257_rw_1200.jpg?h=cca2343b34a12d71888999f428558ec1',
+  '48a8b610-0bda-496d-910b-ff0c86a1dcab_rw_1920.jpg?h=a595ecd47f5326fa2123f24b82a389cd',
+  'c0022439-1843-4e1b-a12c-fbd3bb90bc87_rw_1920.jpg?h=1e5786aa3a415d765b44b6a7de56154b',
+  'c00710fe-9341-4a49-aaf9-4f9c42bed954_rw_1200.jpg?h=5a83b712fd08bb8c873f7c1f7566f97c',
+];
 /* Marcolino Aniel sports photographs from the original project, in page order. */
 const MARCOLINO_PHOTOS = [
   '0943fa60-09f0-4b12-88af-9af03e4eecd3_rw_1200.jpg?h=7534e6b797f517aecc5c8760c7e8bb91',
@@ -367,6 +392,7 @@ const PHOTO_GALLERIES = {
     photos: [1, 2, 3, 4, 5, 6, 7].map(number => `media/photography/earl-sweatshirt/${String(number).padStart(2, '0')}.jpg`),
   },
   'the-weeknd': { artist: 'THE WEEKND', title: 'AFTER HOURS TILL DAWN TOUR', photos: WEEKND_PHOTOS },
+  'run-it-up': { artist: 'RUN IT UP', title: "MUSIC VIDEO BTS FOR FRENCH MONTANA FENIX FLEXIN' & MAX B", photos: RUN_IT_UP_PHOTOS },
   sza: { artist: 'SZA', title: 'SOS TOUR', photos: SZA_PHOTOS },
   'wax-motif': { artist: 'WAX MOTIF / LOUD LUXURY', title: 'VELD MUSIC FESTIVAL', photos: WAX_MOTIF_PHOTOS },
   'third-party': { artist: 'THIRD PARTY', title: 'VELD MUSIC FESTIVAL', photos: THIRD_PARTY_PHOTOS },
@@ -432,6 +458,12 @@ const PHOTO_PROJECTS = {
       artist: 'THE WEEKND',
       title: 'AFTER HOURS TILL DAWN TOUR',
       poster: 'media/photography/the-weeknd-placeholder.jpg',
+    },
+    {
+      slug: 'run-it-up',
+      artist: 'RUN IT UP',
+      title: "MUSIC VIDEO BTS FOR FRENCH MONTANA FENIX FLEXIN' & MAX B",
+      poster: CDN + RUN_IT_UP_PHOTOS[0],
     },
     {
       slug: 'sza',
