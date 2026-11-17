@@ -631,13 +631,40 @@ function renderPreviewMedia(preview, poster, alt, className) {
 /* ------------------------------------------------------------------ */
 /* Global footer — social links, appears on every page                */
 /* ------------------------------------------------------------------ */
+// Use explicit parents so Back works even when a page is opened directly.
+function getBackTarget() {
+  const path = (location.hash || '#/').split('?')[0];
+  if (path.startsWith('#/photo/')) return { href: '#/photo', label: 'Photography' };
+  if (path.startsWith('#/video/')) return { href: '#/video', label: 'Video production' };
+  if (path.startsWith('#/design/')) return { href: '#/design', label: 'Design' };
+
+  const projectMatch = path.match(/^#\/project\/([^/]+)$/);
+  if (projectMatch) {
+    const slug = decodeURIComponent(projectMatch[1]);
+    const video = MUSIC_VIDEOS.find(item => item.slug === slug);
+    if (video) {
+      const category = VIDEO_CATEGORIES.find(item => item.slug === video.category);
+      return { href: `#/video/${video.category}`, label: category ? category.label : 'Video production' };
+    }
+    const photoCategory = Object.entries(PHOTO_PROJECTS).find(([, items]) => items.some(item => item.slug === slug));
+    if (photoCategory) {
+      const category = PHOTOGRAPHY_CATEGORIES.find(item => item.slug === photoCategory[0]);
+      return { href: `#/photo/${photoCategory[0]}`, label: category ? category.label : 'Photography' };
+    }
+    if (SOCIAL_CONTENT.some(item => item.slug === slug)) return { href: '#/social', label: 'Social content' };
+    if (RECAPS.some(item => item.slug === slug)) return { href: '#/recaps', label: 'Recaps' };
+  }
+  return { href: '#/', label: 'Home' };
+}
+
 function renderFooter() {
+  const back = getBackTarget();
   const igIcon = `<svg class="footer-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16.5" cy="7.5" r="1.5" fill="currentColor"/></svg>`;
   const inIcon = `<svg class="footer-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="20" x="2" y="2" rx="4" ry="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 8v6h-5v-6h5z" fill="currentColor"/><path d="M10 20v-6h5v6h-5z" fill="none" stroke="currentColor" stroke-width="2"/></svg>`;
   const mailIcon = `<svg class="footer-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" fill="none" stroke="currentColor" stroke-width="2"/><polyline points="22,6 12,13 2,6" fill="none" stroke="currentColor" stroke-width="2"/></svg>`;
   return `
     <footer class="site-footer">
-      <div class="footer-divider"></div>
+      <a class="footer-back" href="${escapeHtml(back.href)}" aria-label="Back to ${escapeHtml(back.label)}"><span aria-hidden="true">←</span> BACK</a>
       <div class="footer-social">
         <a href="https://www.instagram.com/thevipervisuals" target="_blank" rel="noopener" class="footer-link" aria-label="Instagram">${igIcon}</a>
         <a href="https://www.linkedin.com/in/thevipervisuals" target="_blank" rel="noopener" class="footer-link" aria-label="LinkedIn">${inIcon}</a>
@@ -761,7 +788,6 @@ function renderDesignSubcategory(slug) {
       <div class="design-empty">
         <h1>${escapeHtml(category.label)}</h1>
         <p>PROJECTS NOT YET ADDED</p>
-        <a href="#/design">BACK TO DESIGN</a>
       </div>
       ${renderFooter()}
     </section>

@@ -323,7 +323,7 @@ video {
 }
 
 /* ---------- Category pages ---------- */
-/* Nothing between nav and grid: no title, no subtitle, no back link */
+/* Nothing between nav and grid: no title or subtitle. */
 /* Grid starts at y = 66 */
 .video-category,
 .photo-category,
@@ -1282,6 +1282,9 @@ video {
 /* Global footer — all pages */
 .site-footer {
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   bottom: 0;
   left: 0;
   right: 0;
@@ -1294,9 +1297,23 @@ video {
   font-family: var(--font-azeret);
   font-weight: 400;
 }
+.footer-back {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(7 * var(--u));
+  color: var(--text);
+  font-size: calc(9 * var(--u));
+  line-height: calc(14 * var(--u));
+  white-space: nowrap;
+}
+.footer-back:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 3px;
+}
 .footer-social {
   display: flex;
   justify-content: flex-end;
+  margin-left: auto;
   gap: calc(24 * var(--u));
 }
 .footer-link {
