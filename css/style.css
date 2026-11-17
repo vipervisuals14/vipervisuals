@@ -910,7 +910,7 @@ video {
   object-position: center;
   display: block;
 }
-/* Keep the supplied portrait in its natural 4:5 proportions. */
+/* Keep the About media in the existing portrait frame. */
 .about-page .about-left {
   top: calc(66 * var(--u));
   width: min(calc(452.8 * var(--u)), max(0px, calc(80vh - 100.8 * var(--u))));

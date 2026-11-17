@@ -893,7 +893,7 @@ function renderAbout() {
   const frag = tpl(`
     <section class="about-page">
       <div class="about-left">
-        <img src="media/about/about-photo.jpg" alt="Photographer holding a camera">
+        ${renderPreviewMedia('media/about/about-me.mp4', 'media/about/about-me-poster.jpg', 'Photographer holding a camera', 'about-video')}
       </div>
       <div class="about-right">
         <div class="about-text">
