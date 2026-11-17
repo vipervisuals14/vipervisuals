@@ -422,7 +422,7 @@ const PHOTO_PROJECTS = {
       slug: 'amaal-red-light-rollout',
       artist: 'AMAAL',
       title: 'RED LIGHT ROLLOUT',
-      poster: 'media/photography/amaal-red-light-spotify.png',
+      poster: CDN + AMAAL_ROLLOUT_IMAGES[1],
     },
     {
       slug: 'micky-press',
