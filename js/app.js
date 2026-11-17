@@ -119,7 +119,8 @@ const MUSIC_VIDEOS = [
     title: 'RBC STAGE',
     vimeoId: '1247510528',
     startAt: 0,
-    poster: 'https://d2kbe88412276p.cloudfront.net/creative-work-portfolio-project-files/360227/064bd41c45e94d3a9455159c0bd7b49d_feed_v3_t2000_1290w.webp',
+    poster: 'media/video-previews/frank-walker-poster.jpg',
+    preview: 'media/video-previews/frank-walker.mp4',
   },
   {
     slug: 'maribou-state',
@@ -147,13 +148,6 @@ const MUSIC_VIDEOS = [
     vimeoId: '1117974303',
     poster: 'media/video-previews/sistek-poster.jpg',
     preview: 'media/video-previews/sistek.mp4',
-  },
-  {
-    slug: 'the-kid-laroi',
-    category: 'video-live',
-    artist: 'THE KID LAROI',
-    title: 'MAGNETIC FESTIVAL',
-    poster: 'media/photography/the-kid-laroi/01.jpg',
   },
 ];
 
@@ -347,8 +341,12 @@ const PHOTO_GALLERIES = {
   'the-kid-laroi': {
     artist: 'THE KID LAROI',
     title: 'MAGNETIC FESTIVAL',
-    section: 'video',
     photos: [1, 2, 3, 4, 5, 6].map(number => `media/photography/the-kid-laroi/${String(number).padStart(2, '0')}.jpg`),
+  },
+  'earl-sweatshirt': {
+    artist: 'EARL SWEATSHIRT',
+    title: 'LIVE AT HISTORY',
+    photos: [1, 2, 3, 4, 5, 6, 7].map(number => `media/photography/earl-sweatshirt/${String(number).padStart(2, '0')}.jpg`),
   },
   'the-weeknd': { artist: 'THE WEEKND', title: 'AFTER HOURS TILL DAWN TOUR', photos: WEEKND_PHOTOS },
   sza: { artist: 'SZA', title: 'SOS TOUR', photos: SZA_PHOTOS },
@@ -433,6 +431,18 @@ const PHOTO_PROJECTS = {
       artist: 'THIRD PARTY',
       title: 'VELD MUSIC FESTIVAL',
       poster: THIRD_PARTY_PHOTOS[0],
+    },
+    {
+      slug: 'the-kid-laroi',
+      artist: 'THE KID LAROI',
+      title: 'MAGNETIC FESTIVAL',
+      poster: 'media/photography/the-kid-laroi/01.jpg',
+    },
+    {
+      slug: 'earl-sweatshirt',
+      artist: 'EARL SWEATSHIRT',
+      title: 'LIVE AT HISTORY',
+      poster: 'media/photography/earl-sweatshirt/01.jpg',
     },
   ],
   'photo-editorial': [
@@ -843,7 +853,7 @@ function renderCategory(items, sectionKey) {
 
 function renderPhotoGallery(gallery) {
   document.body.className = '';
-  setActiveNav(gallery.section === 'video' ? '#/video' : '#/photo');
+  setActiveNav('#/photo');
   const images = gallery.photos.map((path, index) => `
     <div class="category-tile photo-gallery-tile">
       <img class="category-tile-media" src="${escapeHtml(path.startsWith('media/') || path.startsWith('https://') ? path : CDN + path)}"
