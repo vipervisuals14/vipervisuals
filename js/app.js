@@ -117,7 +117,8 @@ const MUSIC_VIDEOS = [
     category: 'video-live',
     artist: 'FRANK WALKER',
     title: 'RBC STAGE',
-    externalVideoUrl: 'https://itsnova.com/vipervisuals/projects/ochHmdqH304m',
+    vimeoId: '1247510528',
+    startAt: 0,
     poster: 'https://d2kbe88412276p.cloudfront.net/creative-work-portfolio-project-files/360227/064bd41c45e94d3a9455159c0bd7b49d_feed_v3_t2000_1290w.webp',
   },
   {
@@ -838,7 +839,7 @@ function renderProject(slug) {
   const artist = project ? project.artist : '';
   const title = ((detail.title || (project && project.title) || '') + '').toUpperCase();
   const poster = project ? project.poster : '';
-  const isVideo = !!(videoProject && (videoProject.youtubeId || videoProject.vimeoId || videoProject.externalVideoUrl));
+  const isVideo = !!(videoProject && (videoProject.youtubeId || videoProject.vimeoId));
   const provider = videoProject && videoProject.youtubeId ? 'youtube' : 'vimeo';
   const videoId = videoProject ? videoProject.youtubeId || videoProject.vimeoId || '' : '';
 
@@ -846,18 +847,10 @@ function renderProject(slug) {
 
   const loopMedia = renderPreviewMedia(project && project.preview, poster, title || artist, 'project-loop-media');
 
-  const playerInner = videoProject && videoProject.externalVideoUrl
+  const playerInner = isVideo
     ? `
       <img class="project-player-poster" src="${escapeHtml(poster)}" alt="${escapeHtml(title || artist)}">
-      <a class="project-play-btn" href="${escapeHtml(videoProject.externalVideoUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Watch Frank Walker on Nova (opens in a new tab)">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-      </a>
-      <div class="project-player-bar"><span>WATCH ON NOVA ↗</span></div>
-    `
-    : isVideo
-    ? `
-      <img class="project-player-poster" src="${escapeHtml(poster)}" alt="${escapeHtml(title || artist)}">
-      <button class="project-play-btn" data-provider="${provider}" data-video-id="${escapeHtml(videoId)}" aria-label="Play video">
+      <button class="project-play-btn" data-provider="${provider}" data-video-id="${escapeHtml(videoId)}" data-start-at="${videoProject.startAt ?? 3}" aria-label="Play video">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
       </button>
       <div class="project-player-bar">
@@ -894,16 +887,17 @@ function renderProject(slug) {
   `);
   mount(frag);
 
-  const playBtn = document.querySelector('button.project-play-btn');
+  const playBtn = document.querySelector('.project-play-btn');
   if (playBtn) {
     playBtn.addEventListener('click', () => {
       const provider = playBtn.dataset.provider;
       const videoId = playBtn.dataset.videoId;
+      const startAt = Number(playBtn.dataset.startAt);
       let embedUrl = '';
       if (provider === 'youtube') {
-        embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&start=3`;
+        embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&start=${startAt}`;
       } else if (provider === 'vimeo') {
-        embedUrl = `https://player.vimeo.com/video/${videoId}?autoplay=1#t=3s`;
+        embedUrl = `https://player.vimeo.com/video/${videoId}?autoplay=1#t=${startAt}s`;
       }
       const player = document.getElementById('projectPlayer');
       player.innerHTML = `
