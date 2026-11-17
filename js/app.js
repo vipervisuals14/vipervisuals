@@ -255,6 +255,38 @@ const WEEKND_PHOTOS = [
   'd3288cf7-4cb6-46aa-bf20-60515b3b686d_rw_3840.jpg?h=c8c96a845e0b6629432a49f8e0322cbb',
 ];
 
+/* Original photographs from vipervisuals.ca/pics and /social-content. */
+const SZA_PHOTOS = [
+  '664d5b07-9eb2-4120-a6d8-e81bafc62324_rw_1200.jpg?h=4f2f6ba5f4c61426f7cd392cc71bee5d',
+  'b1b73388-b884-4f49-8a62-c1604be435cc_rw_1200.jpg?h=d894294b92706b85eb5fa2a18aa8e063',
+  'aa554319-6494-4a59-88b2-e57c300705e0_rw_1200.jpg?h=5fc4c7c2a0029b771812ab73739b9d27',
+  'ad1d0419-f849-4924-a2cc-57730a1e2f40_rw_1200.jpg?h=550027faab972134763082fd03aed5d5',
+  '98525afd-e4db-45c6-a368-09492972c4d8_rw_1200.jpg?h=3504c10496c246a9e40eae1df8c6360a',
+  'a5713aee-a26c-4d92-99d6-954abd8f4102_rw_1200.jpg?h=10a032cd03733e047398272d8162d9cc',
+  '0f5e27ca-1459-4f19-995e-f03139f84859_rw_1200.jpg?h=4ba3d7573ffe809251022fe01ddcb6cb',
+  '53ddc3ef-d7c0-41b0-ab1c-0b25e81ea749_rw_1200.jpg?h=9871634f527e8f0491aa8f53efa0d448',
+  '5e06169b-6c79-48d0-b59a-b3805b5c23b7_rw_1200.jpg?h=9af5eb43fe9885e00325c07bcedb186c',
+];
+const WAX_MOTIF_PHOTOS = [
+  'a909d33c-4c05-4f5b-a2e6-bc4cdc0d6ed2_rw_1200.jpg?h=35720df75f84b2ae26162785ca111aef',
+  '1e798ad2-ecb9-4641-8b21-e0159619b2e5_rw_1200.jpg?h=38c5f4bd367c301b50632449daeb996f',
+  '552012c3-11ae-4e56-84a9-5a365d1b52f7_rw_1200.jpg?h=fc9f315c5dd3527fedce6d877df9a3a7',
+  '17a4dbf8-d1ba-4792-b867-95ab345704de_rw_1200.jpg?h=d3c4754048ed57ea69ad528745472014',
+  'aeda9ea6-318f-4f2f-a0f6-e57d46b93b95_rw_1200.jpg?h=b38c8707f704374b4d0106ecc68f401b',
+  '34f5740f-bd89-4a6a-a9cd-e777d0ba3a8d_rw_1200.jpg?h=ebdd5e4b69275f9cb4bc96a844b59904',
+  '71f9c56b-087b-4382-8e46-479c895c5570_rw_1200.jpg?h=a11cbe39c7055159ba8b0c5e156bc594',
+  '2cf90ccc-2797-4dda-82bf-008d9adb418a_rw_1200.jpg?h=5515497b9d8ce3996390f4a520ed6552',
+  '8455c49b-56ee-48cf-81e8-147720d3b8e9_rw_1200.jpg?h=875be999bc4dd572bf306c93c04c89a0',
+  'c94cc966-1d70-4c3a-bf35-b3a499e87ef3_rw_1200.jpg?h=85de067da204826684612b445511f37e',
+  '790b9170-c7d3-42dc-a8e3-8e9019621f13_rw_1200.jpg?h=61a1b413f576eaccfa3dd50a92bc88d4',
+  '6cd50610-cfe6-4bad-ad65-bbad86243ab7_rw_1200.jpg?h=0bc99c9febd1b6491f9e186fa72c7a94',
+];
+const PHOTO_GALLERIES = {
+  'the-weeknd': { artist: 'THE WEEKND', title: 'AFTER HOURS TILL DAWN TOUR', photos: WEEKND_PHOTOS },
+  sza: { artist: 'SZA', title: 'SOS TOUR', photos: SZA_PHOTOS },
+  'wax-motif': { artist: 'WAX MOTIF / LOUD LUXURY', title: '', photos: WAX_MOTIF_PHOTOS },
+};
+
 /* PHOTOGRAPHY CATEGORIES (3 category tiles on #/photo) */
 const PHOTOGRAPHY_CATEGORIES = [
   {
@@ -734,33 +766,33 @@ function renderCategory(items, sectionKey) {
   mount(frag);
 }
 
-function renderWeekndGallery() {
+function renderPhotoGallery(gallery) {
   document.body.className = '';
   setActiveNav('#/photo');
-  const images = WEEKND_PHOTOS.map((path, index) => `
+  const images = gallery.photos.map((path, index) => `
     <div class="category-tile photo-gallery-tile">
       <img class="category-tile-media" src="${escapeHtml(CDN + path)}"
-        alt="The Weeknd, After Hours Till Dawn Tour — photograph ${index + 1}"
+        alt="${escapeHtml(gallery.artist)}${gallery.title ? `, ${escapeHtml(gallery.title)}` : ''} — photograph ${index + 1}"
         ${index < 3 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
       ${index === 0 ? `
         <div class="tile-rest-fade" aria-hidden="true"></div>
         <div class="tile-rest-lockup">
-          <span class="tile-rest-title">THE WEEKND</span>
-          <span class="tile-rest-cats">AFTER HOURS TILL DAWN TOUR</span>
+          <span class="tile-rest-title">${escapeHtml(gallery.artist)}</span>
+          ${gallery.title ? `<span class="tile-rest-cats">${escapeHtml(gallery.title)}</span>` : ''}
         </div>` : ''}
     </div>
   `).join('');
   mount(tpl(`
     <section class="photo-category">
-      <div class="category-grid" role="region" aria-label="The Weeknd photo gallery" tabindex="0">${images}</div>
+      <div class="category-grid" role="region" aria-label="${escapeHtml(gallery.artist)} photo gallery" tabindex="0">${images}</div>
       ${renderFooter()}
     </section>
   `));
 }
 
 function renderProject(slug) {
-  if (slug === 'the-weeknd') {
-    renderWeekndGallery();
+  if (Object.hasOwn(PHOTO_GALLERIES, slug)) {
+    renderPhotoGallery(PHOTO_GALLERIES[slug]);
     return;
   }
   const detail = PROJECT_DETAILS[slug] || { title: '', description: [] };
