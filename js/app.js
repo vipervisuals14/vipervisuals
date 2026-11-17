@@ -301,7 +301,13 @@ const THIRD_PARTY_PHOTOS = [
   '151520b7448d4201b89efa20b06529ae',
   '7a2be3e8f623435298d2554e5422fff6',
 ].map(id => `https://d2kbe88412276p.cloudfront.net/creative-work-portfolio-project-files/360215/${id}_feed_v3_645w.webp`);
-/* Press photographs supplied for the first Creative project. */
+/* Amaal Nuux single release press photographs. */
+const AMAAL_SINGLE_RELEASE_PHOTOS = [
+  '44ad4c8b-ad5c-4fe5-b5a7-69a118150242_rw_1920.jpg?h=ed93f885f0ea1225f4f84a9a00635c13',
+  'ec4200cd-c5fe-470b-90f7-a98f22ccff6b_rw_1920.jpg?h=29571b2f52129c158cf808bd5e829bf8',
+  '88ffd44c-59e9-4d77-820a-69c8188591af_rw_1920.jpg?h=da600528a823bccb3d86672846db671d',
+];
+/* Press photographs for Micky Weeks. */
 const PRESS_PHOTOS = [
   '421cd922-fc35-4a7c-9998-76e42ad70cd2_rw_1200.jpg?h=9d1e81c2025e9605345fe0979138b630',
   '5c7b0cf9-c71c-403e-9533-7d3a767c971a_rw_1200.jpg?h=3bf4151fbeb1e80ab009f7e1557056ca',
@@ -323,6 +329,7 @@ const PHOTO_GALLERIES = {
   sza: { artist: 'SZA', title: 'SOS TOUR', photos: SZA_PHOTOS },
   'wax-motif': { artist: 'WAX MOTIF / LOUD LUXURY', title: 'VELD MUSIC FESTIVAL', photos: WAX_MOTIF_PHOTOS },
   'third-party': { artist: 'THIRD PARTY', title: 'VELD MUSIC FESTIVAL', photos: THIRD_PARTY_PHOTOS },
+  'amaal-single-release-press': { artist: 'AMAAL NUUX', title: 'SINGLE RELEASE PRESS', photos: AMAAL_SINGLE_RELEASE_PHOTOS },
   'micky-press': { artist: 'MICKY WEEKS', title: 'PRESS', photos: PRESS_PHOTOS },
   'amaal-red-light-rollout': { artist: 'AMAAL', title: 'RED LIGHT ROLLOUT', photos: AMAAL_ROLLOUT_IMAGES },
 };
@@ -401,6 +408,12 @@ const PHOTO_PROJECTS = {
     },
   ],
   'photo-editorial': [
+    {
+      slug: 'amaal-single-release-press',
+      artist: 'AMAAL NUUX',
+      title: 'SINGLE RELEASE PRESS',
+      poster: CDN + AMAAL_SINGLE_RELEASE_PHOTOS[0],
+    },
     {
       slug: 'amaal-red-light-rollout',
       artist: 'AMAAL',
