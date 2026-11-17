@@ -192,7 +192,7 @@ const PROJECT_DETAILS = {
     description: ['Concert photography for SZA.', 'Shot by Viper Visuals.'],
   },
   'wax-motif': {
-    title: '',
+    title: 'VELD MUSIC FESTIVAL',
     description: ['Social content photography for Wax Motif / Loud Luxury.', 'Shot by Viper Visuals.'],
   },
   'micky-press': {
@@ -302,7 +302,7 @@ const AMAAL_ROLLOUT_IMAGES = [
 const PHOTO_GALLERIES = {
   'the-weeknd': { artist: 'THE WEEKND', title: 'AFTER HOURS TILL DAWN TOUR', photos: WEEKND_PHOTOS },
   sza: { artist: 'SZA', title: 'SOS TOUR', photos: SZA_PHOTOS },
-  'wax-motif': { artist: 'WAX MOTIF / LOUD LUXURY', title: '', photos: WAX_MOTIF_PHOTOS },
+  'wax-motif': { artist: 'WAX MOTIF / LOUD LUXURY', title: 'VELD MUSIC FESTIVAL', photos: WAX_MOTIF_PHOTOS },
   'micky-press': { artist: 'MICKY WEEKS', title: 'PRESS', photos: PRESS_PHOTOS },
   'amaal-red-light-rollout': { artist: 'AMAAL', title: 'RED LIGHT ROLLOUT', photos: AMAAL_ROLLOUT_IMAGES },
 };
@@ -371,8 +371,8 @@ const PHOTO_PROJECTS = {
     {
       slug: 'wax-motif',
       artist: 'WAX MOTIF / LOUD LUXURY',
-      title: '',
-      poster: `${CDN}a909d33c-4c05-4f5b-a2e6-bc4cdc0d6ed2_rw_1200.jpg?h=35720df75f84b2ae26162785ca111aef`,
+      title: 'VELD MUSIC FESTIVAL',
+      poster: `${CDN}6cd50610-cfe6-4bad-ad65-bbad86243ab7_rw_1200.jpg?h=0bc99c9febd1b6491f9e186fa72c7a94`,
     },
   ],
   'photo-editorial': [
