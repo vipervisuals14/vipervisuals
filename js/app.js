@@ -465,6 +465,7 @@ const DESIGN_PROJECTS = {
       '21-chrome-chair-full-circle-black-back.png',
       '22-boutique-rail-chess-king-black.png',
       '24-chiaroscuro-macro-iwfts-cobalt.png',
+      '30-hoodie-front-back-iwfts-white.png',
     ].map(name => `media/design/kwazii-merch/${name}`),
   },
 };
