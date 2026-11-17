@@ -290,11 +290,15 @@ const THIRD_PARTY_PHOTOS = [
   '151520b7448d4201b89efa20b06529ae',
   '7a2be3e8f623435298d2554e5422fff6',
 ].map(id => `https://d2kbe88412276p.cloudfront.net/creative-work-portfolio-project-files/360215/${id}_feed_v3_645w.webp`);
-/* Temporary crops from the supplied Cody Lawless screenshot. */
+/* First three are temporary screenshot crops; the rest are supplied photos. */
 const CODY_LAWLESS_PHOTOS = [
   'media/photography/cody-lawless/01.jpg',
   'media/photography/cody-lawless/02.jpg',
   'media/photography/cody-lawless/03.jpg',
+  'media/photography/cody-lawless/04.jpg',
+  'media/photography/cody-lawless/05.jpg',
+  'media/photography/cody-lawless/06.jpg',
+  'media/photography/cody-lawless/07.jpg',
 ];
 /* Dakota photographs previously shown in Commercial. */
 const DAKOTA_PHOTOS = [
