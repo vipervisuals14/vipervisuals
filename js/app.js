@@ -221,6 +221,40 @@ const PROJECT_DETAILS = {
   },
 };
 
+/* Original photographs from the Weeknd project on vipervisuals.ca, in page order. */
+const WEEKND_PHOTOS = [
+  'cec61291-bb6f-4fca-8492-04c0ef2c6853_rw_3840.jpg?h=9a1fa40a5f62ddc62d348042262e3122',
+  'ec69fe31-b665-4bb7-86d9-26c54247c600_rw_3840.jpg?h=939f2cf4f9b08114c9bac4ef46e47342',
+  'a0883ffc-6d45-422e-82bd-64776a8977d1_rw_1200.jpg?h=5a7bf62aed471dcadb75ed787410c83d',
+  '1f3ebfc7-5fe1-47bc-92f8-a961a82abdc2_rw_3840.jpg?h=7d49650eaef31fbbb82f111ac772d953',
+  'f7a2467b-9563-4ef1-8d19-c46c969d37f3_rw_3840.jpg?h=67f0111f58c20c86d783742b9120f721',
+  '915ffc7b-3aed-4b01-a468-8a7ea104ecdb_rw_3840.jpg?h=652adc8cf8529f0443f5d4576d4d7396',
+  '4bac671f-14e2-4dc4-83b5-a5c8041fc167_rw_1920.jpg?h=82a4be2d45aa0776b60d416b8f843aa9',
+  'c2238d88-fe71-417e-ab34-a2d9bd710ebd_rw_3840.jpg?h=3af095f715c338768754dcd70cec626f',
+  '81b2858d-e11a-4229-bfde-85d4f5ee41d9_rw_1920.jpg?h=ac144f2d594ffc42c1a172712af1912a',
+  '58f4dae2-dd20-439f-a239-dfb143bb1d64_rw_3840.jpg?h=eb4324b44c900c147851ca55ee5df978',
+  '9d76fa9b-9290-4a82-995b-2cd5889e1a18_rw_3840.jpg?h=60b1dc0311bb35e5ccb55d578e55e4a5',
+  '45e9c9db-bd73-4ab6-aa44-dae8dda6db39_rw_3840.jpg?h=dc4ec963f70a99bb22a454b8839d70f6',
+  'b351049e-8dcd-4dd1-8f7b-f029d3dcbe21_rw_1920.jpg?h=ed13f71118f93122976ab99085076a6a',
+  '2aaaa8b2-10b3-4d97-a6ad-1c13fc013c02_rw_3840.jpg?h=a653658d08af3e47a6bbd97599617c3e',
+  '87a84fdc-e0f6-4ead-90e6-30c7ba16114d_rw_3840.jpg?h=429719bd1527d816381349bcf277e36b',
+  'abb33da6-bea1-4d3f-97b6-71fead7e6596_rw_3840.jpg?h=5ecf4847253bc844fc9c4dad22c786f0',
+  'a6dae923-085b-44d5-a13e-399d9e56019f_rw_3840.jpg?h=23c975cebf5dca5b018c99c303bc3479',
+  'ad0294eb-81a8-489d-be71-ea60823d354d_rw_3840.jpg?h=b753ee2185d8aa3b94d091e9e1768c64',
+  'c2d13993-1f3d-4413-a519-5b974255b7af_rw_3840.jpg?h=acdcd41894db72131fa4f79dabe9c170',
+  '394a517a-2e66-4e0e-a12b-6412990ec52a_rw_3840.jpg?h=cca3768c99e030797bf1e2f8f4f4ccfd',
+  '7a3ad9e2-f19e-4c20-8585-1d026cce04c6_rw_3840.jpg?h=a473a5c51de6b46535ca9b19a5974594',
+  '9f13c49d-1a0e-48ee-a067-44b2b640afa6_rw_3840.jpg?h=16269e048c636f381196b54e70bbd7f7',
+  '1c809347-4d32-45d0-8bb3-155d5417d8aa_rw_3840.jpg?h=8d3da4cc3a806df9c689f5e54f8ca7fb',
+  'bebb48fc-df74-49f6-9327-cb6be2536da2_rw_3840.jpg?h=84f3e92bd31eb21f51d452187187dc93',
+  '3019eafb-18fe-4d5a-b950-c804119c5abb_rw_3840.jpg?h=9431bbecc1c7ea8195da902496184c03',
+  '1c10d27e-895f-4874-ad45-8af96312c5cb_rw_3840.jpg?h=618e077c078ddac379aac9ade2ceaa17',
+  '676c8fcb-fc39-4ffe-a0bf-7976ffb27a20_rw_3840.jpg?h=4b18356ad5f97d740a815ffc726fc173',
+  'cce06a3a-adda-402b-a614-62c0855b8e14_rw_3840.jpg?h=48507717ec3e5f919290a17a5bfb12fb',
+  '11dbfc9d-e692-41ff-a688-a56592a33368_rw_3840.jpg?h=e2f0e8ccd097c9b20db6d3b95bf2a6f9',
+  'd3288cf7-4cb6-46aa-bf20-60515b3b686d_rw_3840.jpg?h=c8c96a845e0b6629432a49f8e0322cbb',
+];
+
 /* PHOTOGRAPHY CATEGORIES (3 category tiles on #/photo) */
 const PHOTOGRAPHY_CATEGORIES = [
   {
@@ -700,7 +734,35 @@ function renderCategory(items, sectionKey) {
   mount(frag);
 }
 
+function renderWeekndGallery() {
+  document.body.className = '';
+  setActiveNav('#/photo');
+  const images = WEEKND_PHOTOS.map((path, index) => `
+    <div class="category-tile photo-gallery-tile">
+      <img class="category-tile-media" src="${escapeHtml(CDN + path)}"
+        alt="The Weeknd, After Hours Till Dawn Tour — photograph ${index + 1}"
+        ${index < 3 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
+      ${index === 0 ? `
+        <div class="tile-rest-fade" aria-hidden="true"></div>
+        <div class="tile-rest-lockup">
+          <span class="tile-rest-title">THE WEEKND</span>
+          <span class="tile-rest-cats">AFTER HOURS TILL DAWN TOUR</span>
+        </div>` : ''}
+    </div>
+  `).join('');
+  mount(tpl(`
+    <section class="photo-category">
+      <div class="category-grid" role="region" aria-label="The Weeknd photo gallery" tabindex="0">${images}</div>
+      ${renderFooter()}
+    </section>
+  `));
+}
+
 function renderProject(slug) {
+  if (slug === 'the-weeknd') {
+    renderWeekndGallery();
+    return;
+  }
   const detail = PROJECT_DETAILS[slug] || { title: '', description: [] };
   const videoProject = MUSIC_VIDEOS.find((p) => p.slug === slug);
   const photoProject = Object.values(PHOTO_PROJECTS).flat().find((p) => p.slug === slug);
