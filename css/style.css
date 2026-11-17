@@ -606,6 +606,9 @@ video {
   color: rgba(255,255,255,0.92);
   text-shadow: 0 1px 6px rgba(0,0,0,0.95), 0 0 14px rgba(0,0,0,0.85);
 }
+.photo-category .landing-tile .tile-rest-cats {
+  font-size: calc(8.5 * var(--u));
+}
 .cutout-plate {
   z-index: 3;
   background: #000;
@@ -691,6 +694,9 @@ video {
     font-size: 7.5px;
     letter-spacing: 0.02em;
     word-spacing: -0.4em;
+  }
+  .photo-category .landing-tile .tile-rest-cats {
+    font-size: 7px;
   }
 }
 @media (prefers-reduced-motion: reduce) {

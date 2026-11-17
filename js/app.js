@@ -233,7 +233,7 @@ const PHOTOGRAPHY_CATEGORIES = [
   {
     slug: 'photo-editorial',
     label: 'CREATIVE',
-    rows: ['PRESS PHOTOGRAPHY', 'ALBUM COVERS', 'CONCEPTUAL'],
+    rows: ['PRESS SHOOTS', 'ALBUM COVERS', 'CONCEPTUAL'],
     separator: ' / ',
     poster: `${CDN}44ad4c8b-ad5c-4fe5-b5a7-69a118150242_rw_1920.jpg?h=ed93f885f0ea1225f4f84a9a00635c13`,
   },
