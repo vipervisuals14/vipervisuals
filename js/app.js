@@ -995,7 +995,7 @@ function renderContact() {
         <div class="contact-copy category-tile">
           <div class="contact-intro">
             <p>Based in Toronto, available worldwide.</p>
-            <h1>Good work<br>starts with a<br>conversation.</h1>
+            <h1>Good work starts with a conversation.</h1>
           </div>
         </div>
         <form class="contact-form" id="contact-form">
