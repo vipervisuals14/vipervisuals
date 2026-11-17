@@ -122,15 +122,6 @@ const MUSIC_VIDEOS = [
     poster: 'https://d2kbe88412276p.cloudfront.net/creative-work-portfolio-project-files/360227/064bd41c45e94d3a9455159c0bd7b49d_feed_v3_t2000_1290w.webp',
   },
   {
-    slug: 'kelland',
-    category: 'video-live',
-    artist: 'KELLAND',
-    title: 'CYPRESS MOUNTAIN FULL SET',
-    youtubeId: 'xT1E1rrcbe8',
-    poster: KELLAND_POSTER,
-    preview: KELLAND_PREVIEW,
-  },
-  {
     slug: 'maribou-state',
     category: 'video-live',
     artist: 'MARIBOU STATE',
@@ -138,6 +129,15 @@ const MUSIC_VIDEOS = [
     vimeoId: '1098364694',
     poster: 'media/video-previews/maribou-state-poster.jpg',
     preview: 'media/video-previews/maribou-state.mp4',
+  },
+  {
+    slug: 'kelland',
+    category: 'video-live',
+    artist: 'KELLAND',
+    title: 'CYPRESS MOUNTAIN FULL SET',
+    youtubeId: 'xT1E1rrcbe8',
+    poster: KELLAND_POSTER,
+    preview: KELLAND_PREVIEW,
   },
   {
     slug: 'sistek',
