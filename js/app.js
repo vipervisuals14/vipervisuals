@@ -14,6 +14,8 @@
 const CDN = 'https://cdn.myportfolio.com/9844ffef-896f-4abd-b0bc-bec392563aaf/';
 const KELLAND_POSTER = 'media/video-previews/kelland-v2-poster.jpg';
 const KELLAND_PREVIEW = 'media/video-previews/kelland-v2.mp4';
+const FRANK_POSTER = 'media/video-previews/frank-walker-poster.jpg';
+const FRANK_PREVIEW = 'media/video-previews/frank-walker.mp4';
 const CALE_POSTER = 'media/video-previews/cale-aera-poster.jpg';
 const CALE_PREVIEW = 'media/video-previews/cale-aera.mp4';
 
@@ -34,8 +36,8 @@ const VIDEO_CATEGORIES = [
     slug: 'video-live',
     label: 'LIVE',
     rows: ['MULTI CAM', 'RECAPS', 'FULL SETS'],
-    poster: KELLAND_POSTER,
-    preview: KELLAND_PREVIEW,
+    poster: FRANK_POSTER,
+    preview: FRANK_PREVIEW,
   },
   {
     slug: 'video-digital',
@@ -119,8 +121,8 @@ const MUSIC_VIDEOS = [
     title: 'RBC STAGE',
     vimeoId: '1247510528',
     startAt: 0,
-    poster: 'media/video-previews/frank-walker-poster.jpg',
-    preview: 'media/video-previews/frank-walker.mp4',
+    poster: FRANK_POSTER,
+    preview: FRANK_PREVIEW,
   },
   {
     slug: 'maribou-state',
