@@ -225,20 +225,23 @@ const PROJECT_DETAILS = {
 const PHOTOGRAPHY_CATEGORIES = [
   {
     slug: 'photo-performance',
-    label: 'PERFORMANCE',
-    rows: ['FESTIVALS', 'TOURS', 'BACKSTAGE'],
+    label: '01. COVERAGE',
+    rows: ['CONCERTS', 'EVENTS', 'BEHIND THE SCENES'],
+    separator: ' / ',
     poster: `${CDN}2aaaa8b2-10b3-4d97-a6ad-1c13fc013c02_rw_3840.jpg?h=a653658d08af3e47a6bbd97599617c3e`,
   },
   {
     slug: 'photo-editorial',
-    label: 'EDITORIALS',
-    rows: ['ARTIST PRESS', 'FASHION', 'ALBUM COVERS'],
+    label: '02. CREATIVE',
+    rows: ['PRESS PHOTOGRAPHY', 'ALBUM COVERS', 'CONCEPTUAL'],
+    separator: ' / ',
     poster: `${CDN}44ad4c8b-ad5c-4fe5-b5a7-69a118150242_rw_1920.jpg?h=ed93f885f0ea1225f4f84a9a00635c13`,
   },
   {
     slug: 'photo-commercial',
-    label: 'COMMERCIAL',
-    rows: ['PRODUCTS', 'BRANDS', 'CORPORATE'],
+    label: '03. COMMERCIAL',
+    rows: ['BRANDS', 'PRODUCT', 'CORPORATE'],
+    separator: ' / ',
     poster: `${CDN}941625a4-5e8d-4bd5-b8cd-5fa68ff8218e_rw_1200.jpg?h=f30ba0a8690758dfd265def9d6ec79be`,
   },
 ];
@@ -556,7 +559,7 @@ function renderFooter() {
 function renderLandingTile(category, route) {
   const title = escapeHtml(category.label);
   const labels = category.rows;
-  const description = escapeHtml(labels.join(' · '));
+  const description = escapeHtml(labels.join(category.separator || ' · '));
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const poster = reducedMotion && category.stillPoster ? category.stillPoster : category.poster;
   const media = renderPreviewMedia(category.preview, poster, category.label, 'category-tile-media');

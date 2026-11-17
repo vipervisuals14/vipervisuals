@@ -684,6 +684,9 @@ video {
   .tile-rest-title {
     font-size: 26px;
   }
+  .photo-category .landing-tile .tile-rest-title {
+    font-size: 22px;
+  }
   .tile-rest-cats {
     font-size: 7.5px;
     letter-spacing: 0.02em;
