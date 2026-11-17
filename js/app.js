@@ -290,11 +290,20 @@ const PRESS_PHOTOS = [
   '0201cf6e-dc1f-48c5-a7f1-814051b9768a_rw_1200.jpg?h=a6ea4e87d89cb8cbc1b86b823a50ae21',
   '9ea88396-6af5-4074-b9ab-2ffb29953b49_rw_1200.jpg?h=76cd88ddae7b44570d1fada0d643f342',
 ];
+/* Artwork from the original Red Light rollout project. */
+const AMAAL_ROLLOUT_IMAGES = [
+  'e2d01d0d-73c9-4c37-b62c-67f4901672bb_rw_1200.jpg?h=6df47481d10310a442e93b67dfe27e46',
+  '6b865877-9f6c-4667-887d-37951a92f10b_rw_1920.jpg?h=3a4aed079072938d8a55d4f66f4ac3bb',
+  '783c136b-ea41-4293-a8ef-2a18170a91d0_rw_1200.jpg?h=c74ada9ade48d5e8fccd7b07ce1b9a7c',
+  'e10892f9-2dff-422c-a94a-3466f801fd65_rw_1920.jpg?h=f7bc2d76300ecc24209183481c66a52e',
+  'e983a916-85a5-4ea7-8911-895c69ffa6ad_rw_1920.jpg?h=cf692e840f6e0db13bb0ef408a5bf84e',
+];
 const PHOTO_GALLERIES = {
   'the-weeknd': { artist: 'THE WEEKND', title: 'AFTER HOURS TILL DAWN TOUR', photos: WEEKND_PHOTOS },
   sza: { artist: 'SZA', title: 'SOS TOUR', photos: SZA_PHOTOS },
   'wax-motif': { artist: 'WAX MOTIF / LOUD LUXURY', title: '', photos: WAX_MOTIF_PHOTOS },
-  'micky-press': { artist: 'VIPER VISUALS', title: 'PRESS', photos: PRESS_PHOTOS },
+  'micky-press': { artist: 'MICKY WEEKS', title: 'PRESS', photos: PRESS_PHOTOS },
+  'amaal-red-light-rollout': { artist: 'AMAAL', title: 'RED LIGHT ROLLOUT', photos: AMAAL_ROLLOUT_IMAGES },
 };
 
 /* PHOTOGRAPHY CATEGORIES (3 category tiles on #/photo) */
@@ -367,8 +376,14 @@ const PHOTO_PROJECTS = {
   ],
   'photo-editorial': [
     {
+      slug: 'amaal-red-light-rollout',
+      artist: 'AMAAL',
+      title: 'RED LIGHT ROLLOUT',
+      poster: 'media/photography/amaal-red-light-spotify.png',
+    },
+    {
       slug: 'micky-press',
-      artist: 'VIPER VISUALS',
+      artist: 'MICKY WEEKS',
       title: 'PRESS',
       poster: CDN + PRESS_PHOTOS[0],
     },
