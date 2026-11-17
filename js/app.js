@@ -912,6 +912,7 @@ function renderAbout() {
             <li>WEB DESIGN</li>
             <li>MOTION GRAPHICS</li>
             <li>AI &amp; VR</li>
+            <li>CONSULTING</li>
           </ul>
         </section>
       </div>
@@ -1016,12 +1017,13 @@ function renderContact() {
                 <option>Web design</option>
                 <option>Motion graphics</option>
                 <option>AI &amp; VR</option>
+                <option>Consulting</option>
                 <option>Other / multiple services</option>
               </select>
             </div>
             <div class="contact-field">
-              <label for="form-timeline">TIMELINE <span class="contact-optional">(OPTIONAL)</span></label>
-              <input type="text" id="form-timeline" name="timeline" placeholder="e.g. June">
+              <label for="form-timeline">TIMELINE <span aria-hidden="true">*</span></label>
+              <input type="text" id="form-timeline" name="timeline" placeholder="e.g. June" required>
             </div>
             <div class="contact-field">
               <label for="form-budget">BUDGET <span class="contact-optional">(OPTIONAL)</span></label>
@@ -1053,7 +1055,7 @@ function renderContact() {
       `Name: ${fields.get('name')}`,
       `Email: ${fields.get('email')}`,
       `Project type: ${project}`,
-      `Timeline: ${fields.get('timeline') || 'Not specified'}`,
+      `Timeline: ${fields.get('timeline')}`,
       `Budget: ${fields.get('budget') || 'Not specified'}`,
       '',
       'Project details:',

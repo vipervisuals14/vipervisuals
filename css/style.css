@@ -973,7 +973,7 @@ video {
 .about-services ul {
   display: grid;
   flex: 1 1 auto;
-  grid-template-rows: repeat(9, 1fr);
+  grid-template-rows: repeat(10, 1fr);
   align-items: end;
   margin: 0;
   padding: 0;
@@ -1057,19 +1057,19 @@ video {
   border: 0;
   border-radius: 0;
   outline-offset: 3px;
-  background: transparent;
-  color: #fff;
+  background: #fff;
+  color: #000;
   font-family: var(--font-azeret);
   font-size: calc(14 * var(--u));
   line-height: 1.4;
   letter-spacing: -0.4px;
   text-transform: none;
-  padding: calc(5 * var(--u)) 0;
+  padding: calc(5 * var(--u)) calc(8 * var(--u));
 }
 .contact-field input::placeholder,
 .contact-field textarea::placeholder {
-  color: #fff;
-  opacity: 0.7;
+  color: #000;
+  opacity: 0.65;
 }
 .contact-field select {
   cursor: pointer;
@@ -1077,8 +1077,8 @@ video {
   padding-right: calc(22 * var(--u));
 }
 .contact-field select option {
-  color: #fff;
-  background: #000;
+  color: #000;
+  background: #fff;
 }
 .contact-field-select {
   position: relative;
@@ -1086,8 +1086,9 @@ video {
 .contact-field-select::after {
   content: '⌄';
   position: absolute;
-  right: 0;
+  right: calc(8 * var(--u));
   top: calc(20 * var(--u));
+  color: #000;
   font-size: calc(20 * var(--u));
   pointer-events: none;
 }
@@ -1355,7 +1356,7 @@ video {
     margin-bottom: 8px;
   }
   .about-page .about-left {
-    width: min(200px, 50vw, max(96px, calc(80vh - 448px)));
+    width: min(200px, 50vw, max(75px, calc(80vh - 448px)));
     height: auto;
     aspect-ratio: 4 / 5;
     margin-bottom: calc(12 * var(--u));
@@ -1396,7 +1397,10 @@ video {
   .contact-field select,
   .contact-field textarea {
     font-size: 16px;
-    padding: 2px 0;
+    padding: 4px 8px;
+  }
+  .contact-field select {
+    padding-right: 28px;
   }
   .contact-field-select::after {
     top: 15px;
@@ -1415,6 +1419,12 @@ video {
   }
   .contact-note {
     font-size: 9px;
+  }
+}
+
+@media (max-width: 899px) and (max-height: 650px) and (orientation: portrait) {
+  .contact-fields {
+    row-gap: 4px;
   }
 }
 
@@ -1461,7 +1471,7 @@ video {
     font-size: clamp(10px, 2.8vh, 14px);
   }
   .about-services ul {
-    grid-template-rows: repeat(9, 1fr);
+    grid-template-rows: repeat(10, 1fr);
     gap: 0;
   }
   .contact-content {
