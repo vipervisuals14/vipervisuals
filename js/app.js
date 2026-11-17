@@ -301,6 +301,14 @@ const THIRD_PARTY_PHOTOS = [
   '151520b7448d4201b89efa20b06529ae',
   '7a2be3e8f623435298d2554e5422fff6',
 ].map(id => `https://d2kbe88412276p.cloudfront.net/creative-work-portfolio-project-files/360215/${id}_feed_v3_645w.webp`);
+/* Our Block Clothing photographs from the original project, in page order. */
+const OUR_BLOCK_PHOTOS = [
+  'a5671ad6-a7f5-465a-821b-1f1d6aa5851d_rw_1920.jpg?h=1a5326fdff17e01940c1f1a506615b99',
+  '11140c19-3d34-4fc5-ae46-f1a6f8606ea5_rw_1200.jpg?h=39f7dadef1d3a81620ccf809cd5de4e2',
+  '00e68b48-4956-4264-9244-6bc09504899b_rw_1920.jpg?h=a7ca69deaac3a0475bac2ed1f6ee3c9d',
+  '8b0143c6-8d6d-41d4-9a9a-27303235a333_rw_1200.jpg?h=fb31a95440f8bc18c2df14f8ae062a0a',
+  'ceb0009a-1229-439c-9cf2-91869fc0d231_rw_1200.jpg?h=69e21257dfc99e4d579a58cab374b154',
+];
 /* Amaal Nuux single release press photographs. */
 const AMAAL_SINGLE_RELEASE_PHOTOS = [
   '44ad4c8b-ad5c-4fe5-b5a7-69a118150242_rw_1920.jpg?h=ed93f885f0ea1225f4f84a9a00635c13',
@@ -330,6 +338,7 @@ const PHOTO_GALLERIES = {
   'wax-motif': { artist: 'WAX MOTIF / LOUD LUXURY', title: 'VELD MUSIC FESTIVAL', photos: WAX_MOTIF_PHOTOS },
   'third-party': { artist: 'THIRD PARTY', title: 'VELD MUSIC FESTIVAL', photos: THIRD_PARTY_PHOTOS },
   'amaal-single-release-press': { artist: 'AMAAL NUUX', title: 'SINGLE RELEASE PRESS', photos: AMAAL_SINGLE_RELEASE_PHOTOS },
+  nikkaela: { artist: 'OUR BLOCK CLOTHING', title: 'LOOKBOOK', photos: OUR_BLOCK_PHOTOS },
   'micky-press': { artist: 'MICKY WEEKS', title: 'PRESS', photos: PRESS_PHOTOS },
   'amaal-red-light-rollout': { artist: 'AMAAL', title: 'RED LIGHT ROLLOUT', photos: AMAAL_ROLLOUT_IMAGES },
 };
