@@ -228,21 +228,21 @@ const PHOTOGRAPHY_CATEGORIES = [
     label: 'COVERAGE',
     rows: ['CONCERTS', 'EVENTS', 'BEHIND THE SCENES'],
     hoverRows: ['CONCERTS', 'EVENTS', 'BEHIND THE', 'SCENES'],
-    separator: ' / ',
+    separator: ' . ',
     poster: `${CDN}2aaaa8b2-10b3-4d97-a6ad-1c13fc013c02_rw_3840.jpg?h=a653658d08af3e47a6bbd97599617c3e`,
   },
   {
     slug: 'photo-editorial',
     label: 'CREATIVE',
     rows: ['PRESS SHOOTS', 'ALBUM COVERS', 'CONCEPTUAL'],
-    separator: ' / ',
+    separator: ' . ',
     poster: `${CDN}44ad4c8b-ad5c-4fe5-b5a7-69a118150242_rw_1920.jpg?h=ed93f885f0ea1225f4f84a9a00635c13`,
   },
   {
     slug: 'photo-commercial',
     label: 'COMMERCIAL',
     rows: ['BRANDS', 'PRODUCT', 'CORPORATE'],
-    separator: ' / ',
+    separator: ' . ',
     poster: `${CDN}941625a4-5e8d-4bd5-b8cd-5fa68ff8218e_rw_1200.jpg?h=f30ba0a8690758dfd265def9d6ec79be`,
   },
 ];
@@ -566,6 +566,7 @@ function renderLandingTile(category, route) {
   const media = renderPreviewMedia(category.preview, poster, category.label, 'category-tile-media');
   const hoverRows = category.hoverRows || category.rows;
   const baselines = hoverRows.length === 4 ? [352, 396, 440, 484] : [374, 418, 462];
+  const kickerBaseline = baselines[0] - 66;
   const rows = hoverRows.map((text, i) => `
     <text class="cutout-druk-text" x="230" y="${baselines[i]}" font-size="40" text-anchor="middle" textLength="424" lengthAdjust="spacingAndGlyphs">${escapeHtml(text)}</text>
   `).join('');
@@ -582,7 +583,7 @@ function renderLandingTile(category, route) {
         <div class="cutout-plate" aria-hidden="true">
           <svg class="cutout-svg" viewBox="0 0 460 760" preserveAspectRatio="xMidYMid meet">${rows}</svg>
         </div>
-        <svg class="tile-hover-kicker-svg" viewBox="0 0 460 760" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><text x="230" y="308" font-size="10.2" text-anchor="middle">${title}</text></svg>
+        <svg class="tile-hover-kicker-svg" viewBox="0 0 460 760" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><text x="230" y="${kickerBaseline}" font-size="10.2" text-anchor="middle">${title}</text></svg>
       </div>
     </a>`;
 }
