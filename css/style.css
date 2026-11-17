@@ -1074,12 +1074,16 @@ video {
   background: #fff;
   color: #000;
   font-family: var(--font-azeret);
-  font-size: calc(14 * var(--u));
+  font-size: var(--nav-font-size);
   line-height: 1.4;
   letter-spacing: -0.4px;
   text-align: inherit;
-  text-transform: none;
+  text-transform: uppercase;
   padding: calc(5 * var(--u)) calc(8 * var(--u));
+}
+.contact-field input,
+.contact-field select {
+  min-height: calc(30 * var(--u));
 }
 .contact-field input::placeholder,
 .contact-field textarea::placeholder {
@@ -1384,7 +1388,7 @@ video {
   .contact-field input,
   .contact-field select,
   .contact-field textarea {
-    font-size: 16px;
+    font-size: 9px;
     padding: 4px 8px;
   }
   .contact-field select {
@@ -1433,6 +1437,10 @@ video {
   .contact-field textarea {
     padding-top: 2px;
     padding-bottom: 2px;
+  }
+  .contact-field input,
+  .contact-field select {
+    min-height: 26px;
   }
   .contact-actions {
     margin-top: 4px;

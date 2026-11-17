@@ -1040,18 +1040,18 @@ function renderContact() {
             <div class="contact-field contact-field-wide contact-field-select">
               <label for="form-project">PROJECT TYPE <span aria-hidden="true">*</span></label>
               <select id="form-project" name="project" required>
-                <option value="" selected disabled>Choose a project</option>
-                <option>Video production</option>
-                <option>Photography</option>
-                <option>Brand identity</option>
-                <option>Merchandise</option>
-                <option>Album &amp; vinyl artwork</option>
-                <option>Mixed media</option>
-                <option>Web design</option>
-                <option>Motion graphics</option>
-                <option>AI &amp; VR</option>
-                <option>Consulting</option>
-                <option>Other / multiple services</option>
+                <option value="" selected disabled>CHOOSE A PROJECT</option>
+                <option value="Video production">VIDEO PRODUCTION</option>
+                <option value="Photography">PHOTOGRAPHY</option>
+                <option value="Brand identity">BRAND IDENTITY</option>
+                <option value="Merchandise">MERCHANDISE</option>
+                <option value="Album &amp; vinyl artwork">ALBUM &amp; VINYL ARTWORK</option>
+                <option value="Mixed media">MIXED MEDIA</option>
+                <option value="Web design">WEB DESIGN</option>
+                <option value="Motion graphics">MOTION GRAPHICS</option>
+                <option value="AI &amp; VR">AI &amp; VR</option>
+                <option value="Consulting">CONSULTING</option>
+                <option value="Other / multiple services">OTHER / MULTIPLE SERVICES</option>
               </select>
             </div>
             <div class="contact-field">
