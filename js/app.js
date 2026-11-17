@@ -1027,7 +1027,7 @@ function renderContact() {
               <label for="form-budget">BUDGET <span class="contact-optional">(OPTIONAL)</span></label>
               <input type="text" id="form-budget" name="budget" placeholder="Your budget">
             </div>
-            <div class="contact-field contact-field-wide">
+            <div class="contact-field contact-field-wide contact-message">
               <label for="form-message">PROJECT DETAILS <span aria-hidden="true">*</span></label>
               <textarea id="form-message" name="message" placeholder="Tell us about your project." required></textarea>
             </div>

@@ -989,29 +989,41 @@ video {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
   gap: calc(90 * var(--u));
   max-width: calc(1200 * var(--u));
+  height: 100%;
   margin: 0 auto;
+}
+.contact-intro {
+  display: flex;
+  flex-direction: column;
 }
 .contact-intro h1 {
   margin: 0 0 calc(20 * var(--u));
-  font-family: var(--font-azeret);
-  font-size: calc(14 * var(--u));
-  font-weight: 700;
-  letter-spacing: -0.4px;
-  line-height: 1.5;
+  font-family: 'Akira Expanded', 'Unbounded', sans-serif;
+  font-size: min(calc(38 * var(--u)), 4vh);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  word-spacing: 0.08em;
+  line-height: 1.12;
 }
 .contact-intro p {
   max-width: calc(340 * var(--u));
-  margin: 0;
+  margin: auto 0 0;
   font-size: var(--nav-font-size);
   line-height: 1.6;
 }
 .contact-form {
+  display: flex;
+  flex-direction: column;
   width: 100%;
+  min-height: 0;
   margin: 0;
 }
 .contact-fields {
   display: grid;
+  flex: 1 1 auto;
+  min-height: 0;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr)) minmax(0, 1.3fr);
   gap: calc(18 * var(--u)) calc(22 * var(--u));
 }
 .contact-field {
@@ -1069,12 +1081,17 @@ video {
   content: '⌄';
   position: absolute;
   right: 0;
-  bottom: calc(3 * var(--u));
+  top: calc(20 * var(--u));
   font-size: calc(20 * var(--u));
   pointer-events: none;
 }
+.contact-message {
+  display: flex;
+  flex-direction: column;
+}
 .contact-field textarea {
-  height: calc(100 * var(--u));
+  flex: 1 1 auto;
+  min-height: 0;
   resize: none;
 }
 .contact-field input:focus-visible,
@@ -1340,18 +1357,21 @@ video {
     padding: 66px 12px 50px;
   }
   .contact-content {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
   }
   .contact-intro h1 {
-    margin-bottom: 6px;
-    font-size: 11px;
-    line-height: 1.4;
+    margin-bottom: 8px;
+    font-size: clamp(11px, calc(5vh - 15px), 20px);
+    line-height: 1.12;
   }
   .contact-intro p {
     max-width: none;
     font-size: 9px;
   }
   .contact-form {
+    flex: 1 1 0;
     margin-top: 14px;
   }
   .contact-fields {
@@ -1368,11 +1388,8 @@ video {
     padding: 2px 0;
   }
   .contact-field-select::after {
-    bottom: 0;
+    top: 15px;
     font-size: 20px;
-  }
-  .contact-field textarea {
-    height: 54px;
   }
   .contact-actions {
     margin-top: 10px;
@@ -1390,11 +1407,34 @@ video {
   }
 }
 
+/* Keep the complete enquiry usable when a phone is held sideways. */
+@media (max-width: 899px) and (orientation: landscape) {
+  .contact-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    gap: 24px;
+  }
+  .contact-intro h1 {
+    font-size: clamp(10px, 3.3vh, 18px);
+  }
+  .contact-form {
+    margin-top: 0;
+  }
+  .contact-fields {
+    gap: 4px 12px;
+  }
+}
+
 /* Use the visible mobile viewport, not the area hidden behind browser controls. */
 @supports (height: 100dvh) {
   @media (max-width: 899px) {
     :root {
       --screen-height: 100dvh;
+    }
+  }
+  @media (max-width: 899px) and (orientation: portrait) {
+    .contact-intro h1 {
+      font-size: clamp(11px, calc(5dvh - 15px), 20px);
     }
   }
 }
