@@ -113,6 +113,14 @@ const MUSIC_VIDEOS = [
 
   /* LIVE */
   {
+    slug: 'frank-walker',
+    category: 'video-live',
+    artist: 'FRANK WALKER',
+    title: 'RBC STAGE',
+    externalVideoUrl: 'https://itsnova.com/vipervisuals/projects/ochHmdqH304m',
+    poster: 'https://d2kbe88412276p.cloudfront.net/creative-work-portfolio-project-files/360227/064bd41c45e94d3a9455159c0bd7b49d_feed_v3_t2000_1290w.webp',
+  },
+  {
     slug: 'kelland',
     category: 'video-live',
     artist: 'KELLAND',
@@ -282,6 +290,16 @@ const WAX_MOTIF_PHOTOS = [
   '790b9170-c7d3-42dc-a8e3-8e9019621f13_rw_1200.jpg?h=61a1b413f576eaccfa3dd50a92bc88d4',
   '6cd50610-cfe6-4bad-ad65-bbad86243ab7_rw_1200.jpg?h=0bc99c9febd1b6491f9e186fa72c7a94',
 ];
+/* Third Party at Veld Music Festival, in the original project order. */
+const THIRD_PARTY_PHOTOS = [
+  'db2fcdc6fdf84cc2b7e87dfa87035f90',
+  '37aa6e9d5cb04c0c81150144ca8b24b8',
+  'b91b6ea94d764afcbd1c65de5bc86823',
+  'ca2e70563a63434194b57dc902df38a0',
+  '7fd968636fa0434cb595e2909c5c0c29',
+  '151520b7448d4201b89efa20b06529ae',
+  '7a2be3e8f623435298d2554e5422fff6',
+].map(id => `https://d2kbe88412276p.cloudfront.net/creative-work-portfolio-project-files/360215/${id}_feed_v3_645w.webp`);
 /* Press photographs supplied for the first Creative project. */
 const PRESS_PHOTOS = [
   '421cd922-fc35-4a7c-9998-76e42ad70cd2_rw_1200.jpg?h=9d1e81c2025e9605345fe0979138b630',
@@ -303,6 +321,7 @@ const PHOTO_GALLERIES = {
   'the-weeknd': { artist: 'THE WEEKND', title: 'AFTER HOURS TILL DAWN TOUR', photos: WEEKND_PHOTOS },
   sza: { artist: 'SZA', title: 'SOS TOUR', photos: SZA_PHOTOS },
   'wax-motif': { artist: 'WAX MOTIF / LOUD LUXURY', title: 'VELD MUSIC FESTIVAL', photos: WAX_MOTIF_PHOTOS },
+  'third-party': { artist: 'THIRD PARTY', title: 'VELD MUSIC FESTIVAL', photos: THIRD_PARTY_PHOTOS },
   'micky-press': { artist: 'MICKY WEEKS', title: 'PRESS', photos: PRESS_PHOTOS },
   'amaal-red-light-rollout': { artist: 'AMAAL', title: 'RED LIGHT ROLLOUT', photos: AMAAL_ROLLOUT_IMAGES },
 };
@@ -372,6 +391,12 @@ const PHOTO_PROJECTS = {
       artist: 'WAX MOTIF / LOUD LUXURY',
       title: 'VELD MUSIC FESTIVAL',
       poster: `${CDN}6cd50610-cfe6-4bad-ad65-bbad86243ab7_rw_1200.jpg?h=0bc99c9febd1b6491f9e186fa72c7a94`,
+    },
+    {
+      slug: 'third-party',
+      artist: 'THIRD PARTY',
+      title: 'VELD MUSIC FESTIVAL',
+      poster: THIRD_PARTY_PHOTOS[0],
     },
   ],
   'photo-editorial': [
@@ -785,7 +810,7 @@ function renderPhotoGallery(gallery) {
   setActiveNav('#/photo');
   const images = gallery.photos.map((path, index) => `
     <div class="category-tile photo-gallery-tile">
-      <img class="category-tile-media" src="${escapeHtml(path.startsWith('media/') ? path : CDN + path)}"
+      <img class="category-tile-media" src="${escapeHtml(path.startsWith('media/') || path.startsWith('https://') ? path : CDN + path)}"
         alt="${escapeHtml(gallery.artist)}${gallery.title ? `, ${escapeHtml(gallery.title)}` : ''} — photograph ${index + 1}"
         ${index < 3 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
     </div>
@@ -813,7 +838,7 @@ function renderProject(slug) {
   const artist = project ? project.artist : '';
   const title = ((detail.title || (project && project.title) || '') + '').toUpperCase();
   const poster = project ? project.poster : '';
-  const isVideo = !!(videoProject && (videoProject.youtubeId || videoProject.vimeoId));
+  const isVideo = !!(videoProject && (videoProject.youtubeId || videoProject.vimeoId || videoProject.externalVideoUrl));
   const provider = videoProject && videoProject.youtubeId ? 'youtube' : 'vimeo';
   const videoId = videoProject ? videoProject.youtubeId || videoProject.vimeoId || '' : '';
 
@@ -821,7 +846,15 @@ function renderProject(slug) {
 
   const loopMedia = renderPreviewMedia(project && project.preview, poster, title || artist, 'project-loop-media');
 
-  const playerInner = isVideo
+  const playerInner = videoProject && videoProject.externalVideoUrl
+    ? `
+      <img class="project-player-poster" src="${escapeHtml(poster)}" alt="${escapeHtml(title || artist)}">
+      <a class="project-play-btn" href="${escapeHtml(videoProject.externalVideoUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Watch Frank Walker on Nova (opens in a new tab)">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </a>
+      <div class="project-player-bar"><span>WATCH ON NOVA ↗</span></div>
+    `
+    : isVideo
     ? `
       <img class="project-player-poster" src="${escapeHtml(poster)}" alt="${escapeHtml(title || artist)}">
       <button class="project-play-btn" data-provider="${provider}" data-video-id="${escapeHtml(videoId)}" aria-label="Play video">
@@ -861,7 +894,7 @@ function renderProject(slug) {
   `);
   mount(frag);
 
-  const playBtn = document.querySelector('.project-play-btn');
+  const playBtn = document.querySelector('button.project-play-btn');
   if (playBtn) {
     playBtn.addEventListener('click', () => {
       const provider = playBtn.dataset.provider;
@@ -957,17 +990,13 @@ function renderVideoSubcategory(categorySlug) {
   setActiveNav('#/video');
 
   const items = MUSIC_VIDEOS.filter((m) => m.category === categorySlug);
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
   const tilesHtml = items.map((m) => {
     const songFirst = categorySlug === 'video-cinematic' && m.title;
     const primary = songFirst ? m.title : m.artist;
     const secondary = songFirst ? m.artist : m.title;
     return `
     <a href="#/project/${escapeHtml(m.slug)}" class="category-tile video-project-tile" aria-label="${escapeHtml(primary)}${secondary ? `: ${escapeHtml(secondary)}` : ''}">
-      ${m.preview
-        ? renderPreviewMedia(m.preview, m.poster, m.title || m.artist, 'category-tile-media')
-        : `<video class="category-tile-media" poster="${escapeHtml(m.poster)}" preload="metadata" ${reduceMotion ? '' : 'autoplay muted loop playsinline'} aria-label="${escapeHtml(m.title || m.artist)} preview"></video>`}
+      ${renderPreviewMedia(m.preview, m.poster, m.title || m.artist, 'category-tile-media')}
       <div class="tile-rest-fade" aria-hidden="true"></div>
       <div class="tile-rest-lockup" aria-hidden="true">
         <span class="tile-rest-title">${escapeHtml(primary)}</span>
