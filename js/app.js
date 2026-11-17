@@ -382,18 +382,24 @@ function mount(fragment) {
   });
 }
 
-// Keep the same natural letterforms as the resting title. Only reduce the
-// shared font size where a long label would otherwise extend beyond its tile.
+// Match row widths by adjusting spacing, never by stretching letterforms.
+// Reduce the shared font size only when the longest line needs room.
 function fitLandingHoverText(section) {
   if (!section || !section.querySelector('.landing-tile')) return;
   const fit = () => {
     if (!section.isConnected) return;
     section.querySelectorAll('.landing-tile').forEach(tile => {
       const rows = [...tile.querySelectorAll('.cutout-druk-text')];
-      rows.forEach(row => row.setAttribute('font-size', '40'));
+      rows.forEach(row => {
+        row.removeAttribute('textLength');
+        row.setAttribute('font-size', '40');
+      });
       const longest = Math.max(0, ...rows.map(row => row.getComputedTextLength()));
-      const size = longest > 424 ? 40 * 424 / longest : 40;
-      rows.forEach(row => row.setAttribute('font-size', size.toFixed(2)));
+      const size = longest > 424 ? Math.floor(4000 * 424 / longest) / 100 : 40;
+      rows.forEach(row => {
+        row.setAttribute('font-size', size.toFixed(2));
+        row.setAttribute('textLength', '424');
+      });
     });
   };
   fit();
@@ -534,9 +540,9 @@ function renderLandingTile(category, route) {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const poster = reducedMotion && category.stillPoster ? category.stillPoster : category.poster;
   const media = renderPreviewMedia(category.preview, poster, category.label, 'category-tile-media');
-  const baselines = [358, 418, 478];
+  const baselines = [374, 418, 462];
   const rows = category.rows.map((text, i) => `
-    <text class="cutout-druk-text" x="230" y="${baselines[i]}" font-size="40" text-anchor="middle">${escapeHtml(text)}</text>
+    <text class="cutout-druk-text" x="230" y="${baselines[i]}" font-size="40" text-anchor="middle" textLength="424" lengthAdjust="spacing">${escapeHtml(text)}</text>
   `).join('');
   return `
     <a href="#/${route}/${escapeHtml(category.slug)}" class="category-tile landing-tile" aria-label="${title}: ${description}">
@@ -551,7 +557,7 @@ function renderLandingTile(category, route) {
         <div class="cutout-plate" aria-hidden="true">
           <svg class="cutout-svg" viewBox="0 0 460 760" preserveAspectRatio="xMidYMid meet">${rows}</svg>
         </div>
-        <svg class="tile-hover-kicker-svg" viewBox="0 0 460 760" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><text x="230" y="292" font-size="10.2" text-anchor="middle">${title}</text></svg>
+        <svg class="tile-hover-kicker-svg" viewBox="0 0 460 760" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><text x="230" y="308" font-size="10.2" text-anchor="middle">${title}</text></svg>
       </div>
     </a>`;
 }
