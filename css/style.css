@@ -551,10 +551,8 @@ video {
 }
 .landing-tile .category-tile-media {
   z-index: 0;
-  transition: transform 0.45s ease;
 }
-.tile-rest-fade,
-.cutout-plate {
+.tile-rest-fade {
   position: absolute;
   inset: 0;
   pointer-events: none;
@@ -562,9 +560,6 @@ video {
 .tile-rest-fade {
   z-index: 1;
   background: linear-gradient(to top, rgba(0,0,0,0.74) 0%, rgba(0,0,0,0.28) 14%, rgba(0,0,0,0) 27%);
-}
-.landing-tile .tile-rest-fade {
-  transition: opacity 0.35s ease;
 }
 .tile-rest-lockup {
   position: absolute;
@@ -583,8 +578,7 @@ video {
   transform: translateY(0);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
-.tile-rest-title,
-.cutout-druk-text {
+.tile-rest-title {
   font-family: 'Akira Expanded', 'Unbounded', sans-serif;
   font-weight: 800;
   letter-spacing: -0.055em;
@@ -605,86 +599,6 @@ video {
   color: rgba(255,255,255,0.92);
   text-shadow: 0 1px 6px rgba(0,0,0,0.95), 0 0 14px rgba(0,0,0,0.85);
 }
-.cutout-plate {
-  z-index: 3;
-  background: #000;
-  mix-blend-mode: multiply;
-  opacity: 0;
-  transition: opacity 0.35s ease;
-}
-.cutout-svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-  transform: scale(1.04);
-  transition: transform 0.45s ease;
-}
-.cutout-druk-text {
-  fill: #fff;
-}
-.tile-hover-kicker {
-  position: absolute;
-  top: calc(16 * var(--u));
-  left: 0;
-  right: 0;
-  z-index: 5;
-  color: #fff;
-  font-family: var(--font-azeret);
-  font-size: var(--nav-font-size);
-  font-weight: 400;
-  letter-spacing: -0.4px;
-  line-height: 1.5;
-  text-align: center;
-  pointer-events: none;
-  opacity: 0;
-  transform: translateY(calc(-6 * var(--u)));
-  transition: opacity 0.35s ease, transform 0.35s ease;
-}
-.landing-tile:focus-visible {
-  outline: none;
-}
-.landing-tile:focus-visible .category-tile-media {
-  transform: scale(1.06);
-}
-.landing-tile:focus-visible .tile-rest-fade {
-  opacity: 0;
-}
-.landing-tile:focus-visible .tile-rest-lockup {
-  opacity: 0;
-  transform: translateY(calc(8 * var(--u)));
-}
-.landing-tile:focus-visible .cutout-plate,
-.landing-tile:focus-visible .tile-hover-kicker {
-  opacity: 1;
-}
-.landing-tile:focus-visible .cutout-svg {
-  transform: scale(1);
-}
-.landing-tile:focus-visible .tile-hover-kicker {
-  transform: translateY(0);
-}
-@media (hover: hover) and (pointer: fine) {
-  .landing-tile:hover .category-tile-media {
-    transform: scale(1.06);
-  }
-  .landing-tile:hover .tile-rest-fade {
-    opacity: 0;
-  }
-  .landing-tile:hover .tile-rest-lockup {
-    opacity: 0;
-    transform: translateY(calc(8 * var(--u)));
-  }
-  .landing-tile:hover .cutout-plate,
-  .landing-tile:hover .tile-hover-kicker {
-    opacity: 1;
-  }
-  .landing-tile:hover .cutout-svg {
-    transform: scale(1);
-  }
-  .landing-tile:hover .tile-hover-kicker {
-    transform: translateY(0);
-  }
-}
 @media (max-width: 899px) {
   :root {
     --tile-title-size: 22px;
@@ -695,19 +609,7 @@ video {
     word-spacing: -0.4em;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  .landing-tile .category-tile-media,
-  .landing-tile .tile-rest-lockup,
-  .landing-tile .tile-rest-fade,
-  .landing-tile .cutout-plate,
-  .landing-tile .cutout-svg,
-  .landing-tile .tile-hover-kicker {
-    transition: none;
-    transform: none !important;
-  }
-}
-
-/* Project galleries use the landing-page type and fade without the category hover effect. */
+/* Project galleries use the landing-page type and fade. */
 .photo-project-tile .tile-rest-title,
 .video-project-tile .tile-rest-title {
   max-width: 100%;
@@ -1417,9 +1319,4 @@ video {
   height: 100%;
   object-fit: contain;
   image-rendering: pixelated;
-}
-.footer-svg {
-  width: 100%;
-  height: 100%;
-  fill: currentColor;
 }

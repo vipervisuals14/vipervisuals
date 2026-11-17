@@ -313,7 +313,6 @@ const PHOTOGRAPHY_CATEGORIES = [
     slug: 'photo-performance',
     label: 'COVERAGE',
     rows: ['CONCERTS', 'EVENTS', 'BEHIND THE SCENES'],
-    hoverRows: ['CONCERTS', 'EVENTS', 'BEHIND THE', 'SCENES'],
     separator: ' . ',
     poster: `${CDN}2aaaa8b2-10b3-4d97-a6ad-1c13fc013c02_rw_3840.jpg?h=a653658d08af3e47a6bbd97599617c3e`,
   },
@@ -636,14 +635,12 @@ function getBackTarget() {
 function renderFooter() {
   const back = getBackTarget();
   const igIcon = `<img class="footer-image-icon" src="assets/img/social/instagram-win98.png" alt="">`;
-  const inIcon = `<svg class="footer-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="20" x="2" y="2" rx="4" ry="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 8v6h-5v-6h5z" fill="currentColor"/><path d="M10 20v-6h5v6h-5z" fill="none" stroke="currentColor" stroke-width="2"/></svg>`;
   const mailIcon = `<img class="footer-image-icon" src="assets/img/social/email-win98.png" alt="">`;
   return `
     <footer class="site-footer">
       <a class="footer-back" href="${escapeHtml(back.href)}" aria-label="Back to ${escapeHtml(back.label)}"><span aria-hidden="true">←</span> BACK</a>
       <div class="footer-social">
         <a href="https://www.instagram.com/thevipervisuals" target="_blank" rel="noopener" class="footer-link footer-image-link" aria-label="Instagram">${igIcon}</a>
-        <a href="https://www.linkedin.com/in/thevipervisuals" target="_blank" rel="noopener" class="footer-link" aria-label="LinkedIn">${inIcon}</a>
         <a href="mailto:hello@vipervisuals.ca" target="_blank" rel="noopener" class="footer-link footer-image-link" aria-label="Email">${mailIcon}</a>
       </div>
     </footer>
@@ -658,14 +655,6 @@ function renderLandingTile(category, route) {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const poster = reducedMotion && category.stillPoster ? category.stillPoster : category.poster;
   const media = renderPreviewMedia(category.preview, poster, category.label, 'category-tile-media');
-  const hoverRows = category.hoverRows || category.rows;
-  // Fill the card while keeping every line the same width and tightly tracked.
-  const fourLines = hoverRows.length === 4;
-  const baselines = fourLines ? [217, 382, 547, 712] : [276, 491, 706];
-  const fontSize = fourLines ? 208 : 270;
-  const rows = hoverRows.map((text, i) => `
-    <text class="cutout-druk-text" x="230" y="${baselines[i]}" font-size="${fontSize}" text-anchor="middle" textLength="424" lengthAdjust="spacingAndGlyphs">${escapeHtml(text)}</text>
-  `).join('');
   return `
     <a href="#/${route}/${escapeHtml(category.slug)}" class="category-tile landing-tile" aria-label="${title}: ${description}">
       <div class="tile-media-box">
@@ -675,10 +664,7 @@ function renderLandingTile(category, route) {
           <span class="tile-rest-title">${title}</span>
           <span class="tile-rest-cats">${description}</span>
         </div>
-        <div class="cutout-plate" aria-hidden="true">
-          <svg class="cutout-svg" viewBox="0 0 460 760" preserveAspectRatio="none">${rows}</svg>
-        </div>
-        <span class="tile-hover-kicker" aria-hidden="true">${title}</span>
+
       </div>
     </a>`;
 }
