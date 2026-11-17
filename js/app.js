@@ -212,7 +212,7 @@ const PROJECT_DETAILS = {
     description: ['Press photography.', 'Shot by Viper Visuals.'],
   },
   kays: {
-    title: 'SPORTS SPEC SHOOT',
+    title: 'SPORTS SPEC',
     description: ['Sports photography shoot.', 'Shot by Viper Visuals.'],
   },
   nikkaela: {
@@ -482,12 +482,6 @@ const PHOTO_PROJECTS = {
       title: 'RED LIGHT ROLLOUT',
       poster: CDN + AMAAL_ROLLOUT_IMAGES[1],
     },
-    {
-      slug: 'kays',
-      artist: 'VIPER VISUALS',
-      title: 'SPORTS SPEC SHOOT',
-      poster: `${CDN}0943fa60-09f0-4b12-88af-9af03e4eecd3_rw_1200.jpg?h=7534e6b797f517aecc5c8760c7e8bb91`,
-    },
   ],
   'photo-commercial': [
     {
@@ -495,6 +489,12 @@ const PHOTO_PROJECTS = {
       artist: 'OUR BLOCK CLOTHING',
       title: 'LOOKBOOK',
       poster: CDN + OUR_BLOCK_PHOTOS[0],
+    },
+    {
+      slug: 'kays',
+      artist: 'MARCOLINO ANIEL',
+      title: 'SPORTS SPEC',
+      poster: `${CDN}0943fa60-09f0-4b12-88af-9af03e4eecd3_rw_1200.jpg?h=7534e6b797f517aecc5c8760c7e8bb91`,
     },
   ],
 };
