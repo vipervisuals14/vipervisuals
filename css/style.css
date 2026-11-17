@@ -28,6 +28,8 @@
   --hover: #3791de;
   --current: rgb(182, 182, 182);
   --font-azeret: 'Azeret Mono', 'Courier New', Courier, monospace;
+  --tile-title-size: calc(40 * var(--u));
+  --tile-description-size: calc(8.5 * var(--u));
 }
 
 *,
@@ -591,7 +593,7 @@ video {
   letter-spacing: -0.055em;
 }
 .tile-rest-title {
-  font-size: calc(40 * var(--u));
+  font-size: var(--tile-title-size);
   line-height: 0.92;
   color: #fff;
   white-space: nowrap;
@@ -599,15 +601,12 @@ video {
 }
 .tile-rest-cats {
   font-family: var(--font-azeret);
-  font-size: calc(10 * var(--u));
+  font-size: var(--tile-description-size);
   font-weight: 600;
   letter-spacing: 0.04em;
   white-space: nowrap;
   color: rgba(255,255,255,0.92);
   text-shadow: 0 1px 6px rgba(0,0,0,0.95), 0 0 14px rgba(0,0,0,0.85);
-}
-.photo-category .landing-tile .tile-rest-cats {
-  font-size: calc(8.5 * var(--u));
 }
 .cutout-plate {
   z-index: 3;
@@ -684,19 +683,13 @@ video {
   }
 }
 @media (max-width: 899px) {
-  .tile-rest-title {
-    font-size: 26px;
-  }
-  .photo-category .landing-tile .tile-rest-title {
-    font-size: 22px;
+  :root {
+    --tile-title-size: 22px;
+    --tile-description-size: 7px;
   }
   .tile-rest-cats {
-    font-size: 7.5px;
     letter-spacing: 0.02em;
     word-spacing: -0.4em;
-  }
-  .photo-category .landing-tile .tile-rest-cats {
-    font-size: 7px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -713,7 +706,6 @@ video {
 
 /* Design categories use the shared grid without inventing subcategory copy. */
 .design-tile .tile-rest-title {
-  font-size: calc(34 * var(--u));
   line-height: 1.05;
   white-space: normal;
 }
@@ -730,12 +722,6 @@ video {
 .design-empty p {
   margin: 0 0 calc(16 * var(--u));
 }
-@media (max-width: 899px) {
-  .design-tile .tile-rest-title {
-    font-size: 22px;
-  }
-}
-
 /* Video previews share the same spacing and dimensions as other tiles. */
 .video-category .category-tile-media {
   background: #000;
@@ -804,11 +790,11 @@ video {
   z-index: 2;
   text-align: center;
   font-family: var(--font-azeret);
-  font-size: calc(12 * var(--u));
+  font-size: calc(14 * var(--u));
   font-weight: 400;
   letter-spacing: -0.4px;
   text-transform: uppercase;
-  line-height: calc(15 * var(--u));
+  line-height: calc(18 * var(--u));
   color: var(--text);
 }
 .project-loop-caption span {
