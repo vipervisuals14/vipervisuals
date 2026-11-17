@@ -626,9 +626,17 @@ video {
   font-size: calc(30 * var(--u));
   white-space: nowrap;
 }
+/* Photography uses one smaller size throughout, including longer project names. */
+.photo-category .tile-rest-title {
+  font-size: calc(24 * var(--u));
+  white-space: nowrap;
+}
 @media (max-width: 899px) {
   .cinematic-category .video-project-tile .tile-rest-title {
     font-size: min(17px, 5.3vw);
+  }
+  .photo-category .tile-rest-title {
+    font-size: min(14px, 4.375vw);
   }
 }
 
