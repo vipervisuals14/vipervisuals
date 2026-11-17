@@ -671,7 +671,6 @@ function renderLandingTile(category, route) {
       <div class="tile-media-box">
         ${media}
         <div class="tile-rest-fade" aria-hidden="true"></div>
-        <div class="cutout-lift" aria-hidden="true"></div>
         <div class="tile-rest-lockup" aria-hidden="true">
           <span class="tile-rest-title">${title}</span>
           <span class="tile-rest-cats">${description}</span>
