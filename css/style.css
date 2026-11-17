@@ -890,7 +890,12 @@ video {
   padding-top: calc(121 * var(--u));
 }
 .about-page {
-  padding-top: calc(66 * var(--u));
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: calc(50 * var(--u));
+  height: var(--screen-height);
+  padding: calc(66 * var(--u)) calc(31 * var(--u)) calc(38 * var(--u) + 1px);
 }
 .about-left {
   position: absolute;
@@ -910,18 +915,23 @@ video {
   object-position: center;
   display: block;
 }
-/* Keep the About media in the existing portrait frame. */
+/* Center the two columns and extend the media to the footer line. */
 .about-page .about-left {
-  top: calc(66 * var(--u));
-  width: min(calc(452.8 * var(--u)), max(0px, calc(80vh - 100.8 * var(--u))));
-  height: auto;
-  aspect-ratio: 4 / 5;
+  position: relative;
+  top: auto;
+  left: auto;
+  flex: 0 0 auto;
+  width: min(calc(80vh - 84 * var(--u)), calc(100vw - 579 * var(--u)));
+  height: 100%;
   background: transparent;
 }
 .about-page .about-right {
-  top: calc(66 * var(--u));
-  left: calc(535 * var(--u));
-  height: min(calc(566 * var(--u)), max(0px, calc(var(--screen-height) - 126 * var(--u))));
+  position: relative;
+  top: auto;
+  left: auto;
+  flex: 0 0 calc(467 * var(--u));
+  width: calc(467 * var(--u));
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -959,7 +969,7 @@ video {
   height: 50%;
   margin: 0;
   font-family: 'Akira Expanded', 'Unbounded', sans-serif;
-  font-size: min(calc(23 * var(--u)), 3vh);
+  font-size: min(calc(26 * var(--u)), 3vh);
   font-weight: 800;
   letter-spacing: -0.02em;
   word-spacing: 0.08em;
@@ -1321,6 +1331,9 @@ video {
   }
 
   /* About mobile */
+  .about-page {
+    display: block;
+  }
   .about-page,
   .contact-page {
     padding-top: calc(60 * var(--u));
@@ -1338,6 +1351,8 @@ video {
     line-height: 1.5;
   }
   .about-page .about-right {
+    position: static;
+    width: 100%;
     height: auto;
     gap: 20px;
   }
@@ -1356,10 +1371,11 @@ video {
     margin-bottom: 8px;
   }
   .about-page .about-left {
+    position: static;
     width: min(200px, 50vw, max(75px, calc(80vh - 448px)));
     height: auto;
     aspect-ratio: 4 / 5;
-    margin-bottom: calc(12 * var(--u));
+    margin: 0 auto calc(12 * var(--u));
   }
   .about-right {
     position: static;
