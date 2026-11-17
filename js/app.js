@@ -504,6 +504,12 @@ const PHOTO_PROJECTS = {
       poster: CDN + AMAAL_SINGLE_RELEASE_PHOTOS[0],
     },
     {
+      slug: 'cody-lawless',
+      artist: 'CODY LAWLESS',
+      title: 'PRESS IMAGES, MUSIC VIDEO BTS',
+      poster: CODY_LAWLESS_PHOTOS[0],
+    },
+    {
       slug: 'micky-press',
       artist: 'MICKY WEEKES',
       title: 'PRESS',
@@ -514,12 +520,6 @@ const PHOTO_PROJECTS = {
       artist: 'DAKOTA',
       title: '',
       poster: CDN + DAKOTA_PHOTOS[0],
-    },
-    {
-      slug: 'cody-lawless',
-      artist: 'CODY LAWLESS',
-      title: 'PRESS IMAGES, MUSIC VIDEO BTS',
-      poster: CODY_LAWLESS_PHOTOS[0],
     },
     {
       slug: 'amaal-red-light-rollout',
@@ -594,6 +594,11 @@ const RECAPS = [
 const outlet = document.getElementById('routerOutlet');
 const burger = document.querySelector('.burger');
 const mobileMenu = document.getElementById('mobileMenu');
+
+// Avoid the browser's white broken-image outline when the original image host fails.
+outlet.addEventListener('error', (event) => {
+  if (event.target.matches?.('img.run-it-up-media')) event.target.classList.add('media-unavailable');
+}, true);
 
 function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, (c) => ({
@@ -906,8 +911,8 @@ function renderPhotoGallery(gallery) {
   document.body.className = '';
   setActiveNav('#/photo');
   const images = gallery.photos.map((path, index) => `
-    <div class="category-tile photo-gallery-tile">
-      <img class="category-tile-media" src="${escapeHtml(path.startsWith('media/') || path.startsWith('https://') ? path : CDN + path)}"
+    <div class="category-tile photo-gallery-tile${gallery.photos === RUN_IT_UP_PHOTOS ? ' run-it-up-tile' : ''}">
+      <img class="category-tile-media${gallery.photos === RUN_IT_UP_PHOTOS ? ' run-it-up-media' : ''}" src="${escapeHtml(path.startsWith('media/') || path.startsWith('https://') ? path : CDN + path)}"
         alt="${escapeHtml(gallery.artist)}${gallery.title ? `, ${escapeHtml(gallery.title)}` : ''} — photograph ${index + 1}"
         ${index < 3 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
     </div>
@@ -1055,8 +1060,8 @@ function renderPhotoSubcategory(categorySlug) {
 
   const tilesHtml = items.map(
     (m) => `
-    <a href="#/project/${escapeHtml(m.slug)}" class="category-tile photo-project-tile" aria-label="${escapeHtml(m.artist)}${m.title ? `: ${escapeHtml(m.title)}` : ''}">
-      <img class="category-tile-media" src="${escapeHtml(m.poster)}" alt="">
+    <a href="#/project/${escapeHtml(m.slug)}" class="category-tile photo-project-tile${m.slug === 'run-it-up' ? ' run-it-up-tile' : ''}" aria-label="${escapeHtml(m.artist)}${m.title ? `: ${escapeHtml(m.title)}` : ''}">
+      <img class="category-tile-media${m.slug === 'run-it-up' ? ' run-it-up-media' : ''}" src="${escapeHtml(m.poster)}" alt="">
       <div class="tile-rest-fade" aria-hidden="true"></div>
       <div class="tile-rest-lockup" aria-hidden="true">
         <span class="tile-rest-title">${escapeHtml(m.artist)}</span>

@@ -452,6 +452,17 @@ video {
   object-position: center;
   display: block;
 }
+/* Crop the edges of Run It Up images, including the cover. */
+.run-it-up-tile {
+  background: #000;
+}
+.run-it-up-media {
+  transform: scale(1.12);
+  background: #000;
+}
+.run-it-up-media.media-unavailable {
+  visibility: hidden;
+}
 .category-tile-poster {
   position: absolute;
   top: 0;
