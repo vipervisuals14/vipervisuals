@@ -908,6 +908,10 @@ function renderAbout() {
             <li>BRAND IDENTITY</li>
             <li>MERCHANDISE</li>
             <li>ALBUM &amp; VINYL ARTWORK</li>
+            <li>MIXED MEDIA</li>
+            <li>WEB DESIGN</li>
+            <li>MOTION GRAPHICS</li>
+            <li>AI &amp; VR</li>
           </ul>
         </section>
       </div>
