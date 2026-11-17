@@ -855,7 +855,7 @@ function renderProject(slug) {
     `;
 
   const frag = tpl(`
-    <section class="project-page">
+    <section class="project-page${isVideo ? ' video-project-page' : ''}">
       <div class="project-layout">
         <div class="project-loop">
           ${loopMedia}
