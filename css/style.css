@@ -23,6 +23,7 @@
 
 :root {
   --u: calc(100vw / 1440);
+  --screen-height: 100vh;
   --bg: #000000;
   --text: #ffffff;
   --hover: #3791de;
@@ -42,7 +43,7 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100vh;
+  height: var(--screen-height);
   overflow-y: hidden;
   background: var(--bg);
   color: var(--text);
@@ -189,7 +190,7 @@ video {
 
 /* ---------- Router outlet ---------- */
 #routerOutlet {
-  min-height: 100vh;
+  min-height: var(--screen-height);
   position: relative;
 }
 
@@ -199,7 +200,7 @@ video {
 }
 .home-page {
   position: relative;
-  height: 100vh;
+  height: var(--screen-height);
   overflow-y: hidden;
 }
 .home-hero {
@@ -332,9 +333,9 @@ video {
 .recaps-category,
 .design-category {
   position: relative;
-  min-height: 100vh;
-  height: 100vh;
-  max-height: 100vh;
+  min-height: var(--screen-height);
+  height: var(--screen-height);
+  max-height: var(--screen-height);
   overflow-y: hidden;
   background: var(--bg);
 }
@@ -427,7 +428,7 @@ video {
   border-radius: calc(10 * var(--u));
   overflow: hidden;
   flex: 0 0 calc((100% - 20 * var(--u)) / 3);
-  height: max(0px, calc(100vh - 118 * var(--u)));
+  height: max(0px, calc(var(--screen-height) - 118 * var(--u)));
   display: block;
   text-decoration: none;
   scroll-snap-align: start;
@@ -762,7 +763,7 @@ video {
 /* Two panels: featured loop 453 + gap 12 + main player 960, from y = 66 */
 .project-page {
   position: relative;
-  height: 100vh;
+  height: var(--screen-height);
   overflow-y: hidden;
   background: var(--bg);
   display: flex;
@@ -941,7 +942,7 @@ video {
 .about-page,
 .contact-page {
   position: relative;
-  min-height: 100vh;
+  min-height: var(--screen-height);
   background: var(--bg);
   padding-top: calc(121 * var(--u));
 }
@@ -977,7 +978,7 @@ video {
 .about-page .about-right {
   top: calc(66 * var(--u));
   left: calc(535 * var(--u));
-  height: min(calc(566 * var(--u)), max(0px, calc(100vh - 126 * var(--u))));
+  height: min(calc(566 * var(--u)), max(0px, calc(var(--screen-height) - 126 * var(--u))));
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1225,8 +1226,8 @@ video {
     margin-top: calc(66 * var(--u));
   }
   .category-tile {
-    flex: 0 0 min(280px, calc(100vw - 24px));
-    height: min(calc(100vh - 118px), calc(min(280px, 100vw - 24px) * 700 / 453));
+    flex: 0 0 calc(100vw - 24px);
+    height: max(0px, calc(var(--screen-height) - 118px));
   }
   .home-two-up,
   .home-wide {
@@ -1298,6 +1299,15 @@ video {
   }
   .contact-form {
     width: 100%;
+  }
+}
+
+/* Use the visible mobile viewport, not the area hidden behind browser controls. */
+@supports (height: 100dvh) {
+  @media (max-width: 899px) {
+    :root {
+      --screen-height: 100dvh;
+    }
   }
 }
 
