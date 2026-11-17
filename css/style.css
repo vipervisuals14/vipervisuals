@@ -888,6 +888,7 @@ video {
   min-height: var(--screen-height);
   background: var(--bg);
   padding-top: calc(121 * var(--u));
+  text-align: justify;
 }
 /* About uses the same tile size and spacing as the category galleries. */
 .about-page {
@@ -1067,6 +1068,7 @@ video {
   font-size: calc(14 * var(--u));
   line-height: 1.4;
   letter-spacing: -0.4px;
+  text-align: inherit;
   text-transform: none;
   padding: calc(5 * var(--u)) calc(8 * var(--u));
 }
