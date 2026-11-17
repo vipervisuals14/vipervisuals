@@ -988,39 +988,80 @@ function renderContact() {
   setActiveNav('#/contact');
   const frag = tpl(`
     <section class="contact-page">
-      <div class="about-left">
-        <video autoplay playsinline muted loop poster="media/contact/contact-poster.jpg">
-          <source src="media/contact/contact.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="about-right">
-        <div class="about-text">
-          <p>Get in touch: <a href="https://www.instagram.com/thevipervisuals/" target="_blank" rel="noopener">@thevipervisuals</a></p>
+      <div class="contact-content">
+        <div class="contact-intro">
+          <h1>LET’S MAKE<br> SOMETHING.</h1>
+          <p>TELL US A LITTLE ABOUT YOUR PROJECT AND WE’LL TAKE IT FROM THERE.</p>
         </div>
-        <div class="contact-form">
-          <label for="form-name">Name</label>
-          <input type="text" id="form-name" placeholder="Your name">
-          <label for="form-email">Email Address</label>
-          <input type="email" id="form-email" placeholder="you@example.com">
-          <label for="form-message">Message</label>
-          <textarea id="form-message" placeholder="Your message"></textarea>
-          <button type="button" id="form-submit">Submit</button>
-          <div id="form-success" class="form-success" style="display:none;">Thank you!</div>
-        </div>
+        <form class="contact-form" id="contact-form">
+          <div class="contact-fields">
+            <div class="contact-field">
+              <label for="form-name">NAME <span aria-hidden="true">*</span></label>
+              <input type="text" id="form-name" name="name" autocomplete="name" placeholder="Your name" required>
+            </div>
+            <div class="contact-field">
+              <label for="form-email">EMAIL <span aria-hidden="true">*</span></label>
+              <input type="email" id="form-email" name="email" autocomplete="email" placeholder="Your email" required>
+            </div>
+            <div class="contact-field contact-field-wide contact-field-select">
+              <label for="form-project">PROJECT TYPE <span aria-hidden="true">*</span></label>
+              <select id="form-project" name="project" required>
+                <option value="" selected disabled>Choose a project</option>
+                <option>Video production</option>
+                <option>Photography</option>
+                <option>Brand identity</option>
+                <option>Merchandise</option>
+                <option>Album &amp; vinyl artwork</option>
+                <option>Mixed media</option>
+                <option>Web design</option>
+                <option>Motion graphics</option>
+                <option>AI &amp; VR</option>
+                <option>Other / multiple services</option>
+              </select>
+            </div>
+            <div class="contact-field">
+              <label for="form-timeline">TIMELINE <span class="contact-optional">(OPTIONAL)</span></label>
+              <input type="text" id="form-timeline" name="timeline" placeholder="e.g. June">
+            </div>
+            <div class="contact-field">
+              <label for="form-budget">BUDGET <span class="contact-optional">(OPTIONAL)</span></label>
+              <input type="text" id="form-budget" name="budget" placeholder="Your budget">
+            </div>
+            <div class="contact-field contact-field-wide">
+              <label for="form-message">PROJECT DETAILS <span aria-hidden="true">*</span></label>
+              <textarea id="form-message" name="message" placeholder="Tell us about your project." required></textarea>
+            </div>
+          </div>
+          <div class="contact-actions">
+            <button type="submit">PREPARE ENQUIRY <span aria-hidden="true">↗</span></button>
+            <p class="contact-note" id="form-status" role="status">OPENS YOUR EMAIL APP TO SEND.</p>
+          </div>
+        </form>
       </div>
       ${renderFooter()}
     </section>
   `);
   mount(frag);
 
-  const btn = document.getElementById('form-submit');
-  const success = document.getElementById('form-success');
-  if (btn) {
-    btn.addEventListener('click', () => {
-      btn.style.display = 'none';
-      success.style.display = 'block';
-    });
-  }
+  const form = document.getElementById('contact-form');
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const fields = new FormData(form);
+    const project = fields.get('project');
+    const subject = `Project enquiry: ${project}`;
+    const body = [
+      `Name: ${fields.get('name')}`,
+      `Email: ${fields.get('email')}`,
+      `Project type: ${project}`,
+      `Timeline: ${fields.get('timeline') || 'Not specified'}`,
+      `Budget: ${fields.get('budget') || 'Not specified'}`,
+      '',
+      'Project details:',
+      fields.get('message'),
+    ].join('\n');
+    document.getElementById('form-status').textContent = 'YOUR EMAIL APP SHOULD OPEN. PLEASE SEND YOUR ENQUIRY THERE.';
+    window.location.href = `mailto:hello@vipervisuals.ca?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
 }
 
 function renderNotFound() {
