@@ -221,8 +221,9 @@ const PROJECT_DETAILS = {
   },
 };
 
-/* Original photographs from the Weeknd project on vipervisuals.ca, in page order. */
+/* Gallery cover followed by the original Weeknd project photographs, in page order. */
 const WEEKND_PHOTOS = [
+  'media/photography/the-weeknd-gallery-header.jpg',
   'cec61291-bb6f-4fca-8492-04c0ef2c6853_rw_3840.jpg?h=9a1fa40a5f62ddc62d348042262e3122',
   'ec69fe31-b665-4bb7-86d9-26c54247c600_rw_3840.jpg?h=939f2cf4f9b08114c9bac4ef46e47342',
   'a0883ffc-6d45-422e-82bd-64776a8977d1_rw_1200.jpg?h=5a7bf62aed471dcadb75ed787410c83d',
