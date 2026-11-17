@@ -359,7 +359,7 @@ const PHOTO_PROJECTS = {
       slug: 'the-weeknd',
       artist: 'THE WEEKND',
       title: 'AFTER HOURS TILL DAWN TOUR',
-      poster: `${CDN}cec61291-bb6f-4fca-8492-04c0ef2c6853_rw_3840.jpg?h=9a1fa40a5f62ddc62d348042262e3122`,
+      poster: 'media/photography/the-weeknd-cover.jpg',
     },
     {
       slug: 'sza',
