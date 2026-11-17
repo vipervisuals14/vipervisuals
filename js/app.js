@@ -934,10 +934,6 @@ function renderAbout() {
         <img src="media/about/about-photo.jpg" alt="Photographer holding a camera">
       </div>
       <div class="about-right">
-        <div class="about-text">
-          <p class="about-lead">Toronto-based creative director, videographer and photographer creating bold music videos, social content and visual design for artists and brands worldwide.</p>
-          <p>We create bold, captivating visuals that amplify the voices of music artists and brands, connecting them to their audience through unforgettable content.</p>
-        </div>
         <section class="about-services" aria-labelledby="services-heading">
           <h2 id="services-heading">SERVICES</h2>
           <ul>
@@ -948,6 +944,10 @@ function renderAbout() {
             <li>ALBUM &amp; VINYL ARTWORK</li>
           </ul>
         </section>
+        <div class="about-text">
+          <p class="about-lead">Toronto-based creative director, videographer and photographer creating bold music videos, social content and visual design for artists and brands worldwide.</p>
+          <p>We create bold, captivating visuals that amplify the voices of music artists and brands, connecting them to their audience through unforgettable content.</p>
+        </div>
       </div>
       ${renderFooter()}
     </section>
