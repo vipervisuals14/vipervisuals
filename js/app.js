@@ -312,6 +312,18 @@ const DAKOTA_PHOTOS = [
   'media/photography/dakota/03.jpg',
   'media/photography/dakota/04.jpg',
 ];
+/* Marcolino Aniel sports photographs from the original project, in page order. */
+const MARCOLINO_PHOTOS = [
+  '0943fa60-09f0-4b12-88af-9af03e4eecd3_rw_1200.jpg?h=7534e6b797f517aecc5c8760c7e8bb91',
+  '6f9bc303-3af2-4c75-8ad3-9190a3aebf27_rw_1200.jpg?h=564b08d3f6bd1b8478da043c25e2e552',
+  'f0e91cfa-717f-48b4-be21-58085049421b_rw_1200.jpg?h=5f4b1a406706ebfbcc4bc9683fbe3adb',
+  'bd7ac2f7-b0d3-4bfa-9edd-e471092095c7_rw_1920.jpg?h=f6226a3757e9e8e6507bed8021f22647',
+  'd993127a-c779-4f86-8bbd-946160b6e602_rw_1920.jpg?h=9f481ef9bd4f54f1fa3095d85deaf4af',
+  'cf35c326-8558-4edd-ac82-be35046ba8d7_rw_1920.jpg?h=5084deb66af0f4e9896d953a97603bb6',
+  '3afbc933-2512-4d48-9c78-0a697ee48041_rw_1920.jpg?h=54cd73e5b973a59bfa4c6e391fd9209f',
+  '1f8106f3-b8d1-4622-aff3-e9f65199af57_rw_1920.jpg?h=fcec059cd3fefd1a71d202d52f0bf804',
+  '12845262-1972-4836-b486-579d2161fd51_rw_1920.jpg?h=a62bced8da175c31d2749633390bd073',
+];
 /* Our Block Clothing photographs from the original project, in page order. */
 const OUR_BLOCK_PHOTOS = [
   'a5671ad6-a7f5-465a-821b-1f1d6aa5851d_rw_1920.jpg?h=1a5326fdff17e01940c1f1a506615b99',
@@ -360,6 +372,7 @@ const PHOTO_GALLERIES = {
   'third-party': { artist: 'THIRD PARTY', title: 'VELD MUSIC FESTIVAL', photos: THIRD_PARTY_PHOTOS },
   'amaal-single-release-press': { artist: 'AMAAL NUUX', title: 'SINGLE RELEASE PRESS', photos: AMAAL_SINGLE_RELEASE_PHOTOS },
   nikkaela: { artist: 'OUR BLOCK CLOTHING', title: 'LOOKBOOK', photos: OUR_BLOCK_PHOTOS },
+  kays: { artist: 'MARCOLINO ANIEL', title: 'SPORTS SPEC', photos: MARCOLINO_PHOTOS },
   dakota: { artist: 'DAKOTA', title: '', photos: DAKOTA_PHOTOS },
   'cody-lawless': { artist: 'CODY LAWLESS', title: 'PRESS IMAGES, MUSIC VIDEO BTS', photos: CODY_LAWLESS_PHOTOS },
   'micky-press': { artist: 'MICKY WEEKES', title: 'PRESS', photos: PRESS_PHOTOS },
@@ -494,7 +507,7 @@ const PHOTO_PROJECTS = {
       slug: 'kays',
       artist: 'MARCOLINO ANIEL',
       title: 'SPORTS SPEC',
-      poster: `${CDN}0943fa60-09f0-4b12-88af-9af03e4eecd3_rw_1200.jpg?h=7534e6b797f517aecc5c8760c7e8bb91`,
+      poster: CDN + MARCOLINO_PHOTOS[0],
     },
   ],
 };
