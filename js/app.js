@@ -995,7 +995,7 @@ function renderContact() {
         <div class="contact-copy category-tile">
           <div class="contact-intro">
             <p>Based in Toronto, available worldwide.</p>
-            <h1>Good ideas deserve thoughtful execution. Whether it’s a visual concept, a new campaign or a story waiting to be told, we’d love to be part of bringing it to life.</h1>
+            <h1>Good work<br>starts with a<br>conversation.</h1>
           </div>
         </div>
         <form class="contact-form" id="contact-form">
