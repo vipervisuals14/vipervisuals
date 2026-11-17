@@ -993,11 +993,11 @@ video {
 }
 .contact-intro h1 {
   margin: 0 0 calc(20 * var(--u));
-  font-family: 'Akira Expanded', 'Unbounded', sans-serif;
-  font-size: calc(38 * var(--u));
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+  font-family: var(--font-azeret);
+  font-size: calc(14 * var(--u));
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  line-height: 1.5;
 }
 .contact-intro p {
   max-width: calc(340 * var(--u));
@@ -1344,11 +1344,8 @@ video {
   }
   .contact-intro h1 {
     margin-bottom: 6px;
-    font-size: 22px;
-    line-height: 1;
-  }
-  .contact-intro h1 br {
-    display: none;
+    font-size: 11px;
+    line-height: 1.4;
   }
   .contact-intro p {
     max-width: none;

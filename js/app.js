@@ -990,8 +990,8 @@ function renderContact() {
     <section class="contact-page">
       <div class="contact-content">
         <div class="contact-intro">
-          <h1>LET’S MAKE<br> SOMETHING.</h1>
-          <p>TELL US A LITTLE ABOUT YOUR PROJECT AND WE’LL TAKE IT FROM THERE.</p>
+          <h1>Good ideas deserve thoughtful execution. Whether it’s a visual concept, a new campaign or a story waiting to be told, we’d love to be part of bringing it to life.</h1>
+          <p>Based in Toronto, available worldwide.</p>
         </div>
         <form class="contact-form" id="contact-form">
           <div class="contact-fields">
