@@ -892,29 +892,31 @@ function renderAbout() {
   setActiveNav('#/about');
   const frag = tpl(`
     <section class="about-page">
-      <div class="about-left">
-        ${renderPreviewMedia('media/about/about-me.mp4', 'media/about/about-me-poster.jpg', 'Photographer holding a camera', 'about-video')}
-      </div>
-      <div class="about-right">
-        <div class="about-text">
-          <p class="about-lead">Toronto-based creative director, videographer and photographer creating bold music videos, social content and visual design for artists and brands worldwide.</p>
-          <p>We create bold, captivating visuals that amplify the voices of music artists and brands, connecting them to their audience through unforgettable content.</p>
+      <div class="category-grid about-layout" role="region" aria-label="About Viper Visuals" tabindex="0">
+        <div class="about-left category-tile">
+          ${renderPreviewMedia('media/about/about-me.mp4', 'media/about/about-me-poster.jpg', 'Photographer holding a camera', 'about-video')}
         </div>
-        <section class="about-services" aria-labelledby="services-heading">
-          <h2 id="services-heading">SERVICES</h2>
-          <ul>
-            <li>VIDEO PRODUCTION</li>
-            <li>PHOTOGRAPHY</li>
-            <li>BRAND IDENTITY</li>
-            <li>MERCHANDISE</li>
-            <li>ALBUM &amp; VINYL ARTWORK</li>
-            <li>MIXED MEDIA</li>
-            <li>WEB DESIGN</li>
-            <li>MOTION GRAPHICS</li>
-            <li>AI &amp; VR</li>
-            <li>CONSULTING</li>
-          </ul>
-        </section>
+        <div class="about-right">
+          <div class="about-text">
+            <p class="about-lead">Toronto-based creative director, videographer and photographer creating bold music videos, social content and visual design for artists and brands worldwide.</p>
+            <p>We create bold, captivating visuals that amplify the voices of music artists and brands, connecting them to their audience through unforgettable content.</p>
+          </div>
+          <section class="about-services" aria-labelledby="services-heading">
+            <h2 id="services-heading">SERVICES</h2>
+            <ul>
+              <li>VIDEO PRODUCTION</li>
+              <li>PHOTOGRAPHY</li>
+              <li>BRAND IDENTITY</li>
+              <li>MERCHANDISE</li>
+              <li>ALBUM &amp; VINYL ARTWORK</li>
+              <li>MIXED MEDIA</li>
+              <li>WEB DESIGN</li>
+              <li>MOTION GRAPHICS</li>
+              <li>AI &amp; VR</li>
+              <li>CONSULTING</li>
+            </ul>
+          </section>
+        </div>
       </div>
       ${renderFooter()}
     </section>

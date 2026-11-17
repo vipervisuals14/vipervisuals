@@ -889,61 +889,43 @@ video {
   background: var(--bg);
   padding-top: calc(121 * var(--u));
 }
+/* About uses the same tile size and spacing as the category galleries. */
 .about-page {
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  gap: calc(50 * var(--u));
   height: var(--screen-height);
-  padding: calc(66 * var(--u)) calc(31 * var(--u)) calc(38 * var(--u) + 1px);
+  padding: 0;
+  overflow-y: hidden;
+  font-family: var(--font-azeret);
 }
-.about-left {
-  position: absolute;
-  top: calc(121 * var(--u));
-  left: calc(31 * var(--u));
-  width: calc(659 * var(--u));
-  height: calc(566 * var(--u));
+.about-layout {
+  justify-content: center;
+}
+.about-page .about-left,
+.about-page .about-right {
+  position: relative;
+  top: auto;
+  left: auto;
+  flex: 0 0 calc((100% - 20 * var(--u)) / 3);
+  width: calc((100% - 20 * var(--u)) / 3);
+  height: max(0px, calc(var(--screen-height) - 118 * var(--u)));
+}
+.about-page .about-left {
   border-radius: calc(10 * var(--u));
   overflow: hidden;
-  background: #111;
+  background: transparent;
 }
-.about-left video,
-.about-left img {
+.about-page .about-left video,
+.about-page .about-left img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   display: block;
 }
-/* Center the two columns and extend the media to the footer line. */
-.about-page .about-left {
-  position: relative;
-  top: auto;
-  left: auto;
-  flex: 0 0 auto;
-  width: min(calc(80vh - 84 * var(--u)), calc(100vw - 579 * var(--u)));
-  height: 100%;
-  background: transparent;
-}
 .about-page .about-right {
-  position: relative;
-  top: auto;
-  left: auto;
-  flex: 0 0 calc(467 * var(--u));
-  width: calc(467 * var(--u));
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-.about-right {
-  position: absolute;
-  top: calc(121 * var(--u));
-  left: calc(725 * var(--u));
-  width: calc(467 * var(--u));
-}
-.about-page {
-  font-family: var(--font-azeret);
+  scroll-snap-align: start;
 }
 .about-text {
   font-family: var(--font-azeret);
@@ -963,31 +945,33 @@ video {
 .about-page .about-text p:last-child {
   margin-bottom: 0;
 }
+/* Match the small navigation type, with period-separated service categories. */
 .about-services {
-  display: flex;
-  flex-direction: column;
-  height: 50%;
   margin: 0;
-  font-family: 'Akira Expanded', 'Unbounded', sans-serif;
-  font-size: min(calc(26 * var(--u)), 3vh);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  word-spacing: 0.08em;
-  line-height: 1.1;
+  font-family: var(--font-azeret);
+  font-size: var(--nav-font-size);
+  font-weight: 400;
+  letter-spacing: -0.4px;
+  line-height: 1.5;
 }
 .about-services h2 {
   margin: 0 0 calc(6 * var(--u));
   font-size: inherit;
   font-weight: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 .about-services ul {
-  display: grid;
-  flex: 1 1 auto;
-  grid-template-rows: repeat(10, 1fr);
-  align-items: end;
   margin: 0;
   padding: 0;
   list-style: none;
+}
+.about-services li {
+  display: inline-block;
+}
+.about-services li:not(:last-child)::after {
+  content: ' . ';
+  white-space: pre;
 }
 .about-text a {
   color: var(--text);
@@ -1334,56 +1318,19 @@ video {
     text-align: left;
   }
 
-  /* About mobile */
-  .about-page {
-    display: block;
+  /* Swipe between full-screen About media and text, as in the galleries. */
+  .about-layout {
+    justify-content: flex-start;
   }
-  .about-page,
-  .contact-page {
-    padding-top: calc(60 * var(--u));
-    padding-left: calc(12 * var(--u));
-    padding-right: calc(12 * var(--u));
+  .about-page .scroll-indicator {
+    top: 50%;
+    transform: translateY(-50%);
   }
-  .about-left {
-    position: static;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 659 / 566;
-    margin-bottom: calc(30 * var(--u));
-  }
-  .about-page .about-text {
-    line-height: 1.5;
-  }
+  .about-page .about-left,
   .about-page .about-right {
-    position: static;
-    width: 100%;
-    height: auto;
-    gap: 20px;
-  }
-  .about-services {
-    height: auto;
-    font-size: clamp(10px, calc(3.5vh - 6px), 21px);
-  }
-  .about-services h2 {
-    margin-bottom: 5px;
-  }
-  .about-services ul {
-    grid-template-rows: none;
-    gap: 3px;
-  }
-  .about-page .about-text p {
-    margin-bottom: 8px;
-  }
-  .about-page .about-left {
-    position: static;
-    width: min(200px, 50vw, max(75px, calc(80vh - 448px)));
-    height: auto;
-    aspect-ratio: 4 / 5;
-    margin: 0 auto calc(12 * var(--u));
-  }
-  .about-right {
-    position: static;
-    width: 100%;
+    flex: 0 0 calc(100vw - 24px);
+    width: calc(100vw - 24px);
+    height: max(0px, calc(var(--screen-height) - 118px));
   }
   .contact-page {
     padding: 66px 12px 50px;
@@ -1456,15 +1403,6 @@ video {
 
 /* Compact the stacked layouts on especially short phones. */
 @media (max-width: 899px) and (max-height: 540px) and (orientation: portrait) {
-  .about-page .about-left {
-    width: clamp(52px, calc(80vh - 328px), 96px);
-  }
-  .about-page .about-right {
-    gap: 12px;
-  }
-  .about-services ul {
-    gap: 1px;
-  }
   .contact-intro h1 {
     font-size: 9px;
   }
@@ -1475,31 +1413,6 @@ video {
 
 /* Keep the complete enquiry usable when a phone is held sideways. */
 @media (max-width: 899px) and (orientation: landscape) {
-  .about-page {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-  }
-  .about-page .about-left {
-    flex: 0 0 auto;
-    width: min(28vw, calc(80vh - 88px));
-    margin: 0;
-  }
-  .about-page .about-right {
-    flex: 1 1 auto;
-    width: auto;
-    height: calc(var(--screen-height) - 110px);
-    gap: 8px;
-  }
-  .about-services {
-    flex: 1 1 auto;
-    min-height: 0;
-    font-size: clamp(10px, 2.8vh, 14px);
-  }
-  .about-services ul {
-    grid-template-rows: repeat(10, 1fr);
-    gap: 0;
-  }
   .contact-content {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
