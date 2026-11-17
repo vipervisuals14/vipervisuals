@@ -934,11 +934,9 @@ function renderAbout() {
         <img src="media/about/about-photo.jpg" alt="Photographer holding a camera">
       </div>
       <div class="about-right">
-        <h1 class="about-heading">ABOUT</h1>
         <div class="about-text">
           <p class="about-lead">Toronto-based creative director, videographer and photographer creating bold music videos, social content and visual design for artists and brands worldwide.</p>
           <p>We create bold, captivating visuals that amplify the voices of music artists and brands, connecting them to their audience through unforgettable content.</p>
-          <p>Find me on Instagram: <a href="https://www.instagram.com/thevipervisuals/" target="_blank" rel="noopener">@thevipervisuals</a></p>
         </div>
         <section class="about-services" aria-labelledby="services-heading">
           <h2 id="services-heading">SERVICES</h2>
@@ -950,30 +948,11 @@ function renderAbout() {
             <li>ALBUM &amp; VINYL ARTWORK</li>
           </ul>
         </section>
-        <div class="contact-form">
-          <label for="form-name">Name</label>
-          <input type="text" id="form-name" placeholder="Your name">
-          <label for="form-email">Email Address</label>
-          <input type="email" id="form-email" placeholder="you@example.com">
-          <label for="form-message">Message</label>
-          <textarea id="form-message" placeholder="Your message"></textarea>
-          <button type="button" id="form-submit">Submit</button>
-          <div id="form-success" class="form-success" style="display:none;">Thank you!</div>
-        </div>
       </div>
       ${renderFooter()}
     </section>
   `);
   mount(frag);
-
-  const btn = document.getElementById('form-submit');
-  const success = document.getElementById('form-success');
-  if (btn) {
-    btn.addEventListener('click', () => {
-      btn.style.display = 'none';
-      success.style.display = 'block';
-    });
-  }
 }
 
 function renderPhotoSubcategory(categorySlug) {

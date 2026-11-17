@@ -987,14 +987,6 @@ video {
 .about-page {
   font-family: var(--font-azeret);
 }
-.about-heading {
-  margin: 0 0 calc(20 * var(--u));
-  font-family: var(--font-azeret);
-  font-size: var(--nav-font-size);
-  font-weight: 400;
-  letter-spacing: -0.4px;
-  line-height: 1.5;
-}
 .about-text {
   font-family: var(--font-azeret);
   font-size: calc(14 * var(--u));
@@ -1028,13 +1020,6 @@ video {
   margin: 0;
   padding: 0;
   list-style: none;
-}
-.about-page .contact-form label,
-.about-page .contact-form input,
-.about-page .contact-form textarea,
-.about-page .contact-form button,
-.about-page .form-success {
-  font-family: var(--font-azeret);
 }
 .about-text a {
   color: var(--text);
@@ -1274,9 +1259,6 @@ video {
     aspect-ratio: 659 / 566;
     margin-bottom: calc(30 * var(--u));
   }
-  .about-page .about-heading {
-    margin-bottom: 10px;
-  }
   .about-page .about-text {
     line-height: 1.5;
   }
@@ -1292,9 +1274,6 @@ video {
   .about-page .about-text p {
     margin-bottom: 8px;
   }
-  .about-page .contact-form {
-    margin-top: 10px;
-  }
   .about-page .about-left {
     width: min(200px, 50vw, max(96px, calc(80vh - 448px)));
     height: auto;
@@ -1307,29 +1286,6 @@ video {
   }
   .contact-form {
     width: 100%;
-  }
-}
-
-@media (max-width: 899px) and (max-height: 720px) {
-  .about-page .about-left {
-    width: min(130px, 40vw, max(52px, calc(50vh - 232px)));
-    margin-bottom: 8px;
-  }
-  .about-page .contact-form label {
-    margin-bottom: 2px;
-  }
-  .about-page .contact-form input,
-  .about-page .contact-form textarea {
-    padding: 2px 0;
-  }
-  .about-page .contact-form textarea {
-    height: 24px;
-  }
-  .about-page .contact-form button {
-    margin-top: 6px;
-  }
-  .about-page .form-success {
-    margin-top: 4px;
   }
 }
 
