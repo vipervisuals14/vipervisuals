@@ -440,7 +440,7 @@ const DESIGN_CATEGORIES = [
   {
     slug: 'merchandise',
     label: 'MERCHANDISE',
-    poster: `${CDN}571da5f2-b58e-45b6-a534-6ddd43434285_rw_1920.jpg?h=be4ab4c22f4956bb992b1a386523c1dd`,
+    poster: 'media/design/merchandise-cover.png',
   },
   {
     slug: 'album-vinyl-artwork',
@@ -450,12 +450,8 @@ const DESIGN_CATEGORIES = [
   },
 ];
 
-/* Artwork displayed within each design category. */
-const DESIGN_IMAGES = {
-  merchandise: [
-    `${CDN}74a55c78-e01d-4ce2-b649-2b4428f9b031_rw_1920.jpg?h=38c998273bc2016ae84e407531eff520`,
-  ],
-};
+/* Standalone artwork displayed within design categories. */
+const DESIGN_IMAGES = {};
 const DESIGN_PROJECTS = {
   'kwazii-merch': {
     title: 'KWAZII MERCH',
