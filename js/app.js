@@ -456,6 +456,22 @@ const DESIGN_IMAGES = {
     `${CDN}74a55c78-e01d-4ce2-b649-2b4428f9b031_rw_1920.jpg?h=38c998273bc2016ae84e407531eff520`,
   ],
 };
+const DESIGN_PROJECTS = {
+  'kwazii-merch': {
+    title: 'KWAZII MERCH',
+    category: 'merchandise',
+    images: [
+      '16-spotlight-hanger-iwfts-white.png',
+      '17-concrete-plinth-wish-black.png',
+      '18-folded-stack-wish-iwfts.png',
+      '19-polybag-flash-iwfts-black.png',
+      '20-concrete-wall-flirted-white-back.png',
+      '21-chrome-chair-full-circle-black-back.png',
+      '22-boutique-rail-chess-king-black.png',
+      '24-chiaroscuro-macro-iwfts-cobalt.png',
+    ].map(name => `media/design/kwazii-merch/${name}`),
+  },
+};
 
 /* PHOTOGRAPHY PROJECTS — individual photos within each category */
 const PHOTO_PROJECTS = {
@@ -745,6 +761,7 @@ function getBackTarget() {
   const path = (location.hash || '#/').split('?')[0];
   if (path.startsWith('#/photo/')) return { href: '#/photo', label: 'Photography' };
   if (path.startsWith('#/video/')) return { href: '#/video', label: 'Video production' };
+  if (path === '#/design/merchandise/kwazii-merch') return { href: '#/design/merchandise', label: 'Merchandise' };
   if (path.startsWith('#/design/')) return { href: '#/design', label: 'Design' };
 
   const projectMatch = path.match(/^#\/project\/([^/]+)$/);
@@ -881,15 +898,41 @@ function renderDesignSubcategory(slug) {
   document.body.className = '';
   setActiveNav('#/design');
   const images = DESIGN_IMAGES[slug] || [];
-  const content = images.length
-    ? `<div class="category-grid" role="region" aria-label="${escapeHtml(category.label)} gallery" tabindex="0">${images.map((src, index) => `
+  const projects = Object.entries(DESIGN_PROJECTS).filter(([, project]) => project.category === slug);
+  const imageTiles = images.map((src, index) => `
         <div class="category-tile">
           <img class="category-tile-media" src="${escapeHtml(src)}" alt="${escapeHtml(category.label)} design ${index + 1}" decoding="async">
-        </div>`).join('')}</div>`
+        </div>`).join('');
+  const projectTiles = projects.map(([projectSlug, project]) => `
+        <a href="#/design/${escapeHtml(slug)}/${escapeHtml(projectSlug)}" class="category-tile photo-project-tile" aria-label="${escapeHtml(project.title)}">
+          <img class="category-tile-media" src="${escapeHtml(project.images[0])}" alt="">
+          <div class="tile-rest-fade" aria-hidden="true"></div>
+          <div class="tile-rest-lockup"><span class="tile-rest-title">${escapeHtml(project.title)}</span></div>
+        </a>`).join('');
+  const content = images.length || projects.length
+    ? `<div class="category-grid" role="region" aria-label="${escapeHtml(category.label)} gallery" tabindex="0">${imageTiles}${projectTiles}</div>`
     : `<div class="design-empty"><h1>${escapeHtml(category.label)}</h1><p>PROJECTS NOT YET ADDED</p></div>`;
   mount(tpl(`
     <section class="design-category">
       ${content}
+      ${renderFooter()}
+    </section>
+  `));
+}
+
+function renderDesignProject(categorySlug, projectSlug) {
+  const project = DESIGN_PROJECTS[projectSlug];
+  if (!project || project.category !== categorySlug) { renderNotFound(); return; }
+  document.body.className = '';
+  setActiveNav('#/design');
+  const images = project.images.map((src, index) => `
+    <div class="category-tile">
+      <img class="category-tile-media" src="${escapeHtml(src)}" alt="${escapeHtml(project.title)} — design ${index + 1}"
+        ${index < 3 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
+    </div>`).join('');
+  mount(tpl(`
+    <section class="design-category">
+      <div class="category-grid" role="region" aria-label="${escapeHtml(project.title)} gallery" tabindex="0">${images}</div>
       ${renderFooter()}
     </section>
   `));
@@ -1260,6 +1303,8 @@ function router() {
     renderPhotoSubcategory('photo-commercial');
   } else if (path === '#/design') {
     renderDesignCategories();
+  } else if (path === '#/design/merchandise/kwazii-merch') {
+    renderDesignProject('merchandise', 'kwazii-merch');
   } else if (path.startsWith('#/design/')) {
     renderDesignSubcategory(path.slice('#/design/'.length));
   } else if (path === '#/social') {
