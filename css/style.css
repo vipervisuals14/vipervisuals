@@ -1034,6 +1034,8 @@ video {
   height: max(0px, calc(var(--screen-height) - 118 * var(--u)));
   min-height: 0;
   margin: 0;
+  /* Match the location line and headline gap in the adjacent panel. */
+  padding-top: calc(var(--nav-font-size) * 1.6 + 14 * var(--u));
   scroll-snap-align: start;
 }
 .contact-fields {
@@ -1367,6 +1369,7 @@ video {
     flex: 0 0 calc(100vw - 24px);
     width: calc(100vw - 24px);
     height: max(0px, calc(var(--screen-height) - 118px));
+    padding-top: calc(9px * 1.6 + 14 * var(--u));
   }
   .contact-intro p {
     font-size: 9px;
@@ -1424,6 +1427,15 @@ video {
 @media (max-width: 899px) and (orientation: landscape) {
   .contact-fields {
     gap: 4px 12px;
+  }
+  .contact-field input,
+  .contact-field select,
+  .contact-field textarea {
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+  .contact-actions {
+    margin-top: 4px;
   }
 }
 
