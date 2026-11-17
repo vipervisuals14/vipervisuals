@@ -952,20 +952,23 @@ function renderVideoSubcategory(categorySlug) {
   const items = MUSIC_VIDEOS.filter((m) => m.category === categorySlug);
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const tilesHtml = items.map(
-    (m) => `
-    <a href="#/project/${escapeHtml(m.slug)}" class="category-tile video-project-tile" aria-label="${escapeHtml(m.artist)}${m.title ? `: ${escapeHtml(m.title)}` : ''}">
+  const tilesHtml = items.map((m) => {
+    const songFirst = categorySlug === 'video-cinematic' && m.title;
+    const primary = songFirst ? m.title : m.artist;
+    const secondary = songFirst ? m.artist : m.title;
+    return `
+    <a href="#/project/${escapeHtml(m.slug)}" class="category-tile video-project-tile" aria-label="${escapeHtml(primary)}${secondary ? `: ${escapeHtml(secondary)}` : ''}">
       ${m.preview
         ? renderPreviewMedia(m.preview, m.poster, m.title || m.artist, 'category-tile-media')
         : `<video class="category-tile-media" poster="${escapeHtml(m.poster)}" preload="metadata" ${reduceMotion ? '' : 'autoplay muted loop playsinline'} aria-label="${escapeHtml(m.title || m.artist)} preview"></video>`}
       <div class="tile-rest-fade" aria-hidden="true"></div>
       <div class="tile-rest-lockup" aria-hidden="true">
-        <span class="tile-rest-title">${escapeHtml(m.artist)}</span>
-        ${m.title ? `<span class="tile-rest-cats">${escapeHtml(m.title)}</span>` : ''}
+        <span class="tile-rest-title">${escapeHtml(primary)}</span>
+        ${secondary ? `<span class="tile-rest-cats">${escapeHtml(secondary)}</span>` : ''}
       </div>
     </a>
-  `
-  ).join('');
+  `;
+  }).join('');
 
   const frag = tpl(`
     <section class="video-category">
