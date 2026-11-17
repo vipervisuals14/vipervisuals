@@ -26,7 +26,6 @@
   --bg: #000000;
   --text: #ffffff;
   --hover: #3791de;
-  --current: rgb(182, 182, 182);
   --font-azeret: 'Azeret Mono', 'Courier New', Courier, monospace;
   --nav-font-size: calc(10 * var(--u));
   --tile-title-size: calc(40 * var(--u));
@@ -146,7 +145,8 @@ video {
 }
 
 .nav-link.active {
-  color: var(--current);
+  color: var(--hover);
+  font-weight: 700;
 }
 .nav-link.active:hover {
   color: var(--hover);
@@ -1175,6 +1175,10 @@ video {
 }
 .mobile-menu .mm-links a:hover {
   color: var(--hover);
+}
+.mobile-menu .mm-links a.active {
+  color: var(--hover);
+  font-weight: 700;
 }
 
 /* ---------- Responsive: under 900px ---------- */
