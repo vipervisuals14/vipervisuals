@@ -940,6 +940,16 @@ function renderAbout() {
           <p>We create bold, captivating visuals that amplify the voices of music artists and brands, connecting them to their audience through unforgettable content.</p>
           <p>Find me on Instagram: <a href="https://www.instagram.com/thevipervisuals/" target="_blank" rel="noopener">@thevipervisuals</a></p>
         </div>
+        <section class="about-services" aria-labelledby="services-heading">
+          <h2 id="services-heading">SERVICES</h2>
+          <ul>
+            <li>VIDEO PRODUCTION</li>
+            <li>PHOTOGRAPHY</li>
+            <li>BRAND IDENTITY</li>
+            <li>MERCHANDISE</li>
+            <li>ALBUM &amp; VINYL ARTWORK</li>
+          </ul>
+        </section>
         <div class="contact-form">
           <label for="form-name">Name</label>
           <input type="text" id="form-name" placeholder="Your name">

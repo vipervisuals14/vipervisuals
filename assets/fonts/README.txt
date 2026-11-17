@@ -1,15 +1,14 @@
-SELF-HOSTED FONTS — add your font files here.
+SELF-HOSTED FONTS
 
-Required (place .woff2 + .woff files in this folder):
+Silkscreen-Regular.ttf and Silkscreen-Bold.ttf
+  Pixel font used on the About page. License: Silkscreen-OFL.txt.
 
-1. silkscreen-bold.woff2 / silkscreen-bold.woff
-   silkscreen-regular.woff2 / silkscreen-regular.woff
-   → Pixelated display font used site-wide for headings, nav, logo text.
+AzeretMono.ttf
+  Monospace font used for navigation, captions and supporting text.
+  License: OFL.txt.
 
-2. azeretmono-medium.woff2 / azeretmono-medium.woff
-   azeretmono-regular.woff2 / azeretmono-regular.woff
-   → Azeret Mono used for captions/labels (two-line card captions).
+Unbounded.ttf
+  Open-license display font used as a temporary substitute for Akira Expanded.
+  License: Unbounded-OFL.txt. The licensed Akira webfont has not been supplied.
 
-Do NOT hotlink fonts from external hosts. These must be self-hosted per
-the brand constraint. Once added, css/style.css @font-face rules will
-pick them up automatically.
+Fonts are served from this folder rather than hotlinked from external hosts.
