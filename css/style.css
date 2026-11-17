@@ -704,13 +704,15 @@ video {
   }
 }
 
-/* Photography projects use the landing-page type and fade without the category hover effect. */
-.photo-project-tile .tile-rest-title {
+/* Project galleries use the landing-page type and fade without the category hover effect. */
+.photo-project-tile .tile-rest-title,
+.video-project-tile .tile-rest-title {
   max-width: 100%;
   white-space: normal;
   line-height: 1.05;
 }
-.photo-project-tile .tile-rest-cats {
+.photo-project-tile .tile-rest-cats,
+.video-project-tile .tile-rest-cats {
   max-width: 100%;
   white-space: normal;
 }
