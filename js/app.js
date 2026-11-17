@@ -382,7 +382,7 @@ function mount(fragment) {
   });
 }
 
-// Match row widths by adjusting spacing, never by stretching letterforms.
+// Keep tracking tight while fitting each row to the same width.
 // Reduce the shared font size only when the longest line needs room.
 function fitLandingHoverText(section) {
   if (!section || !section.querySelector('.landing-tile')) return;
@@ -542,7 +542,7 @@ function renderLandingTile(category, route) {
   const media = renderPreviewMedia(category.preview, poster, category.label, 'category-tile-media');
   const baselines = [374, 418, 462];
   const rows = category.rows.map((text, i) => `
-    <text class="cutout-druk-text" x="230" y="${baselines[i]}" font-size="40" text-anchor="middle" textLength="424" lengthAdjust="spacing">${escapeHtml(text)}</text>
+    <text class="cutout-druk-text" x="230" y="${baselines[i]}" font-size="40" text-anchor="middle" textLength="424" lengthAdjust="spacingAndGlyphs">${escapeHtml(text)}</text>
   `).join('');
   return `
     <a href="#/${route}/${escapeHtml(category.slug)}" class="category-tile landing-tile" aria-label="${title}: ${description}">
