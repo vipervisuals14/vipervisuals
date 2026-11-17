@@ -662,7 +662,7 @@ function renderLandingTile(category, route) {
   // Fill the card while keeping every line the same width and tightly tracked.
   const fourLines = hoverRows.length === 4;
   const baselines = fourLines ? [217, 382, 547, 712] : [276, 491, 706];
-  const fontSize = fourLines ? 165 : 220;
+  const fontSize = fourLines ? 195 : 260;
   const rows = hoverRows.map((text, i) => `
     <text class="cutout-druk-text" x="230" y="${baselines[i]}" font-size="${fontSize}" text-anchor="middle" textLength="424" lengthAdjust="spacingAndGlyphs">${escapeHtml(text)}</text>
   `).join('');
