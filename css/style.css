@@ -704,6 +704,17 @@ video {
   }
 }
 
+/* Photography projects use the landing-page type and fade without the category hover effect. */
+.photo-project-tile .tile-rest-title {
+  max-width: 100%;
+  white-space: normal;
+  line-height: 1.05;
+}
+.photo-project-tile .tile-rest-cats {
+  max-width: 100%;
+  white-space: normal;
+}
+
 /* Design categories use the shared grid without inventing subcategory copy. */
 .design-tile .tile-rest-title {
   line-height: 1.05;

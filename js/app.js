@@ -833,11 +833,12 @@ function renderPhotoSubcategory(categorySlug) {
 
   const tilesHtml = items.map(
     (m) => `
-    <a href="#/project/${m.slug}" class="category-tile">
-      <img class="category-tile-media" src="${m.poster}" alt="${escapeHtml(m.title || m.artist)}">
-      <div class="category-tile-caption project-tile-caption">
-        <span class="brand">${escapeHtml(m.artist)}</span>
-        <span class="title">${m.title ? `‘${escapeHtml(m.title)}’` : ''}</span>
+    <a href="#/project/${escapeHtml(m.slug)}" class="category-tile photo-project-tile" aria-label="${escapeHtml(m.artist)}${m.title ? `: ${escapeHtml(m.title)}` : ''}">
+      <img class="category-tile-media" src="${escapeHtml(m.poster)}" alt="">
+      <div class="tile-rest-fade" aria-hidden="true"></div>
+      <div class="tile-rest-lockup" aria-hidden="true">
+        <span class="tile-rest-title">${escapeHtml(m.artist)}</span>
+        ${m.title ? `<span class="tile-rest-cats">${escapeHtml(m.title)}</span>` : ''}
       </div>
     </a>
   `
