@@ -555,8 +555,7 @@ video {
 }
 .tile-rest-fade,
 .cutout-lift,
-.cutout-plate,
-.tile-hover-kicker-svg {
+.cutout-plate {
   position: absolute;
   inset: 0;
   pointer-events: none;
@@ -627,19 +626,23 @@ video {
 .cutout-druk-text {
   fill: #fff;
 }
-.tile-hover-kicker-svg {
-  width: 100%;
-  height: 100%;
+.tile-hover-kicker {
+  position: absolute;
+  top: calc(16 * var(--u));
+  left: 0;
+  right: 0;
   z-index: 5;
+  color: #fff;
+  font-family: var(--font-azeret);
+  font-size: var(--nav-font-size);
+  font-weight: 400;
+  letter-spacing: -0.4px;
+  line-height: 1.5;
+  text-align: center;
+  pointer-events: none;
   opacity: 0;
   transform: translateY(calc(-6 * var(--u)));
   transition: opacity 0.35s ease, transform 0.35s ease;
-}
-.tile-hover-kicker-svg text {
-  fill: #fff;
-  font-family: var(--font-azeret);
-  font-weight: 600;
-  letter-spacing: 0.04em;
 }
 .landing-tile:focus-visible {
   outline: none;
@@ -654,13 +657,13 @@ video {
 }
 .landing-tile:focus-visible .cutout-lift,
 .landing-tile:focus-visible .cutout-plate,
-.landing-tile:focus-visible .tile-hover-kicker-svg {
+.landing-tile:focus-visible .tile-hover-kicker {
   opacity: 1;
 }
 .landing-tile:focus-visible .cutout-svg {
   transform: scale(1);
 }
-.landing-tile:focus-visible .tile-hover-kicker-svg {
+.landing-tile:focus-visible .tile-hover-kicker {
   transform: translateY(0);
 }
 @media (hover: hover) and (pointer: fine) {
@@ -674,13 +677,13 @@ video {
   }
   .landing-tile:hover .cutout-lift,
   .landing-tile:hover .cutout-plate,
-  .landing-tile:hover .tile-hover-kicker-svg {
+  .landing-tile:hover .tile-hover-kicker {
     opacity: 1;
   }
   .landing-tile:hover .cutout-svg {
     transform: scale(1);
   }
-  .landing-tile:hover .tile-hover-kicker-svg {
+  .landing-tile:hover .tile-hover-kicker {
     transform: translateY(0);
   }
 }
@@ -700,7 +703,7 @@ video {
   .landing-tile .cutout-lift,
   .landing-tile .cutout-plate,
   .landing-tile .cutout-svg,
-  .landing-tile .tile-hover-kicker-svg {
+  .landing-tile .tile-hover-kicker {
     transition: none;
     transform: none !important;
   }

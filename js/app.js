@@ -491,35 +491,10 @@ function mount(fragment) {
   outlet.innerHTML = '';
   outlet.appendChild(document.importNode(fragment, true));
   setupHorizontalScrollIndicator();
-  fitLandingHoverText(outlet.firstElementChild);
   requestAnimationFrame(() => {
     const el = outlet.firstElementChild;
     if (el) el.classList.add('loaded');
   });
-}
-
-// Keep tracking tight while fitting each row to the same width.
-// Reduce the shared font size only when the longest line needs room.
-function fitLandingHoverText(section) {
-  if (!section || !section.querySelector('.landing-tile')) return;
-  const fit = () => {
-    if (!section.isConnected) return;
-    section.querySelectorAll('.landing-tile').forEach(tile => {
-      const rows = [...tile.querySelectorAll('.cutout-druk-text')];
-      rows.forEach(row => {
-        row.removeAttribute('textLength');
-        row.setAttribute('font-size', '40');
-      });
-      const longest = Math.max(0, ...rows.map(row => row.getComputedTextLength()));
-      const size = longest > 424 ? Math.floor(4000 * 424 / longest) / 100 : 40;
-      rows.forEach(row => {
-        row.setAttribute('font-size', size.toFixed(2));
-        row.setAttribute('textLength', '424');
-      });
-    });
-  };
-  fit();
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
 }
 
 function setupHorizontalScrollIndicator() {
@@ -684,10 +659,12 @@ function renderLandingTile(category, route) {
   const poster = reducedMotion && category.stillPoster ? category.stillPoster : category.poster;
   const media = renderPreviewMedia(category.preview, poster, category.label, 'category-tile-media');
   const hoverRows = category.hoverRows || category.rows;
-  const baselines = hoverRows.length === 4 ? [352, 396, 440, 484] : [374, 418, 462];
-  const kickerBaseline = baselines[0] - 66;
+  // Fill the card while keeping every line the same width and tightly tracked.
+  const fourLines = hoverRows.length === 4;
+  const baselines = fourLines ? [217, 382, 547, 712] : [276, 491, 706];
+  const fontSize = fourLines ? 165 : 220;
   const rows = hoverRows.map((text, i) => `
-    <text class="cutout-druk-text" x="230" y="${baselines[i]}" font-size="40" text-anchor="middle" textLength="424" lengthAdjust="spacingAndGlyphs">${escapeHtml(text)}</text>
+    <text class="cutout-druk-text" x="230" y="${baselines[i]}" font-size="${fontSize}" text-anchor="middle" textLength="424" lengthAdjust="spacingAndGlyphs">${escapeHtml(text)}</text>
   `).join('');
   return `
     <a href="#/${route}/${escapeHtml(category.slug)}" class="category-tile landing-tile" aria-label="${title}: ${description}">
@@ -700,9 +677,9 @@ function renderLandingTile(category, route) {
           <span class="tile-rest-cats">${description}</span>
         </div>
         <div class="cutout-plate" aria-hidden="true">
-          <svg class="cutout-svg" viewBox="0 0 460 760" preserveAspectRatio="xMidYMid meet">${rows}</svg>
+          <svg class="cutout-svg" viewBox="0 0 460 760" preserveAspectRatio="none">${rows}</svg>
         </div>
-        <svg class="tile-hover-kicker-svg" viewBox="0 0 460 760" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><text x="230" y="${kickerBaseline}" font-size="10.2" text-anchor="middle">${title}</text></svg>
+        <span class="tile-hover-kicker" aria-hidden="true">${title}</span>
       </div>
     </a>`;
 }
