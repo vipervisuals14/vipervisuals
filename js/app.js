@@ -450,6 +450,13 @@ const DESIGN_CATEGORIES = [
   },
 ];
 
+/* Artwork displayed within each design category. */
+const DESIGN_IMAGES = {
+  merchandise: [
+    `${CDN}74a55c78-e01d-4ce2-b649-2b4428f9b031_rw_1920.jpg?h=38c998273bc2016ae84e407531eff520`,
+  ],
+};
+
 /* PHOTOGRAPHY PROJECTS — individual photos within each category */
 const PHOTO_PROJECTS = {
   'photo-performance': [
@@ -873,12 +880,16 @@ function renderDesignSubcategory(slug) {
   if (!category) { renderNotFound(); return; }
   document.body.className = '';
   setActiveNav('#/design');
+  const images = DESIGN_IMAGES[slug] || [];
+  const content = images.length
+    ? `<div class="category-grid" role="region" aria-label="${escapeHtml(category.label)} gallery" tabindex="0">${images.map((src, index) => `
+        <div class="category-tile">
+          <img class="category-tile-media" src="${escapeHtml(src)}" alt="${escapeHtml(category.label)} design ${index + 1}" decoding="async">
+        </div>`).join('')}</div>`
+    : `<div class="design-empty"><h1>${escapeHtml(category.label)}</h1><p>PROJECTS NOT YET ADDED</p></div>`;
   mount(tpl(`
     <section class="design-category">
-      <div class="design-empty">
-        <h1>${escapeHtml(category.label)}</h1>
-        <p>PROJECTS NOT YET ADDED</p>
-      </div>
+      ${content}
       ${renderFooter()}
     </section>
   `));
