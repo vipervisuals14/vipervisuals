@@ -289,6 +289,12 @@ const THIRD_PARTY_PHOTOS = [
   '151520b7448d4201b89efa20b06529ae',
   '7a2be3e8f623435298d2554e5422fff6',
 ].map(id => `https://d2kbe88412276p.cloudfront.net/creative-work-portfolio-project-files/360215/${id}_feed_v3_645w.webp`);
+/* Temporary crops from the supplied Cody Lawless screenshot. */
+const CODY_LAWLESS_PHOTOS = [
+  'media/photography/cody-lawless/01.jpg',
+  'media/photography/cody-lawless/02.jpg',
+  'media/photography/cody-lawless/03.jpg',
+];
 /* Dakota photographs previously shown in Commercial. */
 const DAKOTA_PHOTOS = [
   '7c18839d-a44d-4417-9a21-dda72410eb54_rw_1200.jpg?h=c4160a86c0fdeed19b50cd69d4e7daee',
@@ -334,7 +340,8 @@ const PHOTO_GALLERIES = {
   'amaal-single-release-press': { artist: 'AMAAL NUUX', title: 'SINGLE RELEASE PRESS', photos: AMAAL_SINGLE_RELEASE_PHOTOS },
   nikkaela: { artist: 'OUR BLOCK CLOTHING', title: 'LOOKBOOK', photos: OUR_BLOCK_PHOTOS },
   dakota: { artist: 'DAKOTA', title: '', photos: DAKOTA_PHOTOS },
-  'micky-press': { artist: 'MICKY WEEKS', title: 'PRESS', photos: PRESS_PHOTOS },
+  'cody-lawless': { artist: 'CODY LAWLESS', title: 'PRESS IMAGES, MUSIC VIDEO BTS', photos: CODY_LAWLESS_PHOTOS },
+  'micky-press': { artist: 'MICKY WEEKES', title: 'PRESS', photos: PRESS_PHOTOS },
   'amaal-red-light-rollout': { artist: 'AMAAL', title: 'RED LIGHT ROLLOUT', photos: AMAAL_ROLLOUT_IMAGES },
 };
 
@@ -419,28 +426,34 @@ const PHOTO_PROJECTS = {
       poster: CDN + AMAAL_SINGLE_RELEASE_PHOTOS[0],
     },
     {
-      slug: 'amaal-red-light-rollout',
-      artist: 'AMAAL',
-      title: 'RED LIGHT ROLLOUT',
-      poster: CDN + AMAAL_ROLLOUT_IMAGES[1],
-    },
-    {
       slug: 'micky-press',
-      artist: 'MICKY WEEKS',
+      artist: 'MICKY WEEKES',
       title: 'PRESS',
       poster: CDN + PRESS_PHOTOS[0],
-    },
-    {
-      slug: 'kays',
-      artist: 'VIPER VISUALS',
-      title: 'SPORTS SPEC SHOOT',
-      poster: `${CDN}0943fa60-09f0-4b12-88af-9af03e4eecd3_rw_1200.jpg?h=7534e6b797f517aecc5c8760c7e8bb91`,
     },
     {
       slug: 'dakota',
       artist: 'DAKOTA',
       title: '',
       poster: CDN + DAKOTA_PHOTOS[0],
+    },
+    {
+      slug: 'cody-lawless',
+      artist: 'CODY LAWLESS',
+      title: 'PRESS IMAGES, MUSIC VIDEO BTS',
+      poster: CODY_LAWLESS_PHOTOS[0],
+    },
+    {
+      slug: 'amaal-red-light-rollout',
+      artist: 'AMAAL',
+      title: 'RED LIGHT ROLLOUT',
+      poster: CDN + AMAAL_ROLLOUT_IMAGES[1],
+    },
+    {
+      slug: 'kays',
+      artist: 'VIPER VISUALS',
+      title: 'SPORTS SPEC SHOOT',
+      poster: `${CDN}0943fa60-09f0-4b12-88af-9af03e4eecd3_rw_1200.jpg?h=7534e6b797f517aecc5c8760c7e8bb91`,
     },
   ],
   'photo-commercial': [
