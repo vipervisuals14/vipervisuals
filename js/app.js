@@ -995,7 +995,13 @@ function renderContact() {
         <div class="contact-copy category-tile">
           <div class="contact-intro">
             <p>Based in Toronto, available worldwide.</p>
-            <h1>Good work starts with a conversation.</h1>
+            <h1 aria-label="Good work starts with a conversation.">
+              <svg class="contact-headline" viewBox="0 0 1000 710" preserveAspectRatio="none" aria-hidden="true">
+                <text x="500" y="225" text-anchor="middle" textLength="970" lengthAdjust="spacingAndGlyphs">GOOD WORK</text>
+                <text x="500" y="460" text-anchor="middle" textLength="970" lengthAdjust="spacingAndGlyphs">STARTS WITH A</text>
+                <text x="500" y="695" text-anchor="middle" textLength="970" lengthAdjust="spacingAndGlyphs">CONVERSATION.</text>
+              </svg>
+            </h1>
           </div>
         </div>
         <form class="contact-form" id="contact-form">
