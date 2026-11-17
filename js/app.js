@@ -243,6 +243,26 @@ const PHOTOGRAPHY_CATEGORIES = [
   },
 ];
 
+/* DESIGN CATEGORIES — artwork from the existing Viper Visuals design page. */
+const DESIGN_CATEGORIES = [
+  {
+    slug: 'brand-identity',
+    label: 'BRAND IDENTITY',
+    poster: `${CDN}b6b20203-a625-4d43-b919-d3b11c50da83_rw_1920.jpg?h=2e42c3aa8d475a5ec72bd8544a825964`,
+  },
+  {
+    slug: 'merchandise',
+    label: 'MERCHANDISE',
+    poster: `${CDN}571da5f2-b58e-45b6-a534-6ddd43434285_rw_1920.jpg?h=be4ab4c22f4956bb992b1a386523c1dd`,
+  },
+  {
+    slug: 'album-vinyl-artwork',
+    label: 'ALBUM & VINYL ARTWORK',
+    lines: ['ALBUM & VINYL', 'ARTWORK'],
+    poster: `${CDN}77bdf339-7cfa-4d4c-bf39-3b2779031516_rw_1920.jpg?h=73864d3dd53551f6b1b6efc32bbef86d`,
+  },
+];
+
 /* PHOTOGRAPHY PROJECTS — individual photos within each category */
 const PHOTO_PROJECTS = {
   'photo-performance': [
@@ -613,6 +633,44 @@ function renderPhotoCategories() {
   mount(frag);
 }
 
+function renderDesignCategories() {
+  document.body.className = '';
+  setActiveNav('#/design');
+  const tiles = DESIGN_CATEGORIES.map(category => {
+    const title = escapeHtml(category.label);
+    const lines = (category.lines || [category.label]).map(escapeHtml).join('<br>');
+    return `
+      <a href="#/design/${escapeHtml(category.slug)}" class="category-tile design-tile" aria-label="${title}">
+        <img class="category-tile-media" src="${escapeHtml(category.poster)}" alt="">
+        <div class="tile-rest-fade" aria-hidden="true"></div>
+        <div class="tile-rest-lockup"><span class="tile-rest-title">${lines}</span></div>
+      </a>`;
+  }).join('');
+  mount(tpl(`
+    <section class="design-category">
+      <div class="category-grid">${tiles}</div>
+      ${renderFooter()}
+    </section>
+  `));
+}
+
+function renderDesignSubcategory(slug) {
+  const category = DESIGN_CATEGORIES.find(item => item.slug === slug);
+  if (!category) { renderNotFound(); return; }
+  document.body.className = '';
+  setActiveNav('#/design');
+  mount(tpl(`
+    <section class="design-category">
+      <div class="design-empty">
+        <h1>${escapeHtml(category.label)}</h1>
+        <p>PROJECTS NOT YET ADDED</p>
+        <a href="#/design">BACK TO DESIGN</a>
+      </div>
+      ${renderFooter()}
+    </section>
+  `));
+}
+
 function renderCategory(items, sectionKey) {
   document.body.className = '';
   setActiveNav(`#/${sectionKey}`);
@@ -906,6 +964,10 @@ function router() {
     renderPhotoSubcategory('photo-editorial');
   } else if (path === '#/photo/photo-commercial') {
     renderPhotoSubcategory('photo-commercial');
+  } else if (path === '#/design') {
+    renderDesignCategories();
+  } else if (path.startsWith('#/design/')) {
+    renderDesignSubcategory(path.slice('#/design/'.length));
   } else if (path === '#/social') {
     renderCategory(SOCIAL_CONTENT, 'social');
   } else if (path === '#/recaps') {

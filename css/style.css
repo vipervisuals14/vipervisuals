@@ -326,7 +326,8 @@ video {
 .video-category,
 .photo-category,
 .social-category,
-.recaps-category {
+.recaps-category,
+.design-category {
   position: relative;
   min-height: 100vh;
   height: 100vh;
@@ -698,6 +699,31 @@ video {
   .landing-tile .tile-hover-kicker-svg {
     transition: none;
     transform: none !important;
+  }
+}
+
+/* Design categories use the shared grid without inventing subcategory copy. */
+.design-tile .tile-rest-title {
+  font-size: calc(34 * var(--u));
+  line-height: 1.05;
+  white-space: normal;
+}
+.design-empty {
+  padding: calc(66 * var(--u)) calc(20 * var(--u));
+}
+.design-empty h1 {
+  margin: 0 0 calc(20 * var(--u));
+  font-family: 'Akira Expanded', 'Unbounded', sans-serif;
+  font-size: calc(24 * var(--u));
+  font-weight: 800;
+  letter-spacing: -0.055em;
+}
+.design-empty p {
+  margin: 0 0 calc(16 * var(--u));
+}
+@media (max-width: 899px) {
+  .design-tile .tile-rest-title {
+    font-size: 22px;
   }
 }
 
@@ -1219,6 +1245,7 @@ video {
 .photo-category,
 .social-category,
 .recaps-category,
+.design-category,
 .about-page,
 .contact-page {
   opacity: 0;
@@ -1231,6 +1258,7 @@ video {
 .photo-category.loaded,
 .social-category.loaded,
 .recaps-category.loaded,
+.design-category.loaded,
 .about-page.loaded,
 .contact-page.loaded {
   opacity: 1;
