@@ -826,12 +826,6 @@ function renderPhotoGallery(gallery) {
       <img class="category-tile-media" src="${escapeHtml(path.startsWith('media/') ? path : CDN + path)}"
         alt="${escapeHtml(gallery.artist)}${gallery.title ? `, ${escapeHtml(gallery.title)}` : ''} — photograph ${index + 1}"
         ${index < 3 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
-      ${index === 0 ? `
-        <div class="tile-rest-fade" aria-hidden="true"></div>
-        <div class="tile-rest-lockup">
-          <span class="tile-rest-title">${escapeHtml(gallery.artist)}</span>
-          ${gallery.title ? `<span class="tile-rest-cats">${escapeHtml(gallery.title)}</span>` : ''}
-        </div>` : ''}
     </div>
   `).join('');
   mount(tpl(`
