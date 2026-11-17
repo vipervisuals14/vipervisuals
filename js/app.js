@@ -360,7 +360,7 @@ const PHOTO_PROJECTS = {
       slug: 'the-weeknd',
       artist: 'THE WEEKND',
       title: 'AFTER HOURS TILL DAWN TOUR',
-      poster: 'media/photography/the-weeknd-cover.jpg',
+      poster: 'media/photography/the-weeknd-placeholder.jpg',
     },
     {
       slug: 'sza',
