@@ -731,16 +731,10 @@ function renderMusicVideos() {
 function renderHome() {
   document.body.className = 'route-home';
   setActiveNav('#/');
-  const variant = window.matchMedia('(max-width: 899px)').matches ? 'portrait' : 'wide';
-  const poster = `media/home/home-reel-${variant}-poster.jpg`;
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const hero = reducedMotion
-    ? `<img class="home-hero-media" src="${poster}" alt="Viper Visuals video production">`
-    : `<video class="home-hero-media" autoplay muted loop playsinline preload="metadata" poster="${poster}" aria-label="Viper Visuals video production highlights"><source src="media/home/home-reel-${variant}.mp4" type="video/mp4"></video>`;
   const frag = tpl(`
     <section class="home-page">
       <div class="home-hero">
-        ${hero}
+        <img class="home-hero-media" src="https://cdn.myportfolio.com/9844ffef-896f-4abd-b0bc-bec392563aaf/73fd5890-8229-4748-9e6f-3220c53ed5e3_carw_4x3x1280.gif?h=02b5d25a02517c863ac5d06e7dd26f42" alt="Viper Visuals homepage">
       </div>
       <div class="home-two-up"></div>
       <div class="home-wide"></div>
@@ -1132,27 +1126,16 @@ function router() {
   }
 }
 
-// Refresh the homepage or landing cards when the system motion preference changes.
+// Refresh only the landing cards if the system motion preference changes.
 const landingMotionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
 const refreshLandingMotion = () => {
   const path = (location.hash || '#/').split('?')[0];
-  if (path === '#/' || path === '#/video' || path === '#/photo') router();
+  if (path === '#/video' || path === '#/photo') router();
 };
 if (landingMotionPreference.addEventListener) {
   landingMotionPreference.addEventListener('change', refreshLandingMotion);
 } else if (landingMotionPreference.addListener) {
   landingMotionPreference.addListener(refreshLandingMotion);
-}
-
-// Swap the pre-rendered reel at the desktop/mobile breakpoint without cropping a portrait reel into a wide frame.
-const homeViewport = window.matchMedia('(max-width: 899px)');
-const refreshHomeViewport = () => {
-  if ((location.hash || '#/').split('?')[0] === '#/') router();
-};
-if (homeViewport.addEventListener) {
-  homeViewport.addEventListener('change', refreshHomeViewport);
-} else if (homeViewport.addListener) {
-  homeViewport.addListener(refreshHomeViewport);
 }
 
 window.addEventListener('hashchange', router);

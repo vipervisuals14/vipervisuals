@@ -206,8 +206,8 @@ video {
   top: calc(53 * var(--u));
   left: 0;
   width: 100%;
-  height: calc(100vh - 53 * var(--u));
-  background: #000;
+  height: calc(759 * var(--u));
+  background: #111;
   overflow: hidden;
 }
 .home-hero video,
@@ -1177,11 +1177,6 @@ video {
     display: block;
     right: calc(20 * var(--u));
     top: calc(20 * var(--u));
-  }
-
-  .home-hero {
-    top: 56px;
-    height: calc(100vh - 56px);
   }
 
   /* Keep all tiles accessible without vertical scrolling on narrow screens. */
