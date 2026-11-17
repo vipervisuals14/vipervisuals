@@ -12,6 +12,15 @@
   font-display: swap;
 }
 
+/* Open-license stand-in until the licensed Akira Expanded files are supplied. */
+@font-face {
+  font-family: 'Unbounded';
+  src: url('../assets/fonts/Unbounded.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+}
+
 :root {
   --u: calc(100vw / 1440);
   --bg: #000000;
@@ -523,6 +532,173 @@ video {
 }
 .project-tile-caption .brand {
   font-weight: 700;
+}
+
+/* Video and photography landing cards only; subcategory tiles stay unchanged. */
+.landing-tile .tile-media-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: calc(10 * var(--u));
+  overflow: hidden;
+  background: #000;
+  isolation: isolate;
+}
+.landing-tile .category-tile-media {
+  z-index: 0;
+  transition: transform 0.45s ease, filter 0.45s ease;
+}
+.tile-rest-fade,
+.cutout-lift,
+.cutout-plate,
+.tile-hover-kicker-svg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.tile-rest-fade {
+  z-index: 1;
+  background: linear-gradient(to top, rgba(0,0,0,0.74) 0%, rgba(0,0,0,0.28) 14%, rgba(0,0,0,0) 27%);
+}
+.cutout-lift {
+  z-index: 1;
+  background: rgba(46, 58, 86, 0.24);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.tile-rest-lockup {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 0 calc(14 * var(--u)) calc(16 * var(--u));
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(8 * var(--u));
+  text-align: center;
+  pointer-events: none;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.tile-rest-title,
+.cutout-druk-text {
+  font-family: 'Akira Expanded', 'Unbounded', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.055em;
+}
+.tile-rest-title {
+  font-size: calc(40 * var(--u));
+  line-height: 0.92;
+  color: #fff;
+  white-space: nowrap;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.65);
+}
+.tile-rest-cats {
+  font-family: var(--font-azeret);
+  font-size: calc(10 * var(--u));
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  color: rgba(255,255,255,0.92);
+  text-shadow: 0 1px 6px rgba(0,0,0,0.95), 0 0 14px rgba(0,0,0,0.85);
+}
+.cutout-plate {
+  z-index: 3;
+  background: #000;
+  mix-blend-mode: multiply;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.cutout-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transform: scale(1.04);
+  transition: transform 0.45s ease;
+}
+.cutout-druk-text {
+  fill: #fff;
+}
+.tile-hover-kicker-svg {
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  opacity: 0;
+  transform: translateY(calc(-6 * var(--u)));
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.tile-hover-kicker-svg text {
+  fill: #fff;
+  font-family: var(--font-azeret);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.landing-tile:focus-visible {
+  outline: none;
+}
+.landing-tile:focus-visible .category-tile-media {
+  transform: scale(1.06);
+  filter: brightness(1.48) contrast(1.18) saturate(1.22);
+}
+.landing-tile:focus-visible .tile-rest-lockup {
+  opacity: 0;
+  transform: translateY(calc(8 * var(--u)));
+}
+.landing-tile:focus-visible .cutout-lift,
+.landing-tile:focus-visible .cutout-plate,
+.landing-tile:focus-visible .tile-hover-kicker-svg {
+  opacity: 1;
+}
+.landing-tile:focus-visible .cutout-svg {
+  transform: scale(1);
+}
+.landing-tile:focus-visible .tile-hover-kicker-svg {
+  transform: translateY(0);
+}
+@media (hover: hover) and (pointer: fine) {
+  .landing-tile:hover .category-tile-media {
+    transform: scale(1.06);
+    filter: brightness(1.48) contrast(1.18) saturate(1.22);
+  }
+  .landing-tile:hover .tile-rest-lockup {
+    opacity: 0;
+    transform: translateY(calc(8 * var(--u)));
+  }
+  .landing-tile:hover .cutout-lift,
+  .landing-tile:hover .cutout-plate,
+  .landing-tile:hover .tile-hover-kicker-svg {
+    opacity: 1;
+  }
+  .landing-tile:hover .cutout-svg {
+    transform: scale(1);
+  }
+  .landing-tile:hover .tile-hover-kicker-svg {
+    transform: translateY(0);
+  }
+}
+@media (max-width: 899px) {
+  .tile-rest-title {
+    font-size: 26px;
+  }
+  .tile-rest-cats {
+    font-size: 7.5px;
+    letter-spacing: 0.02em;
+    word-spacing: -0.4em;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .landing-tile .category-tile-media,
+  .landing-tile .tile-rest-lockup,
+  .landing-tile .cutout-lift,
+  .landing-tile .cutout-plate,
+  .landing-tile .cutout-svg,
+  .landing-tile .tile-hover-kicker-svg {
+    transition: none;
+    transform: none !important;
+  }
 }
 
 /* Video previews share the same spacing and dimensions as other tiles. */

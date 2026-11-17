@@ -26,20 +26,21 @@ const VIDEO_CATEGORIES = [
   {
     slug: 'video-cinematic',
     label: 'CINEMATIC',
-    description: 'Music videos, visualizers, artist films',
+    rows: [['MUSIC VIDEOS', 47.8, 1.214], ['VISUALIZERS', 52.3, 1.109], ['ARTIST FILMS', 48.6, 1.194]],
+    stillPoster: 'https://i.ytimg.com/vi/4bLi52OVcQQ/hqdefault.jpg',
     poster: `${CDN}b8b37835-6914-4f17-9048-c44a35a0fabd_rwc_212x0x457x343x457.gif?h=58a630675171c931373f269654eabf43`,
   },
   {
     slug: 'video-live',
     label: 'LIVE',
-    description: 'Concerts, festivals, recaps, full-set recordings',
+    rows: [['MULTI CAM', 58.9, 0.985], ['RECAPS', 82.1, 0.707], ['FULL SETS', 61.9, 0.937]],
     poster: KELLAND_POSTER,
     preview: KELLAND_PREVIEW,
   },
   {
     slug: 'video-digital',
     label: 'DIGITAL',
-    description: 'Social content, promotional videos, behind-the-scenes',
+    rows: [['SOCIAL CONTENT', 39.2, 1.481], ['PROMOTIONAL VIDEOS', 30.4, 1.911], ['BEHIND THE SCENES', 33.6, 1.727]],
     poster: CALE_POSTER,
     preview: CALE_PREVIEW,
   },
@@ -225,19 +226,19 @@ const PHOTOGRAPHY_CATEGORIES = [
   {
     slug: 'photo-performance',
     label: 'PERFORMANCE',
-    description: 'Concerts, festivals, live events, backstage, artist performances',
+    rows: [['FESTIVALS', 60.9, 0.952], ['TOURS', 98.5, 0.589], ['BACKSTAGE', 53.7, 1.08]],
     poster: `${CDN}2aaaa8b2-10b3-4d97-a6ad-1c13fc013c02_rw_3840.jpg?h=a653658d08af3e47a6bbd97599617c3e`,
   },
   {
     slug: 'photo-editorial',
-    label: 'EDITORIAL',
-    description: 'Artist press, promotional imagery, fashion editorials, creative photoshoots',
+    label: 'EDITORIALS',
+    rows: [['ARTIST PRESS', 46.2, 1.255], ['FASHION', 77.8, 0.746], ['ALBUM COVERS', 41.9, 1.383]],
     poster: `${CDN}44ad4c8b-ad5c-4fe5-b5a7-69a118150242_rw_1920.jpg?h=ed93f885f0ea1225f4f84a9a00635c13`,
   },
   {
     slug: 'photo-commercial',
     label: 'COMMERCIAL',
-    description: 'Product photography, fashion campaigns, lifestyle imagery, brand photography',
+    rows: [['PRODUCTS', 61.7, 0.94], ['BRANDS', 80.1, 0.724], ['CORPORATE', 55.0, 1.055]],
     poster: `${CDN}941625a4-5e8d-4bd5-b8cd-5fa68ff8218e_rw_1200.jpg?h=f30ba0a8690758dfd265def9d6ec79be`,
   },
 ];
@@ -506,6 +507,36 @@ function renderFooter() {
   `;
 }
 
+// Landing-page cards share one layout; project galleries keep their existing tiles.
+function renderLandingTile(category, route) {
+  const title = escapeHtml(category.label);
+  const labels = category.rows.map(row => row[0]);
+  const description = escapeHtml(labels.join(' · '));
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const poster = reducedMotion && category.stillPoster ? category.stillPoster : category.poster;
+  const media = renderPreviewMedia(category.preview, poster, category.label, 'category-tile-media');
+  const baselines = [358, 418, 478];
+  const rows = category.rows.map(([text, size, scale], i) => `
+    <g transform="translate(230, ${baselines[i]}) scale(1, ${scale})"><text class="cutout-druk-text" x="0" y="0" font-size="${size}" text-anchor="middle" textLength="424" lengthAdjust="spacingAndGlyphs">${escapeHtml(text)}</text></g>
+  `).join('');
+  return `
+    <a href="#/${route}/${escapeHtml(category.slug)}" class="category-tile landing-tile" aria-label="${title}: ${description}">
+      <div class="tile-media-box">
+        ${media}
+        <div class="tile-rest-fade" aria-hidden="true"></div>
+        <div class="cutout-lift" aria-hidden="true"></div>
+        <div class="tile-rest-lockup" aria-hidden="true">
+          <span class="tile-rest-title">${title}</span>
+          <span class="tile-rest-cats">${description}</span>
+        </div>
+        <div class="cutout-plate" aria-hidden="true">
+          <svg class="cutout-svg" viewBox="0 0 460 760" preserveAspectRatio="xMidYMid meet">${rows}</svg>
+        </div>
+        <svg class="tile-hover-kicker-svg" viewBox="0 0 460 760" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><text x="230" y="292" font-size="10.2" text-anchor="middle">${title}</text></svg>
+      </div>
+    </a>`;
+}
+
 /* ------------------------------------------------------------------ */
 /* STEP 1: Music Videos category page                                 */
 /* ------------------------------------------------------------------ */
@@ -513,17 +544,7 @@ function renderMusicVideos() {
   document.body.className = '';
   setActiveNav('#/video');
 
-  const tilesHtml = VIDEO_CATEGORIES.map(
-    (c) => `
-    <a href="#/video/${c.slug}" class="category-tile">
-      ${renderPreviewMedia(c.preview, c.poster, c.label, 'category-tile-media')}
-      <div class="category-tile-caption">
-        <span class="brand">${escapeHtml(c.label)}</span>
-        <span class="title">${escapeHtml(c.description)}</span>
-      </div>
-    </a>
-  `
-  ).join('');
+  const tilesHtml = VIDEO_CATEGORIES.map((c) => renderLandingTile(c, 'video')).join('');
 
   const frag = tpl(`
     <section class="video-category">
@@ -556,17 +577,7 @@ function renderPhotoCategories() {
   document.body.className = '';
   setActiveNav('#/photo');
 
-  const tilesHtml = PHOTOGRAPHY_CATEGORIES.map(
-    (c) => `
-    <a href="#/photo/${c.slug}" class="category-tile">
-      <img class="category-tile-media" src="${c.poster}" alt="${escapeHtml(c.label)}">
-      <div class="category-tile-caption">
-        <span class="brand">${escapeHtml(c.label)}</span>
-        <span class="title">${escapeHtml(c.description)}</span>
-      </div>
-    </a>
-  `
-  ).join('');
+  const tilesHtml = PHOTOGRAPHY_CATEGORIES.map((c) => renderLandingTile(c, 'photo')).join('');
 
   const frag = tpl(`
     <section class="photo-category">
@@ -879,6 +890,18 @@ function router() {
   } else {
     renderNotFound();
   }
+}
+
+// Refresh only the landing cards if the system motion preference changes.
+const landingMotionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+const refreshLandingMotion = () => {
+  const path = (location.hash || '#/').split('?')[0];
+  if (path === '#/video' || path === '#/photo') router();
+};
+if (landingMotionPreference.addEventListener) {
+  landingMotionPreference.addEventListener('change', refreshLandingMotion);
+} else if (landingMotionPreference.addListener) {
+  landingMotionPreference.addListener(refreshLandingMotion);
 }
 
 window.addEventListener('hashchange', router);
