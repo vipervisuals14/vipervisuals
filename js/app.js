@@ -991,10 +991,12 @@ function renderContact() {
   setActiveNav('#/contact');
   const frag = tpl(`
     <section class="contact-page">
-      <div class="contact-content">
-        <div class="contact-intro">
-          <p>Based in Toronto, available worldwide.</p>
-          <h1>Good ideas deserve thoughtful execution. Whether it’s a visual concept, a new campaign or a story waiting to be told, we’d love to be part of bringing it to life.</h1>
+      <div class="category-grid contact-content" role="region" aria-label="Contact Viper Visuals" tabindex="0">
+        <div class="contact-copy category-tile">
+          <div class="contact-intro">
+            <p>Based in Toronto, available worldwide.</p>
+            <h1>Good ideas deserve thoughtful execution. Whether it’s a visual concept, a new campaign or a story waiting to be told, we’d love to be part of bringing it to life.</h1>
+          </div>
         </div>
         <form class="contact-form" id="contact-form">
           <div class="contact-fields">

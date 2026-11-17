@@ -970,7 +970,7 @@ video {
   display: inline-block;
 }
 .about-services li:not(:last-child)::after {
-  content: ' . ';
+  content: ' · ';
   white-space: pre;
 }
 .about-text a {
@@ -983,20 +983,21 @@ video {
 /* Contact enquiry — the site is static, so submission opens an email draft. */
 .contact-page {
   height: var(--screen-height);
-  padding: calc(90 * var(--u)) calc(12 * var(--u)) calc(55 * var(--u));
+  padding: 0;
+  overflow-y: hidden;
 }
 .contact-content {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: calc(32 * var(--u));
-  height: 100%;
-  margin: 0;
+  justify-content: center;
+}
+.contact-copy {
+  background: transparent;
 }
 .contact-intro {
   display: flex;
   flex-direction: column;
   /* The 38-character location line sets the width of the headline beneath it. */
   width: min(100%, calc(38ch - 15.2px));
+  height: 100%;
   font-family: var(--font-azeret);
   font-size: var(--nav-font-size);
 }
@@ -1017,10 +1018,13 @@ video {
 }
 .contact-form {
   display: flex;
+  flex: 0 0 calc((100% - 20 * var(--u)) / 3);
   flex-direction: column;
-  width: 100%;
+  width: calc((100% - 20 * var(--u)) / 3);
+  height: max(0px, calc(var(--screen-height) - 118 * var(--u)));
   min-height: 0;
   margin: 0;
+  scroll-snap-align: start;
 }
 .contact-fields {
   display: grid;
@@ -1319,12 +1323,25 @@ video {
   }
 
   /* Swipe between full-screen About media and text, as in the galleries. */
-  .about-layout {
+  .about-layout,
+  .contact-content {
     justify-content: flex-start;
+    gap: 12px;
+    scroll-padding-inline-start: 12px;
   }
-  .about-page .scroll-indicator {
-    top: 50%;
-    transform: translateY(-50%);
+  .about-page .scroll-indicator,
+  .contact-page .scroll-indicator {
+    top: auto;
+    bottom: 5px;
+    left: 50%;
+    right: auto;
+    gap: 6px;
+    padding: 4px;
+    transform: translateX(-50%);
+  }
+  .about-page .scroll-indicator-track,
+  .contact-page .scroll-indicator-track {
+    width: 54px;
   }
   .about-page .about-left,
   .about-page .about-right {
@@ -1332,32 +1349,25 @@ video {
     width: calc(100vw - 24px);
     height: max(0px, calc(var(--screen-height) - 118px));
   }
-  .contact-page {
-    padding: 66px 12px 50px;
-  }
   .contact-content {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+    justify-content: flex-start;
+  }
+  .contact-form {
+    flex: 0 0 calc(100vw - 24px);
+    width: calc(100vw - 24px);
+    height: max(0px, calc(var(--screen-height) - 118px));
   }
   .contact-intro {
-    display: contents;
+    width: min(100%, 208px);
   }
   .contact-intro h1 {
-    order: 2;
     width: min(100%, 207px);
-    margin: 8px 0 0;
+    margin: auto 0 0;
     font-size: clamp(9px, calc(2.6vh - 3px), 17px);
     line-height: 1.12;
   }
   .contact-intro p {
-    order: 0;
     font-size: 9px;
-  }
-  .contact-form {
-    order: 1;
-    flex: 1 1 0;
-    margin-top: 10px;
   }
   .contact-fields {
     gap: 10px 16px;
@@ -1413,22 +1423,8 @@ video {
 
 /* Keep the complete enquiry usable when a phone is held sideways. */
 @media (max-width: 899px) and (orientation: landscape) {
-  .contact-content {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
-    gap: 24px;
-  }
-  .contact-intro {
-    display: flex;
-    width: min(100%, 208px);
-  }
   .contact-intro h1 {
-    width: min(100%, 207px);
-    margin: auto 0 0;
     font-size: clamp(10px, 3.3vh, 18px);
-  }
-  .contact-form {
-    margin-top: 0;
   }
   .contact-fields {
     gap: 4px 12px;
