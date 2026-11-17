@@ -1,8 +1,5 @@
 SELF-HOSTED FONTS
 
-Silkscreen-Regular.ttf and Silkscreen-Bold.ttf
-  Pixel font used on the About page. License: Silkscreen-OFL.txt.
-
 AzeretMono.ttf
   Monospace font used for navigation, captions and supporting text.
   License: OFL.txt.

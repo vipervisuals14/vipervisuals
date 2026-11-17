@@ -12,22 +12,6 @@
   font-display: swap;
 }
 
-/* Silkscreen: open-license pixel font used on the About page. */
-@font-face {
-  font-family: 'Silkscreen';
-  src: url('../assets/fonts/Silkscreen-Regular.ttf') format('truetype');
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Silkscreen';
-  src: url('../assets/fonts/Silkscreen-Bold.ttf') format('truetype');
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-}
-
 /* Open-license stand-in until the licensed Akira Expanded files are supplied. */
 @font-face {
   font-family: 'Unbounded';
@@ -44,7 +28,7 @@
   --hover: #3791de;
   --current: rgb(182, 182, 182);
   --font-azeret: 'Azeret Mono', 'Courier New', Courier, monospace;
-  --font-pixel: 'Silkscreen', 'Courier New', monospace;
+  --nav-font-size: calc(10 * var(--u));
   --tile-title-size: calc(40 * var(--u));
   --tile-description-size: calc(8.5 * var(--u));
 }
@@ -121,7 +105,7 @@ video {
 }
 .nav-left .nav-link {
   font-family: var(--font-azeret);
-  font-size: calc(10 * var(--u));
+  font-size: var(--nav-font-size);
   font-weight: 400;
   letter-spacing: -0.4px;
 }
@@ -156,7 +140,7 @@ video {
 }
 .nav-right .nav-link {
   font-family: var(--font-azeret);
-  font-size: calc(10 * var(--u));
+  font-size: var(--nav-font-size);
   font-weight: 400;
   letter-spacing: -0.4px;
 }
@@ -1001,14 +985,15 @@ video {
   width: calc(467 * var(--u));
 }
 .about-page {
-  font-family: var(--font-pixel);
+  font-family: var(--font-azeret);
 }
 .about-heading {
   margin: 0 0 calc(20 * var(--u));
-  font-family: var(--font-pixel);
-  font-size: calc(32 * var(--u));
-  font-weight: 700;
-  line-height: 1;
+  font-family: var(--font-azeret);
+  font-size: var(--nav-font-size);
+  font-weight: 400;
+  letter-spacing: -0.4px;
+  line-height: 1.5;
 }
 .about-text {
   font-family: var(--font-azeret);
@@ -1021,20 +1006,20 @@ video {
   margin: 0 0 calc(14 * var(--u)) 0;
 }
 .about-page .about-text {
-  font-family: var(--font-pixel);
-  font-size: calc(12 * var(--u));
+  font-family: var(--font-azeret);
+  font-size: var(--nav-font-size);
   line-height: 1.5;
 }
 .about-services {
   margin: calc(16 * var(--u)) 0 0;
-  font-family: var(--font-pixel);
-  font-size: calc(10 * var(--u));
+  font-family: var(--font-azeret);
+  font-size: var(--nav-font-size);
   line-height: 1.5;
 }
 .about-services h2 {
   margin: 0 0 calc(6 * var(--u));
   font-size: inherit;
-  font-weight: 700;
+  font-weight: 400;
 }
 .about-services ul {
   display: grid;
@@ -1049,7 +1034,7 @@ video {
 .about-page .contact-form textarea,
 .about-page .contact-form button,
 .about-page .form-success {
-  font-family: var(--font-pixel);
+  font-family: var(--font-azeret);
 }
 .about-text a {
   color: var(--text);
@@ -1290,16 +1275,13 @@ video {
     margin-bottom: calc(30 * var(--u));
   }
   .about-page .about-heading {
-    font-size: 20px;
     margin-bottom: 10px;
   }
   .about-page .about-text {
-    font-size: 10px;
     line-height: 1.5;
   }
   .about-services {
     margin-top: 8px;
-    font-size: 9px;
   }
   .about-services h2 {
     margin-bottom: 3px;
