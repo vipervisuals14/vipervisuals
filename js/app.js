@@ -921,7 +921,7 @@ function renderAbout() {
     <section class="about-page">
       <div class="category-grid about-layout" role="region" aria-label="About Viper Visuals" tabindex="0">
         <div class="about-left category-tile">
-          ${renderPreviewMedia('media/about/about-me.mp4', 'media/about/about-me-poster.jpg', 'Photographer holding a camera', 'about-video')}
+          ${renderPreviewMedia('media/about/about-me-2.mp4', 'media/about/about-me-2-poster.jpg', 'Photographer holding a camera', 'about-video')}
         </div>
         <div class="about-right">
           <div class="about-text">
