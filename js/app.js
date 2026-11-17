@@ -307,6 +307,10 @@ const DAKOTA_PHOTOS = [
   '7c18839d-a44d-4417-9a21-dda72410eb54_rw_1200.jpg?h=c4160a86c0fdeed19b50cd69d4e7daee',
   '34a337ad-2cc1-48e6-92c0-16e04ed1f464_rw_1200.jpg?h=6f46af7819c2bf2ce2bc645829d7c757',
   '941625a4-5e8d-4bd5-b8cd-5fa68ff8218e_rw_1200.jpg?h=f30ba0a8690758dfd265def9d6ec79be',
+  'media/photography/dakota/01.jpg',
+  'media/photography/dakota/02.jpg',
+  'media/photography/dakota/03.jpg',
+  'media/photography/dakota/04.jpg',
 ];
 /* Our Block Clothing photographs from the original project, in page order. */
 const OUR_BLOCK_PHOTOS = [
