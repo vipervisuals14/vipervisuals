@@ -216,18 +216,6 @@ const PROJECT_DETAILS = {
     title: 'LOOKBOOK',
     description: ['Lookbook photography for Our Block Clothing.', 'Shot by Viper Visuals.'],
   },
-  'conceptual-1': {
-    title: '',
-    description: ['Conceptual photography.', 'Shot by Viper Visuals.'],
-  },
-  'conceptual-2': {
-    title: '',
-    description: ['Conceptual photography.', 'Shot by Viper Visuals.'],
-  },
-  'conceptual-3': {
-    title: '',
-    description: ['Conceptual photography.', 'Shot by Viper Visuals.'],
-  },
 };
 
 /* Gallery cover followed by the original Weeknd project photographs, in page order. */
@@ -301,6 +289,12 @@ const THIRD_PARTY_PHOTOS = [
   '151520b7448d4201b89efa20b06529ae',
   '7a2be3e8f623435298d2554e5422fff6',
 ].map(id => `https://d2kbe88412276p.cloudfront.net/creative-work-portfolio-project-files/360215/${id}_feed_v3_645w.webp`);
+/* Dakota photographs previously shown in Commercial. */
+const DAKOTA_PHOTOS = [
+  '7c18839d-a44d-4417-9a21-dda72410eb54_rw_1200.jpg?h=c4160a86c0fdeed19b50cd69d4e7daee',
+  '34a337ad-2cc1-48e6-92c0-16e04ed1f464_rw_1200.jpg?h=6f46af7819c2bf2ce2bc645829d7c757',
+  '941625a4-5e8d-4bd5-b8cd-5fa68ff8218e_rw_1200.jpg?h=f30ba0a8690758dfd265def9d6ec79be',
+];
 /* Our Block Clothing photographs from the original project, in page order. */
 const OUR_BLOCK_PHOTOS = [
   'a5671ad6-a7f5-465a-821b-1f1d6aa5851d_rw_1920.jpg?h=1a5326fdff17e01940c1f1a506615b99',
@@ -339,6 +333,7 @@ const PHOTO_GALLERIES = {
   'third-party': { artist: 'THIRD PARTY', title: 'VELD MUSIC FESTIVAL', photos: THIRD_PARTY_PHOTOS },
   'amaal-single-release-press': { artist: 'AMAAL NUUX', title: 'SINGLE RELEASE PRESS', photos: AMAAL_SINGLE_RELEASE_PHOTOS },
   nikkaela: { artist: 'OUR BLOCK CLOTHING', title: 'LOOKBOOK', photos: OUR_BLOCK_PHOTOS },
+  dakota: { artist: 'DAKOTA', title: '', photos: DAKOTA_PHOTOS },
   'micky-press': { artist: 'MICKY WEEKS', title: 'PRESS', photos: PRESS_PHOTOS },
   'amaal-red-light-rollout': { artist: 'AMAAL', title: 'RED LIGHT ROLLOUT', photos: AMAAL_ROLLOUT_IMAGES },
 };
@@ -364,7 +359,7 @@ const PHOTOGRAPHY_CATEGORIES = [
     label: 'COMMERCIAL',
     rows: ['BRANDS', 'PRODUCT', 'CORPORATE'],
     separator: ' . ',
-    poster: `${CDN}941625a4-5e8d-4bd5-b8cd-5fa68ff8218e_rw_1200.jpg?h=f30ba0a8690758dfd265def9d6ec79be`,
+    poster: CDN + OUR_BLOCK_PHOTOS[0],
   },
 ];
 
@@ -442,30 +437,18 @@ const PHOTO_PROJECTS = {
       poster: `${CDN}0943fa60-09f0-4b12-88af-9af03e4eecd3_rw_1200.jpg?h=7534e6b797f517aecc5c8760c7e8bb91`,
     },
     {
-      slug: 'nikkaela',
-      artist: 'OUR BLOCK CLOTHING',
-      title: 'LOOKBOOK',
-      poster: `${CDN}a5671ad6-a7f5-465a-821b-1f1d6aa5851d_rw_1920.jpg?h=1a5326fdff17e01940c1f1a506615b99`,
+      slug: 'dakota',
+      artist: 'DAKOTA',
+      title: '',
+      poster: CDN + DAKOTA_PHOTOS[0],
     },
   ],
   'photo-commercial': [
     {
-      slug: 'conceptual-1',
-      artist: 'VIPER VISUALS',
-      title: '',
-      poster: `${CDN}7c18839d-a44d-4417-9a21-dda72410eb54_rw_1200.jpg?h=c4160a86c0fdeed19b50cd69d4e7daee`,
-    },
-    {
-      slug: 'conceptual-2',
-      artist: 'VIPER VISUALS',
-      title: '',
-      poster: `${CDN}34a337ad-2cc1-48e6-92c0-16e04ed1f464_rw_1200.jpg?h=6f46af7819c2bf2ce2bc645829d7c757`,
-    },
-    {
-      slug: 'conceptual-3',
-      artist: 'VIPER VISUALS',
-      title: '',
-      poster: `${CDN}941625a4-5e8d-4bd5-b8cd-5fa68ff8218e_rw_1200.jpg?h=f30ba0a8690758dfd265def9d6ec79be`,
+      slug: 'nikkaela',
+      artist: 'OUR BLOCK CLOTHING',
+      title: 'LOOKBOOK',
+      poster: CDN + OUR_BLOCK_PHOTOS[0],
     },
   ],
 };
