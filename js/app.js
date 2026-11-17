@@ -148,6 +148,13 @@ const MUSIC_VIDEOS = [
     poster: 'media/video-previews/sistek-poster.jpg',
     preview: 'media/video-previews/sistek.mp4',
   },
+  {
+    slug: 'the-kid-laroi',
+    category: 'video-live',
+    artist: 'THE KID LAROI',
+    title: 'MAGNETIC FESTIVAL',
+    poster: 'media/photography/the-kid-laroi/01.jpg',
+  },
 ];
 
 /* PROJECT DETAILS (for project pages) */
@@ -333,6 +340,12 @@ const AMAAL_ROLLOUT_IMAGES = [
   'e983a916-85a5-4ea7-8911-895c69ffa6ad_rw_1920.jpg?h=cf692e840f6e0db13bb0ef408a5bf84e',
 ];
 const PHOTO_GALLERIES = {
+  'the-kid-laroi': {
+    artist: 'THE KID LAROI',
+    title: 'MAGNETIC FESTIVAL',
+    section: 'video',
+    photos: [1, 2, 3, 4, 5, 6].map(number => `media/photography/the-kid-laroi/${String(number).padStart(2, '0')}.jpg`),
+  },
   'the-weeknd': { artist: 'THE WEEKND', title: 'AFTER HOURS TILL DAWN TOUR', photos: WEEKND_PHOTOS },
   sza: { artist: 'SZA', title: 'SOS TOUR', photos: SZA_PHOTOS },
   'wax-motif': { artist: 'WAX MOTIF / LOUD LUXURY', title: 'VELD MUSIC FESTIVAL', photos: WAX_MOTIF_PHOTOS },
@@ -826,7 +839,7 @@ function renderCategory(items, sectionKey) {
 
 function renderPhotoGallery(gallery) {
   document.body.className = '';
-  setActiveNav('#/photo');
+  setActiveNav(gallery.section === 'video' ? '#/video' : '#/photo');
   const images = gallery.photos.map((path, index) => `
     <div class="category-tile photo-gallery-tile">
       <img class="category-tile-media" src="${escapeHtml(path.startsWith('media/') || path.startsWith('https://') ? path : CDN + path)}"
