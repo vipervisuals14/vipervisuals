@@ -227,6 +227,7 @@ const PHOTOGRAPHY_CATEGORIES = [
     slug: 'photo-performance',
     label: 'COVERAGE',
     rows: ['CONCERTS', 'EVENTS', 'BEHIND THE SCENES'],
+    hoverRows: ['CONCERTS', 'EVENTS', 'BEHIND THE', 'SCENES'],
     separator: ' / ',
     poster: `${CDN}2aaaa8b2-10b3-4d97-a6ad-1c13fc013c02_rw_3840.jpg?h=a653658d08af3e47a6bbd97599617c3e`,
   },
@@ -563,8 +564,9 @@ function renderLandingTile(category, route) {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const poster = reducedMotion && category.stillPoster ? category.stillPoster : category.poster;
   const media = renderPreviewMedia(category.preview, poster, category.label, 'category-tile-media');
-  const baselines = [374, 418, 462];
-  const rows = category.rows.map((text, i) => `
+  const hoverRows = category.hoverRows || category.rows;
+  const baselines = hoverRows.length === 4 ? [352, 396, 440, 484] : [374, 418, 462];
+  const rows = hoverRows.map((text, i) => `
     <text class="cutout-druk-text" x="230" y="${baselines[i]}" font-size="40" text-anchor="middle" textLength="424" lengthAdjust="spacingAndGlyphs">${escapeHtml(text)}</text>
   `).join('');
   return `
