@@ -971,7 +971,7 @@ function renderVideoSubcategory(categorySlug) {
   }).join('');
 
   const frag = tpl(`
-    <section class="video-category">
+    <section class="video-category${categorySlug === 'video-cinematic' ? ' cinematic-category' : ''}">
       <div class="category-grid">${tilesHtml}</div>
       ${renderFooter()}
     </section>

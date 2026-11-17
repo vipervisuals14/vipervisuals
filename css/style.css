@@ -621,6 +621,16 @@ video {
   max-width: 100%;
   white-space: normal;
 }
+/* Keep cinematic song titles on one line at the same size across cards. */
+.cinematic-category .video-project-tile .tile-rest-title {
+  font-size: calc(36 * var(--u));
+  white-space: nowrap;
+}
+@media (max-width: 899px) {
+  .cinematic-category .video-project-tile .tile-rest-title {
+    font-size: min(20px, 6.25vw);
+  }
+}
 
 /* Design categories use the shared grid without inventing subcategory copy. */
 .design-tile .tile-rest-title {
