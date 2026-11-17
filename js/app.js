@@ -281,10 +281,20 @@ const WAX_MOTIF_PHOTOS = [
   '790b9170-c7d3-42dc-a8e3-8e9019621f13_rw_1200.jpg?h=61a1b413f576eaccfa3dd50a92bc88d4',
   '6cd50610-cfe6-4bad-ad65-bbad86243ab7_rw_1200.jpg?h=0bc99c9febd1b6491f9e186fa72c7a94',
 ];
+/* Press photographs supplied for the first Creative project. */
+const PRESS_PHOTOS = [
+  '421cd922-fc35-4a7c-9998-76e42ad70cd2_rw_1200.jpg?h=9d1e81c2025e9605345fe0979138b630',
+  '5c7b0cf9-c71c-403e-9533-7d3a767c971a_rw_1200.jpg?h=3bf4151fbeb1e80ab009f7e1557056ca',
+  '60c64b32-2f2b-4615-aa61-2521534f87dc_rw_1200.jpg?h=01916c5d05e4d6107e7a31003046002f',
+  '1b6ce5fc-e580-4999-8c5a-ed9e09da7b78_rw_1200.jpg?h=076aaf161be223653b86265b963a1609',
+  '0201cf6e-dc1f-48c5-a7f1-814051b9768a_rw_1200.jpg?h=a6ea4e87d89cb8cbc1b86b823a50ae21',
+  '9ea88396-6af5-4074-b9ab-2ffb29953b49_rw_1200.jpg?h=76cd88ddae7b44570d1fada0d643f342',
+];
 const PHOTO_GALLERIES = {
   'the-weeknd': { artist: 'THE WEEKND', title: 'AFTER HOURS TILL DAWN TOUR', photos: WEEKND_PHOTOS },
   sza: { artist: 'SZA', title: 'SOS TOUR', photos: SZA_PHOTOS },
   'wax-motif': { artist: 'WAX MOTIF / LOUD LUXURY', title: '', photos: WAX_MOTIF_PHOTOS },
+  'micky-press': { artist: 'VIPER VISUALS', title: 'PRESS', photos: PRESS_PHOTOS },
 };
 
 /* PHOTOGRAPHY CATEGORIES (3 category tiles on #/photo) */
@@ -360,7 +370,7 @@ const PHOTO_PROJECTS = {
       slug: 'micky-press',
       artist: 'VIPER VISUALS',
       title: 'PRESS',
-      poster: `${CDN}eb7ffe1b-7529-4165-a1d2-16404c15e428_rw_1200.jpg?h=44ee0571e10b2b0d96910e9097534d30`,
+      poster: CDN + PRESS_PHOTOS[0],
     },
     {
       slug: 'kays',
