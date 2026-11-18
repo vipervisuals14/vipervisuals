@@ -426,7 +426,7 @@ const PHOTOGRAPHY_CATEGORIES = [
     label: 'COMMERCIAL',
     rows: ['BRANDS', 'PRODUCT', 'CORPORATE'],
     separator: ' . ',
-    poster: CDN + MARCOLINO_PHOTOS[5],
+    poster: 'media/photography/commercial-cover.png',
   },
 ];
 
