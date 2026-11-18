@@ -337,7 +337,7 @@ const RUN_IT_UP_PHOTOS = [
   'c0022439-1843-4e1b-a12c-fbd3bb90bc87_rw_1920.jpg?h=1e5786aa3a415d765b44b6a7de56154b',
   'c00710fe-9341-4a49-aaf9-4f9c42bed954_rw_1200.jpg?h=5a83b712fd08bb8c873f7c1f7566f97c',
 ];
-/* Marcolino Aniel sports photographs from the original project, in page order. */
+/* Marcolino Aniel sports photographs: original page order, followed by new additions. */
 const MARCOLINO_PHOTOS = [
   '0943fa60-09f0-4b12-88af-9af03e4eecd3_rw_1200.jpg?h=7534e6b797f517aecc5c8760c7e8bb91',
   '6f9bc303-3af2-4c75-8ad3-9190a3aebf27_rw_1200.jpg?h=564b08d3f6bd1b8478da043c25e2e552',
@@ -348,6 +348,8 @@ const MARCOLINO_PHOTOS = [
   '3afbc933-2512-4d48-9c78-0a697ee48041_rw_1920.jpg?h=54cd73e5b973a59bfa4c6e391fd9209f',
   '1f8106f3-b8d1-4622-aff3-e9f65199af57_rw_1920.jpg?h=fcec059cd3fefd1a71d202d52f0bf804',
   '12845262-1972-4836-b486-579d2161fd51_rw_1920.jpg?h=a62bced8da175c31d2749633390bd073',
+  'media/photography/marcolino/blue-track.jpg',
+  'media/photography/marcolino/hurdle.jpg',
 ];
 /* Our Block Clothing photographs from the original project, in page order. */
 const OUR_BLOCK_PHOTOS = [
