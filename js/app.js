@@ -426,7 +426,7 @@ const PHOTOGRAPHY_CATEGORIES = [
     label: 'COMMERCIAL',
     rows: ['BRANDS', 'PRODUCT', 'CORPORATE'],
     separator: ' . ',
-    poster: CDN + OUR_BLOCK_PHOTOS[0],
+    poster: CDN + MARCOLINO_PHOTOS[5],
   },
 ];
 
